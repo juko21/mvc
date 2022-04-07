@@ -1,0 +1,14 @@
+{# templates/lucky_number.html.twig #}
+{% include 'incl/header.twig' %}
+{% include 'incl/nav.twig' %}
+<main class="main" >
+<h1>Hej, välkommen till rapportsidan!</h1>
+    {% for report in content %}
+        <p>
+            {{report | raw}}
+        </p>
+    {% endfor %}
+</main>
+{% include 'incl/footer.twig' %}
+
+
