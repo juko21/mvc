@@ -1,0 +1,12 @@
+{# templates/lucky_number.html.twig #}
+{% block title %}Rapporter{% endblock %}
+{% block body %}
+<main class="main" >
+<h1>Hej, välkommen till rapportsidan!</h1>
+    {% for report in content %}
+        <p>
+            {{report | raw}}
+        </p>
+    {% endfor %}
+</main>
+{% endblock %}

@@ -1,0 +1,172 @@
+.navbar {
+    display: block;
+    position: fixed;
+    height: 72px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    z-index: 3;
+    background-color: #fff;
+    border-bottom: rgb(230, 230, 230) solid 1px;
+    transition: top 0.4s ease-in;
+}
+
+.navbar * {
+    display: block;
+}
+
+.title {
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.title h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+.navbar a {
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    display: block;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+}
+
+
+.h_nav {
+    position: absolute;
+    display: block;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    line-height: 16px;
+    right: 2rem;
+}
+
+.navbar a:link,
+.navbar a:visited,
+.navbar h2 {
+    color: #333;
+}
+
+.navbar a:hover {
+    color: #777;
+}
+
+.h_nav li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.h_nav li:last-child {
+    margin-right: 0;
+}
+
+/* HAMBURGER MENU. As I want to avoid using Javascript for essential items (and unsure whether Javascript is permitted for this task) I have made use of the checkbox-label hack, allowing me to create a clickable
+hamburger menu triggering a dropdown menu using a hidden checkbox and a clickable label (the hamburger menu) tied to the checkbox */
+
+.m_nav {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 4;
+}
+
+.hamburger {
+    z-index: 2;
+}
+
+.m_nav li,
+.dropdown_menu li {
+    display: list-item;
+    width: 100%;
+    margin: 50px 0;
+}
+
+.m_nav span {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    border-radius: 2px;
+    z-index: 4;
+    background-color: #444;
+    right: 32px;
+    transition: transform 0.7s, opacity 0.3s;
+}
+
+.m_nav span:first-child {
+    top: 22px;
+    transform-origin: 100% 0%;
+}
+
+.m_nav span:nth-child(2) {
+    top: 32px;
+}
+
+.m_nav span:nth-child(3) {
+    top: 42px;
+    transform-origin: 100% 100%;
+}
+
+.m_nav span:last-child {
+    top: 22px;
+    z-index: 3;
+    background-color: rgba(255, 255, 255, 0);
+    height: 20px;
+}
+
+.m_nav_1st_rotate {
+    transform: rotate(-45deg);
+}
+
+.m_nav_2nd_opacity {
+    opacity: 0;
+}
+
+._nav_3d_rotate {
+    transform: rotate(45deg);
+}
+
+.dropdown_menu {
+    display: block;
+    position: fixed;
+    background-color: #fff;
+    list-style: none;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    text-align: center;
+    height: auto;
+    padding-top: 72px;
+    margin: 0;
+    transform: translateY(-100%);
+    border-bottom: rgb(230, 230, 230) solid 1px;
+    transition: transform 0.5s;
+    z-index: 1;
+}
+
+.dropdown_slide {
+    transform: translateY(0%);
+}
+
+.hide_nav {
+    top: -72px;
+}
+
+@media screen and (max-width: 1000px) {
+    .m_nav { display: block; }
+    .h_nav { display: none; }
+}

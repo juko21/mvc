@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{% block title %}{% endblock %} - Objektorienterade webbteknologier</title>
+
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" />
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="title">
+                <h2>Objektorienterade webbteknologier</h2>
+            </div>
+            <ul class="h_nav">
+                    <li> <a href="./">HEM</a></li>
+                    <li> <a href="./about">OM</a></li>
+                    <li> <a href="./report">RAPPORT</a></li>
+            </ul>
+            <div class="m_nav">
+                    <div class="hamburger" >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+            </div>
+            <ul class="dropdown_menu">
+                    <li> <a href="./">HEM</a></li>
+                    <li> <a href="./about">OM</a></li>
+                    <li> <a href="./report">RAPPORT</a></li>
+            </ul>
+        </nav>
+        <div class="spacefiller"></div>
+            <div class="main">{% block body %}{% endblock %}</main>
+        <footer class="footer">
+            <div class="copy">
+                <h4>
+                    OBJEKTORIENTERADE WEBBTEKNOLOGIER
+                </h4>
+                <p>
+                    © Juhani Kotaniemi<br>Blekinge Tekniska Högskola
+                </p> 
+            </div>
+            <div class="social">
+                <!-- Loads from FontAwesome (themes/shared/css/font-awesome.min.css) -->
+            </div>
+            <div style="clear: both"></div>
+        </footer>
+        <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+    </body>
+</html>
