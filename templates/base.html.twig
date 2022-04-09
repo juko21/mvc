@@ -10,9 +10,6 @@
     </head>
     <body>
         <nav class="navbar">
-            <div class="title">
-                <h2>Objektorienterade webbteknologier</h2>
-            </div>
             <ul class="h_nav">
                     <li> <a href="./">HEM</a></li>
                     <li> <a href="./about">OM</a></li>
@@ -33,7 +30,13 @@
             </ul>
         </nav>
         <div class="spacefiller"></div>
-            <div class="main">{% block body %}{% endblock %}</main>
+        <div class="header">
+            <div class="title">
+                <h1>Objektorienterade webbteknologier</h1>
+                <h3>{% block header %}{% endblock %}</h3>
+            </div>
+        </div>
+                    <div class="main">{% block body %}{% endblock %}</div>
         <footer class="footer">
             <div class="copy">
                 <h4>
