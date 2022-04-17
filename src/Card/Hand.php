@@ -13,11 +13,6 @@ class Hand
         array_push($this->hand, $card);
     }
 
-    public function popCard(int $card): Card
-    {
-        // implement
-    }
-
     public function getAllCardSrc(): array
     {
         $imgSrcs = array();
@@ -25,10 +20,5 @@ class Hand
             $imgSrcs[] = $card->img;
         }
         return $imgSrcs;
-    }
-
-    public function removeCard(int $id): void
-    {
-        //To be implemented
     }
 }

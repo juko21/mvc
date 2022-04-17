@@ -174,17 +174,15 @@ class CardController extends AbstractController
         }
 
         $cardImgs = [];
-        $playerHands = [];
         $notEnoughCards = false;
         if (count($deck->deck) < $number * $player) {
             $notEnoughCards = true;
         } else {
             for ($i = 0; $i < $player; $i++) {
-                $playerHands[] = new \App\Card\Hand();
                 $cardImgs[] = [];
                 for ($j = 0; $j < $number; $j++) {
                     $tempCard = $deck->popCard();
-                    $playerHands[$i]->addCard($tempCard);
+                    $hand->addCard($tempCard);
                     $cardImgs[$i][] = $tempCard->img;
                 }
             }
