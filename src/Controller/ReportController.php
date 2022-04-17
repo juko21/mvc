@@ -11,7 +11,7 @@ use Symfony\asset;
 class ReportController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="home")
      */
     public function index(): Response
     {
@@ -19,7 +19,7 @@ class ReportController extends AbstractController
     }
 
     /**
-     * @Route("/about")
+     * @Route("/about", name="about")
      */
     public function about(): Response
     {
@@ -27,16 +27,15 @@ class ReportController extends AbstractController
     }
 
     /**
-     * @Route("/report ")
+     * @Route("/report", name="report")
      */
     public function report(): Response
     {
-
         $Parsedown = new ParsedownExtra();
 
         $files = glob('content/report/*.{md}', GLOB_BRACE);
         $content = [];
-        foreach($files as $file) {
+        foreach ($files as $file) {
             $content[] = "<section>" . $Parsedown->text(file_get_contents($file)) . "</section>";
         }
         return $this->render('report.html.twig', ["content" => $content]);

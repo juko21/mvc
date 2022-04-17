@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block header %}{{ title }}{% endblock %}
+
+{% block body %}
+    {% if notEnoughCards is defined and notEnoughCards  %}
+        <h4>Not enough cards in deck</h4>
+    {% else %}
+        {% for card in deck %}
+            <img src="{{ asset('img/cards/' ~ card) }}" class="card">
+        {% endfor %}
+    {% endif %}
+    {% if cardsInDeck is defined %}
+        <br><br>
+        <h4>There are {{ cardsInDeck }} cards left in the deck</h4>
+    {% endif %}
+{% endblock %}

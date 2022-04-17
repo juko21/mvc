@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block header %}{{ title }}{% endblock %}
+
+{% block body %}
+<h1>{{ title }}</h1>
+
+<p>Välkommen till kortsidan. Klicka på en av länkarna nedan för att gå till respektive sida</p>
+<ul class="menu-list">
+    <li><a href="{{ path('card-deck') }}">Visa sorterad kortlek</a></li>
+    <li><a href="{{ path('card-deck2') }}">Visa sorterad kortlek med jokrar</a></li>
+    <li><a href="{{ path('deck-shuffle') }}">Blanda och nollställ kortlek</a></li>
+    <li><a href="{{ path('draw-card') }}">Dra ett kort från kortleken</a></li>
+    <li><a href="{{ drawCards }}">Dra 5 kort från kortleken (ändra antal kort i url)</a></li>
+    <li><a href="{{ drawPlayerCards }}">Dra 3 kort för fyra spelare (ändra antal spelare och kort i url)</a></li>
+    <li><a href="{{ path('json-api') }}">Json API</a></li>
+
+</ul>
+
+{% endblock %}

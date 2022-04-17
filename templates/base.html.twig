@@ -11,9 +11,10 @@
     <body>
         <nav class="navbar">
             <ul class="h_nav">
-                    <li> <a href="./">HEM</a></li>
-                    <li> <a href="./about">OM</a></li>
-                    <li> <a href="./report">RAPPORT</a></li>
+                    <li> <a href="{{ path('home') }}">HEM</a></li>
+                    <li> <a href="{{ path('about') }}">OM</a></li>
+                    <li> <a href="{{ path('card-home') }}">KORTLEK</a></li>
+                    <li> <a href="{{ path('report') }}">RAPPORT</a></li>
             </ul>
             <div class="m_nav">
                     <div class="hamburger" >
@@ -24,9 +25,10 @@
                     </div>
             </div>
             <ul class="dropdown_menu">
-                    <li> <a href="./">HEM</a></li>
-                    <li> <a href="./about">OM</a></li>
-                    <li> <a href="./report">RAPPORT</a></li>
+                    <li> <a href="{{ path('home') }}">HEM</a></li>
+                    <li> <a href="{{ path('about') }}">OM</a></li>
+                    <li> <a href="{{ path('card-home') }}">KORTLEK</a></li>
+                    <li> <a href="{{ path('report') }}">RAPPORT</a></li>
             </ul>
         </nav>
         <div class="spacefiller"></div>
