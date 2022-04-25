@@ -2,13 +2,12 @@
 
 namespace App\Card;
 
-use App\Card\Card;
+use App\Card\Player;
 
 class Deck
 {
     public $deck = array();
-
-    public function __construct()
+    public function __construct(Player $Player)
     {
         $suits = ["clubs", "diamonds", "hearts", "spades"];
         $counter = 1;
