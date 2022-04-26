@@ -7,7 +7,7 @@ use App\Card\Player;
 class Deck
 {
     public $deck = array();
-    public function __construct(Player $Player)
+    public function __construct()
     {
         $suits = ["clubs", "diamonds", "hearts", "spades"];
         $counter = 1;
@@ -29,7 +29,7 @@ class Deck
     {
         $imgSrcs = array();
         foreach ($this->deck as $card) {
-            array_push($imgSrcs, $card->img);
+            array_push($imgSrcs, $card->getImgSrc());
         }
 
         return $imgSrcs;

@@ -6,11 +6,27 @@ use App\Card\Card;
 
 class Hand
 {
-    public $hand = [];
+    private $hand = [];
 
     public function addCard(Card $card): void
     {
-        array_push($this->hand, $card);
+        $this->hand[$card->id] = $card;
+    }
+
+    public function calculateValue() {
+        $points = 0;
+        foreach ($this->hand as $card) {
+            $points += $card->rank;
+        }
+        return $points;
+    }
+
+    public function countCards() {
+        return count($hand);
+    }
+
+    public function setAceValue(int $cardIndex, bool $highAce) {
+        $this->hand[$cardIndex]->setAceValue($highAce);
     }
 
     public function getAllCardSrc(): array

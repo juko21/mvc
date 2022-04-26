@@ -1,0 +1,15 @@
+.main-game {
+    background-color: rgb(14, 143, 42);
+}
+
+.main-game p,
+.main-game h1,
+.main-game h2,
+.main-game h3,
+.main-game h4 {
+    color: white!important;
+}
+
+button {
+    padding: 10px;
+}

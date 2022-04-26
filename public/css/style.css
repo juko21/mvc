@@ -1,6 +1,7 @@
 @import "navbar.css";
 @import "footer.css";
 @import "card.css";
+@import "game.css";
 
 * {
     margin: 0;

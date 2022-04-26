@@ -1,0 +1,17 @@
+{% extends "basegame.html.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block header %}{{ title }}{% endblock %}
+
+{% block body %}
+<h1>{{ title }}</h1>
+    {% if renderTable is defined and renderTable %}
+        <h4>Not enough cards in deck</h4>
+    {% else %}
+        <h3>Regler:</h3>
+        <p>En av deltagarna utses till bankir. Spelet börjar med att bankiren lägger en insats i banken, det vill säga potten som det spelas om, och därefter ger varje spelare utom sig själv ett kort. Spelarna spelar sedan mot bankiren en i taget. Den spelare som är i tur tittar på sitt kort och satsar ett valfritt belopp, som dock inte får vara större än vad som finns i banken, och får därefter ytterligare ett kort.</p>
+        <p>Om summan av korten är 21 vinner spelaren från banken ett belopp lika stort som insatsen. Är summan större än 21 har spelaren ”spruckit” eller ”blivit tjock” och förlorar sin insats till banken. Om summan är under 21 kan spelaren antingen förklara sig nöjd eller begära ytterligare kort för att komma närmare 21, men då också riskera att spricka.</p>
+        <p>Om spelaren förklarat sig nöjd, ska bankiren straffa spelaren, det vill säga spela ut egna kort från leken, ett i taget med framsidan uppåt. Spricker bankiren, vinner spelaren lika mycket som sin insats. När bankiren förklarat sig nöjd, visar spelaren sina kort. Den som har högst vinner. Har båda lika är det bankiren som vinner, likaså om bankiren fått 21. </p>
+        <form method="POST" action><button type="submit" name="start" value="start">Börja spela</button></form>
+    {% endif %}
+{% endblock %}

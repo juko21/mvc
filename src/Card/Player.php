@@ -2,42 +2,57 @@
 
 namespace App\Card;
 
-use App\Card\Hand;
+use App\Card\Card;
 
 class Player 
 {
-    private hand;
-    private points;
+    private $hand;
+    private $totalCash;
+    private $currentBet;
+
     public function __construct()
     {
-        $this->hand = new Hand();
+        $this->hand;
         $this->points = 0;
     }
 
-    public addPoints(int $points) {
-        $this->points = $points;
+    public function addMoney(bool $win) {
+        $this->totalCash += $win ? $currentBet : -($currentBet);
     }
-    public getPoints() {
-        return $this->points;
+
+    public function getMoney() {
+        return $this->totalCash;
     }
-    public addCards(array $cards) {
+    public function getPointsForHand() {
+        return $this->hand->calculateValue();
+    }
+    public function addCards(array $cards) {
         foreach($cards as $card) {
             $this->hand.addCard($card);
         }
     }
-    public resetHand() {
+
+    public function setAceValue(int $cardIndex, bool $highAce) {
+        $this->$hand->setAceValue($cardIndex, $highAce);
+    }
+
+    public function getHandCount() {
+        return count($this->hand);
+    }
+
+    public function getHand()  {
+        return $this->hand;
+    }
+    public function resetHand() {
         $this->hand = new Hand();
+        $this->currentBet = 0;
+    }
+
+    public function setBet(float $bet) {
+        $this->currentBet = $bet;
+    }
+
+    public function getBet() {
+        return $this->currentBet;
     }
 }
-
-Spelet leder till en landningssida där man kan läsa spelregler och se dokumentation om spelet samt påbörja ett spel.
-    Spelplanen visas och spelaren och banken har inte tagit några kort.
-    Spelaren tar ett kort. Kortet visas.
-    Spelaren kan bestämma att stanna eller ta ytterligare ett kort.
-        Om spelaren får över 21 vinner banken.
-    När spelaren stannarså är det bankens tur.
-    Banken är inte medveten om spelarens korthand.
-    Banken plockar kort tills den stannar eller har över 21.
-        Banken vinner vid lika eller om banken har mer än spelaren.
-        Spelaren vinner om banken får över 21.
-    Därefter kan man påbörja en ny omgång.
