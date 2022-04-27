@@ -3,6 +3,7 @@
 namespace App\Card;
 
 use App\Card\Card;
+use App\Card\Hand;
 
 class Player 
 {
@@ -10,14 +11,15 @@ class Player
     private $totalCash;
     private $currentBet;
 
-    public function __construct()
+    public function __construct($startCash)
     {
-        $this->hand;
-        $this->points = 0;
+        $this->hand =new Hand();
+        $this->totalCash = $startCash;
+        $currentBet = 0;
     }
 
     public function addMoney(bool $win) {
-        $this->totalCash += $win ? $currentBet : -($currentBet);
+        $this->totalCash += $win ? $this->currentBet : -($this->currentBet);
     }
 
     public function getMoney() {
@@ -28,12 +30,12 @@ class Player
     }
     public function addCards(array $cards) {
         foreach($cards as $card) {
-            $this->hand.addCard($card);
+            $this->hand->addCard($card);
         }
     }
 
     public function setAceValue(int $cardIndex, bool $highAce) {
-        $this->$hand->setAceValue($cardIndex, $highAce);
+        $this->hand->setAceValue($cardIndex, $highAce);
     }
 
     public function getHandCount() {

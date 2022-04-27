@@ -16,24 +16,26 @@ class Hand
     public function calculateValue() {
         $points = 0;
         foreach ($this->hand as $card) {
-            $points += $card->rank;
+            $points += $card->getRank();
         }
         return $points;
     }
 
     public function countCards() {
-        return count($hand);
+        return count($this->hand);
     }
 
     public function setAceValue(int $cardIndex, bool $highAce) {
         $this->hand[$cardIndex]->setAceValue($highAce);
     }
-
+    public function getHand() {
+        return $this->hand;
+    }
     public function getAllCardSrc(): array
     {
         $imgSrcs = array();
         foreach ($this->hand as $card) {
-            $imgSrcs[] = $card->img;
+            $imgSrcs[] = $card->getImgSrc();
         }
         return $imgSrcs;
     }

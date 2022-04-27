@@ -1,5 +1,17 @@
 .main-game {
+    position:relative;
+    height: calc(100vh - 72px);
     background-color: rgb(14, 143, 42);
+}
+
+.play-table {
+    position: relative;
+    border-radius: 350px;
+    height: 700px;
+    background-color: rgb(9, 90, 26);
+    display: block;
+    padding: 20px;
+    width: 100%;
 }
 
 .main-game p,
@@ -10,6 +22,98 @@
     color: white!important;
 }
 
+.main-game form {
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    gap: 1rem;
+}
+
+.middle-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 button {
     padding: 10px;
+    cursor: pointer;
 }
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.card-container figure,
+.card {
+    max-width: 100px;
+    margin: 0;
+}
+
+.card-container figure figcaption {
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-container figure figcaption *{
+    margin: 0;
+}
+
+.caption-button{
+    padding: 5px;
+    border-radius: 2px;
+    border: none;
+    background-color: #E9E9ED;
+}
+
+.caption-button:hover{ background-color: #D0D0D7;
+}
+.caption-button:active{ background-color: #B1B1B9;
+}
+.flash-notice {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+.card-container h3 {
+    width: 100%;
+    text-align: center;
+}
+
+.game-info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+}
+
+.game-title {
+    top: 0rem;
+    left: 0rem;
+    text-align: left;
+}
+
+.card-container.player {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.card-container.dealer {
+    position: absolute;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
