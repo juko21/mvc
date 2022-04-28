@@ -10,10 +10,11 @@ class Hand
 
     public function addCard(Card $card): void
     {
-        $this->hand[$card->id] = $card;
+        $this->hand[$card->getId()] = $card;
     }
 
-    public function calculateValue() {
+    public function calculateValue(): int
+    {
         $points = 0;
         foreach ($this->hand as $card) {
             $points += $card->getRank();
@@ -21,14 +22,17 @@ class Hand
         return $points;
     }
 
-    public function countCards() {
+    public function countCards(): int
+    {
         return count($this->hand);
     }
 
-    public function setAceValue(int $cardIndex, bool $highAce) {
+    public function setAceValue(int $cardIndex, bool $highAce): void
+    {
         $this->hand[$cardIndex]->setAceValue($highAce);
     }
-    public function getHand() {
+    public function getHand(): array
+    {
         return $this->hand;
     }
     public function getAllCardSrc(): array

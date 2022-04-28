@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use App\Card\Deck;
 
 class CardJsonController extends AbstractController
 {
@@ -17,10 +18,10 @@ class CardJsonController extends AbstractController
      */
     public function jsonApiGet(SessionInterface $session): Response
     {
-        if ($session->has('deck')) {
-            $deck = $session->get('deck');
-        } else {
-            $deck = new \App\Card\Deck();
+        $deck = $session->get('deck');
+        if (!$deck) {
+            $deck = new Deck();
+            $session->set("deck", $deck);
         }
         $tempDeck = $deck->sorted();
         $response = new Response();

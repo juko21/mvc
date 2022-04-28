@@ -6,23 +6,17 @@ use App\Card\Player;
 
 class Deck
 {
-    public $deck = array();
+    public array $deck = array();
     public function __construct()
     {
         $suits = ["clubs", "diamonds", "hearts", "spades"];
         $counter = 1;
         foreach ($suits as $suit) {
             for ($i = 1; $i < 14; $i++) {
-                $tempObject = new Card($suit, $i, $counter++);
-                array_push($this->deck, $tempObject);
+
+                $this->deck[] = new Card($suit, $i, $counter++);
             }
         }
-    }
-
-    public function getCardSrc(string $suit, int $rank): string
-    {
-        $suits = ["clubs", "diamonds", "hearts", "spades"];
-        return $this->deck[((array_search($rank, $this->RANKS) + 1) * $rank) - 1]->$img;
     }
 
     public function getAllCardSrc(): array
@@ -37,8 +31,8 @@ class Deck
     public function sorted(): Deck
     {
         $deck = $this;
-        usort($deck->deck, function ($a, $b) {
-            return $a->id < $b->id ? -1 : 1;
+        usort($deck->deck, function ($item1, $item2) {
+            return $item1->getId() < $item2->getId() ? -1 : 1;
         });
         return $deck;
     }

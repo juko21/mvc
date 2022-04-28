@@ -1,6 +1,6 @@
 .main-game {
     position:relative;
-    height: calc(100vh - 72px);
+    min-height: calc(100vh - 72px);
     background-color: rgb(14, 143, 42);
 }
 

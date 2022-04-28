@@ -5,111 +5,104 @@ namespace App\Card;
 use App\Card\Card;
 use App\Card\Deck;
 use App\Card\Player;
+use App\Card\Hand;
 
-class Game 
+class Game
 {
     private $players = array();
     private $dealer;
     private $deck;
     private $state;
     public function __construct(int $players)
-    {   
+    {
         $this->dealer = new Player(150);
-        $this->deck = new Deck();
-        $this->deck->shuffleDeck();
+        $this->resetDeck();
         $this->state = 0;
         for ($i = 0; $i < $players; $i++) {
             $this->players[] = new Player(150);
         }
     }
-
-    public function dealToPlayer(int $playerIndex) {
+    public function dealToPlayer(int $playerIndex): void
+    {
         $this->players[$playerIndex]->addCards([$this->deck->popCard()]);
     }
-
-    public function dealToDealer() {
+    public function dealToDealer(): void
+    {
         $this->dealer->addCards([$this->deck->popCard()]);
     }
-
-    public function getPlayerPoints(int $playerIndex) {
+    public function getPlayerPoints(int $playerIndex): int
+    {
         return $this->players[$playerIndex]->getPointsForHand();
     }
-
-    public function getDealerHand() {
-        return $this->dealer->getHand();
-    }
-    public function getPlayerHand(int $playerIndex) {
-        return $this->players[$playerIndex]->getHand();
-    }
-    public function getDealerPoints() {
+    public function getDealerPoints(): int
+    {
         return $this->dealer->getPointsForHand();
     }
-    public function getPlayerCash(int $playerIndex) {
+    public function getDealerHand(): Hand
+    {
+        return $this->dealer->getHand();
+    }
+    public function getPlayerHand(int $playerIndex): Hand
+    {
+        return $this->players[$playerIndex]->getHand();
+    }
+    public function getPlayerCash(int $playerIndex): int
+    {
         return $this->players[$playerIndex]->getMoney();
     }
-    public function setPlayerBet(int $playerIndex, float $bet) {
+    public function setPlayerBet(int $playerIndex, int $bet): void
+    {
         $this->players[$playerIndex]->setBet($bet);
     }
-    public function getPlayerBet(int $playerIndex) {
+    public function getPlayerBet(int $playerIndex): int
+    {
         return $this->players[$playerIndex]->getBet();
     }
-    public function getState() {
+    public function getState(): int
+    {
         return $this->state;
     }
-
-    public function setState(int $state) {
+    public function setState(int $state): void
+    {
         if ($state == 0 || $state == 1 || $state == 2 || $state == 3) {
-            return $this->state = $state;
+            $this->state = $state;
         }
     }
-
-    public function runDealerAi() {
-        while (true) {
-            if($this->dealer->getPointsForHand() < 18) {
-                $this->dealToDealer();
-            } else {
-                break;
-            }
+    public function runDealerAi(): void
+    {
+        while ($this->dealer->getPointsForHand() < 18) {
+            $this->dealToDealer();
         }
     }
-
-    public function setAceValue(int $playerIndex, int $cardIndex, bool $highAce) {
+    public function setAceValue(int $playerIndex, int $cardIndex, bool $highAce): void
+    {
         $this->players[$playerIndex]->setAceValue($cardIndex, $highAce);
     }
-    public function checkWinner(int $playerIndex) {
+    public function checkWinner(int $playerIndex): bool
+    {
         $dealerPoints = $this->getDealerPoints();
         $playerPoints = $this->getPlayerPoints($playerIndex);
         if ($playerPoints > 21) {
             return false;
-        } else if ($dealerPoints > 21 || $playerPoints > $dealerPoints) {
+        } elseif ($dealerPoints > 21 || $playerPoints > $dealerPoints) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
-
-    public function dealPoints(int $playerIndex) {
+    public function dealPoints(int $playerIndex): void
+    {
         $this->players[$playerIndex]->addMoney($this->checkWinner($playerIndex));
     }
-    
-    public function resetHands() {
+    public function resetHands(): void
+    {
         $this->dealer->resetHand();
         foreach ($this->players as $player) {
             $player->resetHand();
         }
     }
-    
-    public function resetDeck() {
+    public function resetDeck(): void
+    {
         $this->deck = new Deck();
         $this->deck->shuffleDeck();
-    }
-
-
-    public function resetAll(int $players) {
-        $this->dealer = new Player();
-        $this->deck = new Deck();
-        for ($i = 0; $i < $players; $i++) {
-            $this->players[] = new Player();
-        }
     }
 }

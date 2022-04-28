@@ -1,0 +1,8 @@
+{# templates/article.html.twig #}
+{% extends "base.html.twig" %}
+{% block title %}{{ title }}{% endblock %}
+{% block header %}{{ header }}{% endblock %}
+{% block body %}
+<h2>{{ headerH2}}</h2>
+        {{ content | raw }}
+{% endblock %}

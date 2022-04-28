@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use ParsedownExtra;
+use App\Card\Game;
 
 class CardGameController extends AbstractController
 {
@@ -19,12 +21,9 @@ class CardGameController extends AbstractController
     public function home(SessionInterface $session): Response
     {
         $data = [];
-
-        if ($session->has('game')) {
-            $data["renderTable"] = 1;
-            $data["game"] = $session->get('game');
-        } else {
-            $data["game"] = new \App\Card\Game(1);
+        $data["game"] = $session->get('game');
+        if (!$data["game"]) {
+            $data["game"] = new Game(1);
             $session->set('game', $data['game']);
         }
         $data['title'] = '21';
@@ -43,59 +42,66 @@ class CardGameController extends AbstractController
     {
         $pass = $request->request->get('pass');
         $start = $request->request->get('start');
-        $go = $request->request->get('go');
+        $deal = $request->request->get('go');
         $bet = $request->request->get('bet');
         $newRound = $request->request->get('newRound');
         $reset = $request->request->get('reset');
         $changeAce = $request->request->get('changeAce');
-    
-        $game = null;
-        if ($session->has('game')) {
-            $game = $session->get('game');
-        } else {
-            $game = new \App\Card\Game(1);
-        }
+
+        $game = $session->get('game');
 
         if ($start) {
             $game->dealToPlayer(0);
             $game->setState(1);
-        } else if ($pass) {
+        } elseif ($pass) {
             $game->runDealerAi();
             $game->dealPoints(0);
             $winner = $game->checkWinner(0) ? "Spelaren" : "Bankiren";
             $game->setState(3);
             $this->addFlash("notice", $winner . " vinner!");
-        } else if ($bet) {
+        } elseif ($bet) {
             $game->setPlayerBet(0, $request->request->get('betvalue'));
             $game->setState(2);
-        } else if ($newRound) {
+        } elseif ($newRound) {
             $game->resetHands();
             $game->resetDeck();
             $game->dealToPlayer(0);
             $game->setState(1);
-        } else if ($go) {
+        } elseif ($deal) {
             $game->dealToPlayer(0);
             $game->setState(2);
-
-            if ( $game->getPlayerHand(0)->countCards() == 2 && $game->getPlayerPoints(0) == 21 ) {
+            if ($game->getPlayerHand(0)->countCards() == 2 && $game->getPlayerPoints(0) == 21) {
                 $game->dealPoints(0);
                 $game->setState(3);
                 $this->addFlash("notice", "Spelaren vinner!");
-            } else if ( $game->getPlayerPoints(0) > 21 ) {
+            } elseif ($game->getPlayerPoints(0) > 21) {
                 $game->dealPoints(0);
                 $game->setState(3);
                 $this->addFlash("notice", "Bankiren vinner!");
             }
-        } else if ($changeAce) {
-            $game->setAceValue(0, substr($changeAce, 4), (boolean)(int)$changeAce[3]);
-        } else if ($reset) {
-            $game = new \App\Card\Game(1);
-            $game->resetAll(1);
+        } elseif ($changeAce) {
+            $game->setAceValue(0, substr($changeAce, 4), (bool)(int)$changeAce[3]);
+        } elseif ($reset) {
+            $game = new Game(1);
             $game->setState(0);
         }
-
-        //$this->addFlash($type, "The username and password did $isEqual match.");
         $session->set('game', $game);
         return $this->redirectToRoute('game-home');
+    }
+
+    /**
+     * @Route("/game/doc", name="game-doc")
+     */
+    public function report(): Response
+    {
+        $parseDown = new ParsedownExtra();
+
+        $file = 'content/gamedoc.md';
+        $data = [];
+        $data['content'] = $parseDown->text(file_get_contents($file));
+        $data['title'] = "Speldokumentation";
+        $data['header'] = "Speldokumentation";
+        $data['headerH2'] = "Om utveckling av 21";
+        return $this->render('article.html.twig', $data);
     }
 }

@@ -31,12 +31,12 @@ class ReportController extends AbstractController
      */
     public function report(): Response
     {
-        $Parsedown = new ParsedownExtra();
+        $parseDown = new ParsedownExtra();
 
         $files = glob('content/report/*.{md}', GLOB_BRACE);
         $content = [];
         foreach ($files as $file) {
-            $content[] = "<section>" . $Parsedown->text(file_get_contents($file)) . "</section>";
+            $content[] = "<section>" . $parseDown->text(file_get_contents($file)) . "</section>";
         }
         return $this->render('report.html.twig', ["content" => $content]);
     }
