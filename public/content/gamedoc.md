@@ -1,7 +1,7 @@
 ###Flödesschema:
 Nedan har jag i ett flödesschema beskrivit det övergripande tänkta flödet i spelet, från startskärm genom olika spelmoment.
 
-![Flödesschema](/img/flowchart.png)
+![Flödesschema](img/flowchart.png)
 
 ###Pseudokod:
 Nedan beskriver jag den huvudsakliga spelloopen som den sköts via controllern med hjälp av en route för post. Jag har inkluderat pseudokod för klassen game, vari variabler samt metoder som krävs för spellogiken har samlats, samt för funktionen gamePost som sköter POST-routen /game/process. Jag har ej inkluderat klassen player eller hand även om metoder från dessa kallas. Det bör vara tydligt vad som händer i dessa metoder utifrån deras namn.

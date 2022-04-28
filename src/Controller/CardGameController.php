@@ -42,7 +42,7 @@ class CardGameController extends AbstractController
     {
         $pass = $request->request->get('pass');
         $start = $request->request->get('start');
-        $deal = $request->request->get('go');
+        $deal = $request->request->get('deal');
         $bet = $request->request->get('bet');
         $newRound = $request->request->get('newRound');
         $reset = $request->request->get('reset');
