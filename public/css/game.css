@@ -117,3 +117,7 @@ button {
     transform: translateX(-50%);
 }
 
+main-game a:link { color:white;}
+main-game a:hover { color:rgb(231, 234, 243);}
+main-game a:active { color:rgb(231, 234, 243);}
+main-game a:visited { color:white;}

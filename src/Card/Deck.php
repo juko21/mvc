@@ -13,7 +13,6 @@ class Deck
         $counter = 1;
         foreach ($suits as $suit) {
             for ($i = 1; $i < 14; $i++) {
-
                 $this->deck[] = new Card($suit, $i, $counter++);
             }
         }

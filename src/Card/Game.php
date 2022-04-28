@@ -15,11 +15,11 @@ class Game
     private $state;
     public function __construct(int $players)
     {
-        $this->dealer = new Player(150);
+        $this->dealer = new Player(100);
         $this->resetDeck();
         $this->state = 0;
         for ($i = 0; $i < $players; $i++) {
-            $this->players[] = new Player(150);
+            $this->players[] = new Player(100);
         }
     }
     public function dealToPlayer(int $playerIndex): void
