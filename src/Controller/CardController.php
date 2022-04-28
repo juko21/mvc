@@ -99,7 +99,7 @@ class CardController extends AbstractController
         }
         $notEnoughCards = true;
         $cardImg = null;
-        if (count($deck->deck) > 1) {
+        if (count($deck->deck) >= 1) {
             $notEnoughCards = false;
             $tempCard = $deck->popCard();
             $hand->addCard($tempCard);
