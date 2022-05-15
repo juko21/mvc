@@ -1,6 +1,14 @@
 {
+    "name": "jkot21/report",
+    "description": "Report/assignment page for MVC course",
     "type": "project",
     "license": "proprietary",
+    "authors": [
+            {
+                "name": "Juhani Kotaniemi",
+                "email": "juko21@student.bth.se"
+            }
+    ],
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
@@ -55,7 +63,8 @@
         "symfony/maker-bundle": "^1.0",
         "symfony/phpunit-bridge": "^6.0",
         "symfony/stopwatch": "6.0.*",
-        "symfony/web-profiler-bundle": "6.0.*"
+        "symfony/web-profiler-bundle": "6.0.*",
+        "phpunit/phpunit": "^9"
     },
     "config": {
         "allow-plugins": {
@@ -108,7 +117,10 @@
             "@phpcpd",
             "@phpmd",
             "@phpstan"
-        ]
+        ],
+        "phpdoc": "tools/phpdoc/phpdoc",
+        "phpunit": "vendor/bin/phpunit"
+
     },
     "conflict": {
         "symfony/symfony": "*"

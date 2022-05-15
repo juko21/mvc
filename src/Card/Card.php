@@ -45,6 +45,6 @@ class Card
 
     public function getStr(): string
     {
-        return self::RANKS[$this->rank] . $this->suit;
+        return self::RANKS[$this->rank] . " of " . $this->suit;
     }
 }
