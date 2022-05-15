@@ -70,13 +70,13 @@ class Game
     {
         return $this->deck->getNumber();
     }
-    public function countPlayerHand(): int
+    public function countPlayerHand(int $playerIndex): int
     {
-        return $this->deck->getHandCount();
+        return $this->players[$playerIndex]->getHandCount();
     }
     public function countDealerHand(): int
     {
-        return $this->deck->getHandCount();
+        return $this->dealer->getHandCount();
     }
     public function setState(int $state): void
     {

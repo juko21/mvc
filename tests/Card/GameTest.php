@@ -17,8 +17,8 @@ class GameTest extends TestCase
     {
         $game = new Game(1);
         $this->assertInstanceOf("\App\Card\Game", $game);
-        $this->assertInstanceOf("\App\Card\Hand", $player->getPlayerHand());
-        $this->assertInstanceOf("\App\Card\Hand", $player->getDealerHand());
+        $this->assertInstanceOf("\App\Card\Hand", $game->getPlayerHand(0));
+        $this->assertInstanceOf("\App\Card\Hand", $game->getDealerHand());
     }
 
     /**
@@ -28,15 +28,14 @@ class GameTest extends TestCase
     public function testDeal()
     {
         $game = new Game(1);
-        $this->assertInstanceOf("\App\Card\Game", $game);
         $game->dealToPlayer(0);
         $game->dealToPlayer(0);
         $game->dealToDealer();
         $game->dealToDealer();
         $game->dealToDealer();
         $this->assertEquals($game->countDeck(), 47);
-        $this->assertEquals($game->countPlayerHand(), 2);
-        $this->assertEquals($game->countDealerHand(), 3);
+        $this->assertEquals($game->countPlayerHand(0), 2);
+        $this->assertEquals($game->countDealerHand(0), 3);
     }
     /**
      * Create game object, sort deck and deal cards to player and dealer, assert
@@ -45,15 +44,20 @@ class GameTest extends TestCase
     public function testDealWithSortedDeck()
     {
         $game = new Game(1);
+        $game->sortDeck();
         $this->assertInstanceOf("\App\Card\Game", $game);
         $game->dealToPlayer(0);
-        $game->dealToPlayer(0);
+        $game->dealToPlayer(0); 
+        $this->assertEquals($game->getPlayerPoints(0), 25);
         $game->dealToDealer();
         $game->dealToDealer();
         $game->dealToDealer();
-        $this->assertEquals($game->getPlayerPoints(), 25);
-        $this->assertEquals($game->getDealerPoints(), 36);
+        $this->assertEquals($game->getDealerPoints(), 30);
     }
+    /**
+     * Create game object with custom deck and deal cards to player and dealer, check for
+     * different winning conditions
+     */
     public function testWinningConditions()
     {
         $deck = array(
@@ -67,7 +71,7 @@ class GameTest extends TestCase
         $game->dealToDealer();
         $game->dealToPlayer(0);
         $game->dealToPlayer(0);
-        $this->assertTrue($game->checkWinner());
+        $this->assertTrue($game->checkWinner(0));
         $deck = array(
             new Card("spades", 10, 0),
             new Card("diamonds", 9, 1),
@@ -79,7 +83,7 @@ class GameTest extends TestCase
         $game->dealToDealer();
         $game->dealToPlayer(0);
         $game->dealToPlayer(0);
-        $this->assertTrue($game->checkWinner());
+        $this->assertTrue($game->checkWinner(0));
         $deck = array(
             new Card("spades", 10, 0),
             new Card("diamonds", 12, 1),
@@ -91,7 +95,7 @@ class GameTest extends TestCase
         $game->dealToDealer();
         $game->dealToPlayer(0);
         $game->dealToPlayer(0);
-        $this->assertTrue(!$game->checkWinner());
+        $this->assertTrue(!$game->checkWinner(0));
         $deck = array(
             new Card("spades", 10, 0),
             new Card("diamonds", 11, 1),
@@ -103,9 +107,9 @@ class GameTest extends TestCase
         $game->dealToDealer();
         $game->dealToPlayer(0);
         $game->dealToPlayer(0);
-        $this->assertTrue(!$game->checkWinner());
+        $this->assertTrue(!$game->checkWinner(0));
         $deck = array(
-            new Card("spades", 9, 0),
+            new Card("spades", 10, 0),
             new Card("diamonds", 12, 1),
             new Card("spades", 10, 2),
             new Card("hearts", 13, 3)
@@ -115,7 +119,7 @@ class GameTest extends TestCase
         $game->dealToDealer();
         $game->dealToPlayer(0);
         $game->dealToPlayer(0);
-        $this->assertTrue(!$game->checkWinner());
+        $this->assertTrue(!$game->checkWinner(0));
     }
     /**
      * Create game object with custom deck and test running AI
@@ -150,12 +154,12 @@ class GameTest extends TestCase
         $game = new Game(1);
         $game->sortDeck();
         $game->setPlayerBet(10);
-        $this->assertEquals($game->getPlayerCash(), 100)
+        $this->assertEquals($game->getPlayerCash(0), 100);
         $game->dealToDealer();
         $game->dealToDealer();
         $game->dealToPlayer(0);
         $game->dealPoints(0);
-        $this->assertEquals($game->getPlayerCash(), 110)
+        $this->assertEquals($game->getPlayerCash(0), 110);
 
         $game = new Game(1);
         $game->sortDeck();
@@ -164,7 +168,7 @@ class GameTest extends TestCase
         $game->dealToPlayer(0);
         $game->dealToPlayer(0);
         $game->dealPoints(0);
-        $this->assertEquals($game->getPlayerCash(), 90)
+        $this->assertEquals($game->getPlayerCash(0), 90);
     }
     /**
      * Create game object and test getting and setting player bet.
@@ -172,53 +176,41 @@ class GameTest extends TestCase
     public function testBet()
     {
         $game = new Game(1);
-        $game->sortDeck();
-        $this->assertEquals($game->getPlayerBet(), 0)
-        $game->setPlayerBet(10);
-        $this->assertEquals($game->getPlayerBet(), 10)
-    }
-    /**
-     * Construct object, test bet value set to default, set bet value and 
-     * check correct value
-     */
-    public function testSetGetBet()
-    {
-        $game = new Game(1);
-        $this->assertEquals($player->getBet(), 0);
-        $player->setBet(10);
-        $this->assertEquals($player->getBet(), 10);
+        $this->assertEquals($game->getPlayerBet(0), 0);
+        $game->setPlayerBet(0, 10);
+        $this->assertEquals($game->getPlayerBet(0), 10);
     }
     /**
      * Construct object with 1-card deck. Test setting and getting Ace-values.
      */
-    public function testSetAceValye()
+    public function testSetAceValue()
     {
         $deck = array(new Card("hearts", 1, 0));
-        $game = new Game(1, $deck)
-        $this->assertEquals($player->getPlayerPoints(0), 1);
+        $game = new Game(1, $deck);
+        $game->dealToPlayer(0);
+        $this->assertEquals($game->getPlayerPoints(0), 1);
         $game->setAceValue(0, 0, true);
-        $this->assertEquals($player->getPlayerPoints(0), 14);
+        $this->assertEquals($game->getPlayerPoints(0), 14);
         $game->setAceValue(0, 0, false);
-        $this->assertEquals($player->getPlayerPoints(0), 1);
+        $this->assertEquals($game->getPlayerPoints(0), 1);
     }
-}
-
-
-    public function setAceValue(int $playerIndex, int $cardIndex, bool $highAce): void
+    /**
+     * Construct object, deal hands and reset. Check correct amount of cards in hands(0) and deck (52).
+     */
+    public function testResetHandDeck()
     {
-        $this->players[$playerIndex]->setAceValue($cardIndex, $highAce);
-    }
-
-    public function resetHands(): void
-    {
-        $this->dealer->resetHand();
-        foreach ($this->players as $player) {
-            $player->resetHand();
-        }
-    }
-    public function resetDeck(): void
-    {
-        $this->deck = new Deck();
-        $this->deck->shuffleDeck();
+        $game = new Game(1);
+        $game->dealToPlayer(0);
+        $game->dealToPlayer(0);
+        $game->dealToDealer();
+        $game->dealToDealer();
+        $this->assertEquals($game->countDeck(), 48);
+        $this->assertEquals($game->countPlayerHand(0), 2);
+        $this->assertEquals($game->countDealerHand(), 2);
+        $game->resetHands();
+        $this->assertEquals($game->countPlayerHand(0), 0);
+        $this->assertEquals($game->countDealerHand(), 0);
+        $game->resetDeck();
+        $this->assertEquals($game->countDeck(), 52);
     }
 }
