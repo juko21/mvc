@@ -29,4 +29,28 @@ class DeckTest extends TestCase
         );
         $this->assertEquals($exp, $deck->getAllCardSrc());
     }
+
+    public function testShuffleSort()
+    {
+        $deck = new Deck();
+        $deck->shuffleDeck();
+        $this->assertTrue(count($deck->deck) == 52);
+        $deck->sorted();
+        $this->assertTrue(count($deck->deck) == 52);
+        $exp = 1;
+        $this->assertEquals($exp, $deck->deck[0]->getId());
+        $exp = 52;
+        $this->assertEquals($exp, $deck->deck[51]->getId());
+    }
+
+    public function testPopAndCount()
+    {
+        $deck = new Deck();
+        $card = $deck->popCard();
+        $exp = 52;
+        $expStr = "king of spades";
+        $this->assertEquals($exp, $card->getId());
+        $this->assertEquals($expStr, $card->getStr());
+        $this->assertTrue($deck->getNumber() == 51);
+    }
 }
