@@ -13,10 +13,14 @@ class Game
     private $dealer;
     private $deck;
     private $state;
-    public function __construct(int $players)
+    public function __construct(int $players, array $deck = null)
     {
         $this->dealer = new Player(100);
-        $this->resetDeck();
+        if ($deck == null) {
+            $this->resetDeck();
+        } else {
+            $this->deck = new Deck($deck);
+        }
         $this->state = 0;
         for ($i = 0; $i < $players; $i++) {
             $this->players[] = new Player(100);
@@ -62,6 +66,18 @@ class Game
     {
         return $this->state;
     }
+    public function countDeck(): int
+    {
+        return $this->deck->getNumber();
+    }
+    public function countPlayerHand(): int
+    {
+        return $this->deck->getHandCount();
+    }
+    public function countDealerHand(): int
+    {
+        return $this->deck->getHandCount();
+    }
     public function setState(int $state): void
     {
         if ($state == 0 || $state == 1 || $state == 2 || $state == 3) {
@@ -105,4 +121,9 @@ class Game
         $this->deck = new Deck();
         $this->deck->shuffleDeck();
     }
+    public function sortDeck(): void
+    {
+        $this->deck->sorted();
+    }
 }
+

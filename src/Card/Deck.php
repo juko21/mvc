@@ -7,14 +7,18 @@ use App\Card\Player;
 class Deck
 {
     public array $deck = array();
-    public function __construct()
+    public function __construct(array $deck = null)
     {
+        if ($deck == null) {
         $suits = ["clubs", "diamonds", "hearts", "spades"];
         $counter = 1;
         foreach ($suits as $suit) {
             for ($i = 1; $i < 14; $i++) {
                 $this->deck[] = new Card($suit, $i, $counter++);
             }
+        }
+        } else {
+            $this->deck = $deck;
         }
     }
 
