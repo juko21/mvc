@@ -77,4 +77,21 @@ class HandTest extends TestCase
         $exp = 38;
         $this->assertEquals($exp, $hand->calculateValue());
     }
+    /**
+     * Construct object, ad cards and verify image sources.
+     */
+    public function testGetAllCardImgSrc()
+    {
+        $hand = new Hand();
+        $card1 = new Card("clubs", 1, 0);
+        $card2 = new Card("diamonds", 10, 1);
+        $card3 = new Card("spades", 13, 2);
+        $card4 = new Card("hearts", 14, 3);
+        $hand->addCard($card1);
+        $hand->addCard($card2);
+        $hand->addCard($card3);
+        $hand->addCard($card4);
+        $exp = array("1C.svg", "10D.svg", "13S.svg", "14H.svg");
+        $this->assertEquals($exp, $hand->getAllCardSrc());
+    }
 }

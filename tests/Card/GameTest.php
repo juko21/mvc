@@ -38,6 +38,21 @@ class GameTest extends TestCase
         $this->assertEquals($game->countDealerHand(0), 3);
     }
     /**
+     * Create game object, test setting and checking states, including 
+     * invalid values (no change)
+     */
+    public function testState()
+    {
+        $game = new Game(1);
+        $this->assertEquals($game->getState(), 0);
+        $game->setState(3);
+        $this->assertEquals($game->getState(), 3);
+        $game->setState(4);
+        $this->assertEquals($game->getState(), 3);
+        $game->setState(-1);
+        $this->assertEquals($game->getState(), 3);
+    }
+    /**
      * Create game object, sort deck and deal cards to player and dealer, assert
      * by checking correct values for points
      */
@@ -125,7 +140,7 @@ class GameTest extends TestCase
      * Create game object with custom deck and test running AI
      * (should keep dealing while total value under 18)
      */
-    public function checkAi()
+    public function testDealerAi()
     {
         $deck = array(
             new Card("spades", 6, 0),
@@ -134,6 +149,7 @@ class GameTest extends TestCase
             new Card("hearts", 3, 3)
         );
         $game = new Game(1, $deck);
+        $game->runDealerAi();
         $this->assertEquals($game->getDealerPoints(), 23);
         $deck = array(
             new Card("spades", 3, 0),
@@ -142,6 +158,7 @@ class GameTest extends TestCase
             new Card("hearts", 3, 3)
         );
         $game = new Game(1, $deck);
+        $game->runDealerAi();
         $this->assertEquals($game->getDealerPoints(), 18);
     }
     /**
@@ -149,11 +166,11 @@ class GameTest extends TestCase
      * Deal so that player wins and then loses, check winning conditions and 
      * correct cash amount.
      */
-    public function checkPlayerBalance()
+    public function testGetPlayerCash()
     {
         $game = new Game(1);
         $game->sortDeck();
-        $game->setPlayerBet(10);
+        $game->setPlayerBet(0, 10);
         $this->assertEquals($game->getPlayerCash(0), 100);
         $game->dealToDealer();
         $game->dealToDealer();
@@ -163,7 +180,7 @@ class GameTest extends TestCase
 
         $game = new Game(1);
         $game->sortDeck();
-        $game->setPlayerBet(10);
+        $game->setPlayerBet(0, 10);
         $game->dealToDealer();
         $game->dealToPlayer(0);
         $game->dealToPlayer(0);
