@@ -154,7 +154,7 @@ class LibraryController extends AbstractController
         $id = $request->request->get('delete');
         $book = $bookRepository
             ->find($id);
-        return $this->render('library/updatebook.html.twig', ["title" => "Uppdatera bok"]);
+        return $this->render('library/deletebook.html.twig', ["title" => "Radera bok", "book" => $book]);
     }
 
     /**
@@ -165,10 +165,6 @@ class LibraryController extends AbstractController
      * )
      */
     public function deleteBookPostProcess( ManagerRegistry $doctrine, Request $request): Response {
-        $title = $request->request->get('title');
-        $isbn = $request->request->get('isbn');
-        $author = $request->request->get('author');
-        $img = $request->request->get('img');
         $id = $request->request->get('submit');
 
         $entityManager = $doctrine->getManager();
@@ -177,6 +173,6 @@ class LibraryController extends AbstractController
         $entityManager->remove($book);
         $entityManager->flush();
 
-        return $this->redirectToRoute('library_show');
+        return $this->redirectToRoute('library_show_all');
     }
 }

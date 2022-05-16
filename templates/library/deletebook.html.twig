@@ -4,7 +4,7 @@
 
 {% block body %}
     <h2>{{ title }}</h2>
-    <form method="POST" action="{{ path('library_update_process') }}">
+    <form method="POST" action="{{ path('library_delete_process') }}">
             <p><input type="text" name="title" disabled value="{{ book.title }}"></p>
             <p><input type="text" name="isbn" disabled value="{{ book.isbn }}"></p>
             <p><input type="text" name="author" disabled value="{{ book.author }}"></p>
