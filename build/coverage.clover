@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1652649530">
-  <project timestamp="1652649530">
+<coverage generated="1652649668">
+  <project timestamp="1652649668">
     <file name="C:\Users\jkota\dbwebb-kurser\mvc\me\report\src\Card\Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="8" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="17" coveredelements="17"/>
@@ -136,7 +136,7 @@
       <line num="122" type="stmt" count="7"/>
       <line num="124" type="method" name="sortDeck" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="126" type="stmt" count="2"/>
-      <metrics loc="130" ncloc="130" classes="1" methods="22" coveredmethods="22" conditionals="0" coveredconditionals="0" statements="39" coveredstatements="39" elements="61" coveredelements="61"/>
+      <metrics loc="129" ncloc="129" classes="1" methods="22" coveredmethods="22" conditionals="0" coveredconditionals="0" statements="39" coveredstatements="39" elements="61" coveredelements="61"/>
     </file>
     <file name="C:\Users\jkota\dbwebb-kurser\mvc\me\report\src\Card\Hand.php">
       <class name="App\Card\Hand" namespace="global">
@@ -400,6 +400,6 @@
       </class>
       <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <metrics files="11" loc="773" ncloc="724" classes="10" methods="67" coveredmethods="53" conditionals="0" coveredconditionals="0" statements="266" coveredstatements="104" elements="333" coveredelements="157"/>
+    <metrics files="11" loc="772" ncloc="723" classes="10" methods="67" coveredmethods="53" conditionals="0" coveredconditionals="0" statements="266" coveredstatements="104" elements="333" coveredelements="157"/>
   </project>
 </coverage>

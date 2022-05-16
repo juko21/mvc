@@ -10,14 +10,14 @@ class Deck
     public function __construct(array $deck = null)
     {
         if ($deck == null) {
-        $suits = ["clubs", "diamonds", "hearts", "spades"];
-        $counter = 1;
-        foreach ($suits as $suit) {
-            for ($i = 1; $i < 14; $i++) {
-                $this->deck[] = new Card($suit, $i, $counter++);
+            $suits = ["clubs", "diamonds", "hearts", "spades"];
+            $counter = 1;
+            foreach ($suits as $suit) {
+                for ($i = 1; $i < 14; $i++) {
+                    $this->deck[] = new Card($suit, $i, $counter++);
+                }
             }
-        }
-        } else {
+        } else if ($deck != null) {
             $this->deck = $deck;
         }
     }

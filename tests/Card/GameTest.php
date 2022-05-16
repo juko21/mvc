@@ -38,7 +38,7 @@ class GameTest extends TestCase
         $this->assertEquals($game->countDealerHand(0), 3);
     }
     /**
-     * Create game object, test setting and checking states, including 
+     * Create game object, test setting and checking states, including
      * invalid values (no change)
      */
     public function testState()
@@ -62,7 +62,7 @@ class GameTest extends TestCase
         $game->sortDeck();
         $this->assertInstanceOf("\App\Card\Game", $game);
         $game->dealToPlayer(0);
-        $game->dealToPlayer(0); 
+        $game->dealToPlayer(0);
         $this->assertEquals($game->getPlayerPoints(0), 25);
         $game->dealToDealer();
         $game->dealToDealer();
@@ -163,7 +163,7 @@ class GameTest extends TestCase
     }
     /**
      * Create game object with sorted deck, check player Cash.
-     * Deal so that player wins and then loses, check winning conditions and 
+     * Deal so that player wins and then loses, check winning conditions and
      * correct cash amount.
      */
     public function testGetPlayerCash()

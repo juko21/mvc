@@ -61,11 +61,10 @@ class PlayerTest extends TestCase
         $this->assertEquals($player->getPointsForHand(), 14);
         $player->setAceValue(0, false);
         $this->assertEquals($player->getPointsForHand(), 1);
-
     }
 
     /**
-     * Construct object, test bet value set to default, set bet value and 
+     * Construct object, test bet value set to default, set bet value and
      * check correct value
      */
     public function testSetGetBet()
@@ -93,7 +92,7 @@ class PlayerTest extends TestCase
     }
 
     /**
-     * Construct object, add cards, set bet and reset. Test that 
+     * Construct object, add cards, set bet and reset. Test that
      * hand is empty and bet is set to default
      */
     public function testResetHand()

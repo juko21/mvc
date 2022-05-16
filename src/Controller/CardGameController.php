@@ -37,6 +37,7 @@ class CardGameController extends AbstractController
      *      name="game-post-process",
      *      methods={"POST"}
      * )
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     public function gamePost(Request $request, SessionInterface $session): Response
     {

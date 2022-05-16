@@ -34,7 +34,7 @@
                         <figcaption>
                             <p>Värde: {{ card.getRank }}</p>
                             <form method="POST" action="{{ path('game-post-process') }}">
-                            <button class="caption-button" type="submit" name="changeAce" value="ace{{ card.getRank == 1 ? 1 : 0 }}{{ card.id }}">Ändra</button></form>
+                            <button class="caption-button" type="submit" name="changeAce" value="ace{{ card.getRank == 1 ? 1 : 0 }}{{ card.getId }}">Ändra</button></form>
                         </figcaption> 
                     </figure>
                 {% else %}
