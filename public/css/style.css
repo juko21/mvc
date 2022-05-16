@@ -2,6 +2,7 @@
 @import "footer.css";
 @import "card.css";
 @import "game.css";
+@import "library.css";
 
 * {
     margin: 0;
@@ -117,7 +118,7 @@ a:active { color: #777; }
 .c45 {
     flex-grow: 0;
     flex-shrink: 1;
-    flex-basis: auto;f
+    flex-basis: auto;
     width: 45%;
 }
 

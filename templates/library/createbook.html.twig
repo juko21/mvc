@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+{% block title %}Registrera ny bok{% endblock %}
+{% block header %}Bibliotek{% endblock %}
+
+{% block body %}
+    <h2>{{ headerH2}}</h2>
+    {% for message in app.flashes('notice') %}
+    <p>
+        {{ message }}
+    </p>
+    {% endfor %}
+    <form method="POST" action="{{ path('library_create_process') }}">
+            <p><input type="text" name="title" required placeholder="Titel"></p>
+            <p><input type="text" name="isbn" required placeholder="ISBN"></p>
+            <p><input type="text" name="author" required placeholder="Författare"></p>
+            <p><input type="text" name="img" required placeholder="Bild"></p>
+            <p><button type="submit" name="submit">Registrera bok</button></p>
+    </form>
+
+{% endblock %}

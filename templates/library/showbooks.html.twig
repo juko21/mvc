@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+{% block title %}{{ title }}{% endblock %}
+{% block header %}Bibliotek{% endblock %}
+
+{% block body %}
+    <h2>{{ title }}</h2>
+    {% if books[0]|default(null)  %}
+        {% for book in books %}
+        <div class="book-container">
+            <table>
+                <tbody>
+                <tr><td><b>Titel: </b> <a href="{{ path('library_show_by_isbn', {isbn: book.isbn}) }}">{{ book.title  }}</a></td></tr>
+                <tr><td><b>Författare: </b> {{ book.author  }}</td></tr>
+                <tr><td><b>ISBN: </b> {{ book.isbn  }}</td></tr>
+                <tr><td>
+                    <form style="display: inline-block; margin-right: 10px;" method="POST" action="{{ path('library_update') }}">
+                        <button name="update" value="{{ book.id }}">Uppdatera bok</button>
+                    </form>
+                    <form style="display: inline-block" method="POST" action="{{ path('library_delete') }}">
+                        <button style="display: block;margin-right: 10px;" name="delete" value="{{ book.id }}">Radera bok</button>
+                    </form>
+                </td></tr>
+
+                </tbody>
+            </table>
+            <div>
+                <img src="{{ asset('img/books/' ~ book.img) }}">
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+    <p>Kunde inte hitta några matchande böcker</p>
+    {% endif %}
+
+
+{% endblock %}
