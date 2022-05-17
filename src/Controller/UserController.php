@@ -86,4 +86,64 @@ class UserController extends AbstractController
         
         return $this->redirectToRoute('login');        
     }
+
+    /**
+     * @Route("/user/update",
+     * name="update_user",
+     * methods={"POST"}
+     * )
+     */
+    public function updateUser(SessionInterface $session, UserRepository $userRepository, Request $request): Response
+    {   
+        $userId = $session->get('userId');
+        $loggedIn = $session->get('loggedIn');
+        $user = $userRepository->find($userId);
+
+        $data = array(
+            "loggedIn" => $loggedIn,
+            "userName" => $user->getName(),
+            "email" => $user->getEmail(),
+            "acronym" => $user->getAcronym(),
+            "img" => get_gravatar( $user->getEmail(), 80, "mp", "r"),
+            "title" => "Uppdatera användare"
+        );
+
+        if ($userId) {
+            return $this->render('user/updateuser.html.twig', $data);        
+        } else {
+            return $this->redirectToRoute('app_user');
+        }
+    }
+
+    /**
+     * @Route("/user/update_process",
+     * name="user_update_process",
+     * methods={"POST"}
+     * )
+     */
+    public function updateProcess(SessionInterface $session, ManagerRegistry $doctrine, Request $request): Response
+    {
+        $userId = $session->get('userId');
+        $userName = $request->request->get('username');
+        $oldpassword = $request->request->get('oldpassword');
+        $newpassword = $request->request->get('newpassword');
+        $email = $request->request->get('email');
+        $acronym = substr($userName, 0, 3);
+
+        $entityManager = $doctrine->getManager();
+        $user = $entityManager->getRepository(User::class)->find($userId);
+        
+        if (password_verify($oldpassword, $user->getPassword())) {
+            $user->setName($userName);
+            $user->setAcronym($acronym);
+            $user->setEmail($email);
+            $user->setPassword(password_hash($newpassword, PASSWORD_BCRYPT));
+
+            $entityManager->flush();
+            return $this->redirectToRoute('app_user');
+        } else {
+            $this->addFlash("notice", "Felaktigt lösenord");
+            return $this->redirectToRoute('update_user',[ 'request' => $request], 307);
+        }
+    }
 }

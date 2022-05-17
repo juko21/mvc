@@ -3,21 +3,18 @@
 {% block title %}Hello UserController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <img src="{{ img }}">
-    <h2>Hej {{ userName }}</h2>
+<img src="{{ img }}" style="margin-bottom: 1rem">
+<h2>Hej {{ userName }}</h2>
 
-    <h3>Användaruppgifter</h3>
-    <b>Användarnamn: </b>{{ userName }}<br>
-    <b>Akronym: </b>{{ acronym }}<br>
-    <b>Epost: </b>{{ email }}<p></p>
-    <form method="POST" action="{{ path('logout_process') }}">
-            <p><button type="submit" name="logout">Logga ut</button></p>
-    </form>
-</div>
+<h3>Användaruppgifter</h3>
+<p><b>Användarnamn: </b>{{ userName }}</p>
+<p><b>Akronym: </b>{{ acronym }}</p>
+<p><b>Epost: </b>{{ email }}</p>
+<form method="POST" action="{{ path('logout_process') }}">
+        <p><button type="submit" name="logout">Logga ut</button></p>
+</form>
+<form method="POST" action="{{ path('update_user') }}">
+        <p><button type="submit" name="update">Uppdatera uppgifter</button></p>
+</form>
 {% endblock %}
