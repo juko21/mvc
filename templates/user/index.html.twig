@@ -14,7 +14,10 @@
 <form method="POST" action="{{ path('logout_process') }}">
         <p><button type="submit" name="logout">Logga ut</button></p>
 </form>
-<form method="POST" action="{{ path('update_user') }}">
+<form method="POST" action="{{ path('user_update') }}">
         <p><button type="submit" name="update">Uppdatera uppgifter</button></p>
+</form>
+<form method="POST" action="{{ path('user_delete') }}">
+        <p><button type="submit" name="delete">Radera användare</button></p>
 </form>
 {% endblock %}

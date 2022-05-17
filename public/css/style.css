@@ -175,6 +175,10 @@ figcaption a:visited { color: #ddd; }
 .flash-warning {
     color: red;
 }
+
+form {
+    margin-bottom: 1rem;
+}
 @media (max-width: 1264px) {
     footer {
         width: 100%;

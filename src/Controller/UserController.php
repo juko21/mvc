@@ -89,7 +89,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/user/update",
-     * name="update_user",
+     * name="user_update",
      * methods={"POST"}
      * )
      */
@@ -104,7 +104,6 @@ class UserController extends AbstractController
             "userName" => $user->getName(),
             "email" => $user->getEmail(),
             "acronym" => $user->getAcronym(),
-            "img" => get_gravatar( $user->getEmail(), 80, "mp", "r"),
             "title" => "Uppdatera användare"
         );
 
@@ -143,7 +142,108 @@ class UserController extends AbstractController
             return $this->redirectToRoute('app_user');
         } else {
             $this->addFlash("notice", "Felaktigt lösenord");
-            return $this->redirectToRoute('update_user',[ 'request' => $request], 307);
+            return $this->redirectToRoute('user_update',[ 'request' => $request], 307);
         }
+    }
+    
+    /**
+     * @Route(
+     *      "/user/delete", 
+     *      name="user_delete",
+     *      methods={"POST"}
+     * )
+     */
+    public function deleteUser(SessionInterface $session, UserRepository $userRepository, Request $request): Response {
+        $userId = $session->get('userId');
+        $loggedIn = $session->get('loggedIn');
+        $user = $userRepository->find($userId);
+
+        $data = array(
+            "loggedIn" => $loggedIn,
+            "userName" => $user->getName(),
+            "email" => $user->getEmail(),
+            "acronym" => $user->getAcronym(),
+            "title" => "Radera användare"
+        );
+
+        if ($userId) {
+            return $this->render('user/deleteuser.html.twig', $data);        
+        } else {
+            return $this->redirectToRoute('app_user');
+        }
+    }
+
+
+    /**
+     * @Route(
+     *      "/user/delete_process", 
+     *      name="user_delete_process",
+     *      methods={"POST"}
+     * )
+     */
+    public function deletePostProcess( SessionInterface $session, ManagerRegistry $doctrine, Request $request): Response {
+        $userId = $session->get('userId');
+        $password = $request->request->get('password');
+
+        $entityManager = $doctrine->getManager();
+        $user = $entityManager->getRepository(User::class)->find($userId);
+
+        if (password_verify($password, $user->getPassword())) {
+            $entityManager->remove($user);
+            $entityManager->flush();
+            $userId = $session->remove('userId');
+            $userId = $session->set('loggedIn', 0);
+            $this->addFlash("notice", "Användare har tagits bort");
+            return $this->redirectToRoute('login');
+        } else {
+            $this->addFlash("notice", "Felaktigt lösenord");
+            return $this->redirectToRoute('user_delete', [ 'request' => $request], 307);
+        }
+
+    }
+
+    /**
+     * @Route(
+     *      "/user/register",
+     *      name="user_register"
+     * )
+     */
+    public function registerUser(SessionInterface $session): Response {
+        $loggedIn = $session->get('loggedIn');
+
+        if ($loggedIn) {
+            $this->addFlash("notice", "Logga ut för att registrera användare");
+            return $this->redirectToRoute('app_user');
+        }
+        return $this->render('user/registeruser.html.twig', ["title" => "Registrera användare", "loggedIn" => $loggedIn]);
+    }
+
+    /**
+     * @Route(
+     *      "/user/register_process",
+     *      name="user_register_process",
+     *      methods={"POST"}
+     * )
+     */
+    public function registerUserProcess( ManagerRegistry $doctrine, Request $request): Response {
+        $userName = $request->request->get('username');
+        $email = $request->request->get('email');
+        $password = $request->request->get('password');
+
+        $entityManager = $doctrine->getManager();
+
+        $user = new User();
+        $user->setName($userName);
+        $user->setEmail($email);
+        $user->setPassword(password_hash($password, PASSWORD_BCRYPT));
+        $user->setAcronym(substr($userName, 0, 3));
+        $user->setType("regular");
+
+        $entityManager->persist($user);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+        $this->addFlash("notice", "Användare tillagd");
+        return $this->redirectToRoute('login');        
     }
 }

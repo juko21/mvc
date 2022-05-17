@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+{% block title %}{{ title }}{% endblock %}
+{% block header %}Användare{% endblock %}
+
+{% block body %}
+    <h2>{{ title }}</h2>
+    {% for message in app.flashes('notice') %}
+    <p>
+        {{ message }}
+    </p>
+    {% endfor %}
+    <form method="POST" action="{{ path('user_register_process') }}">
+            <p><input type="text" name="username" required placeholder="Namn" min="3" ></p>
+            <p><input type="text" name="email" required placeholder="Epost"></p>
+            <p><input type="password" name="password" required placeholder="Lösenord" min="3"></p>
+            <p><button type="submit" name="register">Registrera användare</button></p>
+    </form>
+{% endblock %}

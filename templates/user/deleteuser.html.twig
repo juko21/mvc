@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+{% block title %}{{ title }}{% endblock %}
+{% block header %}Användare{% endblock %}
+
+{% block body %}
+    <h2>{{ title }}</h2>
+    {% for message in app.flashes('notice') %}
+    <p>
+        {{ message }}
+    </p>
+    {% endfor %}
+    <form method="POST" action="{{ path('user_delete_process') }}">
+            <p><input type="text" name="username" disabled placeholder="Namn" min="3" value="{{ userName }}"></p>
+            <p><input type="text" name="email" disabled placeholder="Epost" value="{{ email }}"></p>
+            <p><input type="password" name="password" required placeholder="Lösenord" min="3"></p>
+            <p><button type="submit" name="update">Radera konto uppgifter</button></p>
+    </form>
+{% endblock %}
