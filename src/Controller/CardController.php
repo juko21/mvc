@@ -17,13 +17,17 @@ class CardController extends AbstractController
     /**
      * @Route("/card", name="card-home")
      */
-    public function home(): Response
+    public function home(SessionInterface $session): Response
     {
+        $loggedIn = $session->get('loggedIn');
+
         $data = [
             'title' => 'Kortlek',
             'drawCards' => $this->generateUrl('draw-cards', ['number' => 5,]),
             'drawPlayerCards' => $this->generateUrl('draw-player-cards', ['player' => 4, 'number' => 3,])
         ];
+        $data['loggedIn'] = $loggedIn;
+        
         return $this->render('card/home.html.twig', $data);
     }
 
@@ -33,6 +37,8 @@ class CardController extends AbstractController
     public function deck(SessionInterface $session): Response
     {
         $deck = $session->get('deck');
+        $loggedIn = $session->get('loggedIn');
+
         if (!$deck) {
             $deck = new Deck();
             $session->set('deck', $deck);
@@ -43,6 +49,8 @@ class CardController extends AbstractController
             'title' => 'Kortlek',
             'deck' => $cardImgs
         ];
+        $data['loggedIn'] = $loggedIn;
+
         return $this->render('card/deck.html.twig', $data);
     }
 
@@ -52,6 +60,8 @@ class CardController extends AbstractController
     public function deck2(SessionInterface $session): Response
     {
         $deck = $session->get('deck2');
+        $loggedIn = $session->get('loggedIn');
+
         if (!$deck) {
             $deck = new DeckWithJokers();
             $session->set('deck2', $deck);
@@ -62,6 +72,8 @@ class CardController extends AbstractController
             'title' => 'Hela kortleken',
             'deck' => $cardImgs
         ];
+        $data['loggedIn'] = $loggedIn;
+
         return $this->render('card/deck.html.twig', $data);
     }
 
@@ -76,11 +88,14 @@ class CardController extends AbstractController
         $session->set('deck', $deck);
         $session->set('hand', $hand);
         $cardImgs = $deck->getAllCardSrc();
+        $loggedIn = $session->get('loggedIn');
 
         $data = [
             'title' => 'Hela kortleken',
             'deck' => $cardImgs,
         ];
+        $data['loggedIn'] = $loggedIn;
+
         return $this->render('card/deck.html.twig', $data);
     }
 
@@ -90,6 +105,8 @@ class CardController extends AbstractController
     public function drawCard(SessionInterface $session): Response
     {
         $deck = $session->get('deck');
+        $loggedIn = $session->get('loggedIn');
+
         if (!$deck) {
             $deck = new Deck();
         }
@@ -114,6 +131,8 @@ class CardController extends AbstractController
             'cardsInDeck' => $deck->getNumber(),
             'notEnoughCards' => $notEnoughCards
         ];
+        $data['loggedIn'] = $loggedIn;
+
         return $this->render('card/deck.html.twig', $data);
     }
     /**
@@ -122,6 +141,8 @@ class CardController extends AbstractController
     public function drawCards(SessionInterface $session, int $number): Response
     {
         $deck = $session->get('deck');
+        $loggedIn = $session->get('loggedIn');
+
         if (!$deck) {
             $deck = new Deck();
         }
@@ -148,6 +169,8 @@ class CardController extends AbstractController
             'cardsInDeck' => $deck->getNumber(),
             'notEnoughCards' => $notEnoughCards
         ];
+        $data['loggedIn'] = $loggedIn;
+
         return $this->render('card/deck.html.twig', $data);
     }
 
@@ -157,6 +180,8 @@ class CardController extends AbstractController
     public function drawPlayerCards(SessionInterface $session, int $player, int $number): Response
     {
         $deck = $session->get('deck');
+        $loggedIn = $session->get('loggedIn');
+
         if (!$deck) {
             $deck = new Deck();
         }
@@ -187,6 +212,8 @@ class CardController extends AbstractController
             'cardsInDeck' => $deck->getNumber(),
             'notEnoughCards' => $notEnoughCards
         ];
+        $data['loggedIn'] = $loggedIn;
+
         return $this->render('card/deal.html.twig', $data);
     }
 }

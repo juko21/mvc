@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
 use ParsedownExtra;
 use Symfony\asset;
 
@@ -13,31 +15,36 @@ class ReportController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(): Response
+    public function index(SessionInterface $session): Response
     {
-        return $this->render('index.html.twig');
+        $loggedIn = $session->get('loggedIn');
+
+        return $this->render('index.html.twig', ["loggedIn" => $loggedIn]);
     }
 
     /**
      * @Route("/about", name="about")
      */
-    public function about(): Response
+    public function about(SessionInterface $session): Response
     {
-        return $this->render('about.html.twig');
+        $loggedIn = $session->get('loggedIn');
+
+        return $this->render('about.html.twig', ["loggedIn" => $loggedIn]);
     }
 
     /**
      * @Route("/report", name="report")
      */
-    public function report(): Response
+    public function report(SessionInterface $session): Response
     {
         $parseDown = new ParsedownExtra();
+        $loggedIn = $session->get('loggedIn');
 
         $files = glob('content/report/*.{md}', GLOB_BRACE);
         $content = [];
         foreach ($files as $file) {
             $content[] = "<section>" . $parseDown->text(file_get_contents($file)) . "</section>";
         }
-        return $this->render('report.html.twig', ["content" => $content]);
+        return $this->render('report.html.twig', ["content" => $content, "loggedIn" => $loggedIn]);
     }
 }

@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 use App\Entity\Book;
 use Doctrine\Persistence\ManagerRegistry;
@@ -14,11 +15,12 @@ use App\Repository\BookRepository;
 class LibraryController extends AbstractController
 {
     #[Route('/library', name: 'app_library')]
-    public function index(): Response
+    public function index(SessionInterface $session): Response
     {   
+        $loggedIn = $session->get('loggedIn');
 
         return $this->render('library/index.html.twig', [
-            'controller_name' => 'LibraryController',
+            'controller_name' => 'LibraryController', "loggedIn" => 1
         ]);
     }
 
@@ -28,8 +30,10 @@ class LibraryController extends AbstractController
      *      name="library_create"
      * )
      */
-    public function createBook(): Response {
-        return $this->render('library/createbook.html.twig', ["headerH2" => "Registrera ny bok"]);
+    public function createBook(SessionInterface $session): Response {
+        $loggedIn = $session->get('loggedIn');
+
+        return $this->render('library/createbook.html.twig', ["headerH2" => "Registrera ny bok", "loggedIn" => $loggedIn]);
     }
 
     /**
@@ -44,7 +48,8 @@ class LibraryController extends AbstractController
         $isbn = $request->request->get('isbn');
         $author = $request->request->get('author');
         $img = $request->request->get('img');
-        
+        $userId = $session->get('loggedIn');
+
         $entityManager = $doctrine->getManager();
 
         $book = new Book();
@@ -67,39 +72,31 @@ class LibraryController extends AbstractController
     /**
     * @Route("/library/show", name="library_show_all")
     */
-    public function showAllProduct(
-        BookRepository $bookRepository
-    ): Response {
-        $books = $bookRepository
-            ->findAll();
+    public function showAllProduct(BookRepository $bookRepository, SessionInterface $session): Response {
+        $loggedIn = $session->get('loggedIn');
+        $books = $bookRepository->findAll();
 
-        return $this->render('library/showbooks.html.twig', ["title" => "Visa böcker", "books" => $books]);
+        return $this->render('library/showbooks.html.twig', ["title" => "Visa böcker", "books" => $books, "loggedIn" => $loggedIn]);
     }
 
     /**
      * @Route("/library/show/{id}", name="library_show_by_id")
      */
-    public function showBookById(
-        BookRepository $bookRepository,
-        int $id
-    ): Response {
-        $book = $bookRepository
-            ->find($id);
+    public function showBookById(SessionInterface $session, BookRepository $bookRepository, int $id): Response {
+        $loggedIn = $session->get('loggedIn');
+        $book = $bookRepository->find($id);
 
-        return $this->render('library/showbooks.html.twig', ["title" => "Visa bok", "books" => [$book]]);
+        return $this->render('library/showbooks.html.twig', ["title" => "Visa bok", "books" => [$book], "loggedIn" => $loggedIn]);
     }
 
     /**
      * @Route("/library/show/isbn/{isbn}", name="library_show_by_isbn")
      */
-    public function showBookByIsbn(
-        BookRepository $bookRepository,
-        string $isbn
-    ): Response {
-        $book = $bookRepository
-            ->findOneBy(["isbn" => $isbn]);
+    public function showBookByIsbn(SessionInterface $session, BookRepository $bookRepository, string $isbn): Response {
+        $loggedIn = $session->get('loggedIn');
+        $book = $bookRepository->findOneBy(["isbn" => $isbn]);
 
-        return $this->render('library/showbooks.html.twig', ["title" => "Visa bok", "books" => [$book]]);
+        return $this->render('library/showbooks.html.twig', ["title" => "Visa bok", "books" => [$book], "loggedIn" => $loggedIn]);
     }
 
     /**
@@ -109,11 +106,12 @@ class LibraryController extends AbstractController
      *      methods={"POST"}
      * )
      */
-    public function updateBook(BookRepository $bookRepository, Request $request): Response {
+    public function updateBook(SessionInterface $session, BookRepository $bookRepository, Request $request): Response {
         $id = $request->request->get('update');
-        $book = $bookRepository
-            ->find($id);
-        return $this->render('library/updatebook.html.twig', ["title" => "Uppdatera bok", "book" => $book]);
+        $loggedIn = $session->get('loggedIn');
+        $book = $bookRepository->find($id);
+
+        return $this->render('library/updatebook.html.twig', ["title" => "Uppdatera bok", "book" => $book, "loggedIn" => $loggedIn]);
     }
 
     /**
@@ -151,11 +149,12 @@ class LibraryController extends AbstractController
      *      methods={"POST"}
      * )
      */
-    public function deleteBook(BookRepository $bookRepository, Request $request): Response {
+    public function deleteBook(SessionInterface $session, BookRepository $bookRepository, Request $request): Response {
         $id = $request->request->get('delete');
-        $book = $bookRepository
-            ->find($id);
-        return $this->render('library/deletebook.html.twig', ["title" => "Radera bok", "book" => $book]);
+        $loggedIn = $session->get('loggedIn');
+        $book = $bookRepository->find($id);
+
+        return $this->render('library/deletebook.html.twig', ["title" => "Radera bok", "book" => $book, "loggedIn" => $loggedIn]);
     }
 
     /**

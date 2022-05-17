@@ -21,13 +21,15 @@ class CardGameController extends AbstractController
     public function home(SessionInterface $session): Response
     {
         $data = [];
+        $loggedIn = $session->get('loggedIn');
+
         $data["game"] = $session->get('game');
         if (!$data["game"]) {
             $data["game"] = new Game(1);
             $session->set('game', $data['game']);
         }
         $data['title'] = '21';
-
+        $data['loggedIn'] = $loggedIn;
         return $this->render('game/home.html.twig', $data);
     }
 
@@ -93,9 +95,10 @@ class CardGameController extends AbstractController
     /**
      * @Route("/game/doc", name="game-doc")
      */
-    public function report(): Response
+    public function report(SessionInterface $session): Response
     {
         $parseDown = new ParsedownExtra();
+        $loggedIn = $session->get('loggedIn');
 
         $file = 'content/gamedoc.md';
         $data = [];
@@ -103,6 +106,8 @@ class CardGameController extends AbstractController
         $data['title'] = "Speldokumentation";
         $data['header'] = "Speldokumentation";
         $data['headerH2'] = "Om utveckling av 21";
+        $data['loggedIn'] = $loggedIn;
+
         return $this->render('article.html.twig', $data);
     }
 }

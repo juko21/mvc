@@ -9,12 +9,12 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h2>Hej {{ userName }}</h2>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/jkota/dbwebb-kurser/mvc/me/report/src/Controller/UserController.php'|file_link(0) }}">src/Controller/UserController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/jkota/dbwebb-kurser/mvc/me/report/templates/user/index.html.twig'|file_link(0) }}">templates/user/index.html.twig</a></code></li>
-    </ul>
+    <h3>Användaruppgifter</h3>
+    <b>Användarnamn: </b>{{ userName }}<br>
+    <b>Akronym: </b>{{ acronym }}<br>
+    <b>Epost: </b>{{ email }}
+
 </div>
 {% endblock %}

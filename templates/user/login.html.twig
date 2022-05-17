@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+{% block title %}{{ title }}{% endblock %}
+{% block header %}Bibliotek{% endblock %}
+
+{% block body %}
+    <h2>{{ title }}</h2>
+    {% for message in app.flashes('notice') %}
+    <p>
+        {{ message }}
+    </p>
+    {% endfor %}
+    <form method="POST" action="{{ path('login_process') }}">
+            <p><input type="text" name="username" required placeholder="Användarnamn"></p>
+            <p><input type="password" name="password" required placeholder="Lösenord"></p>
+            <p><button type="submit" name="submit">Logga in</button></p>
+    </form>
+
+{% endblock %}
