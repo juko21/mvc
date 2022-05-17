@@ -9,12 +9,15 @@
 </style>
 
 <div class="example-wrapper">
+    <img src="{{ img }}">
     <h2>Hej {{ userName }}</h2>
 
     <h3>Användaruppgifter</h3>
     <b>Användarnamn: </b>{{ userName }}<br>
     <b>Akronym: </b>{{ acronym }}<br>
-    <b>Epost: </b>{{ email }}
-
+    <b>Epost: </b>{{ email }}<p></p>
+    <form method="POST" action="{{ path('logout_process') }}">
+            <p><button type="submit" name="logout">Logga ut</button></p>
+    </form>
 </div>
 {% endblock %}

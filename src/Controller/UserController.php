@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\UserRepository;
+use App\Gravatar;
 
 class UserController extends AbstractController
 {
@@ -18,15 +19,17 @@ class UserController extends AbstractController
     public function index(SessionInterface $session, UserRepository $userRepository): Response
     {   
         $userId = $session->get('userId');
-        $loggedIn = $session->get('loggedIn');
-        $user = $userRepository->find($userId);
-        $data = array(
+
+        if ($userId) {
+            $loggedIn = $session->get('loggedIn');
+            $user = $userRepository->find($userId);
+            $data = array(
             "loggedIn" => $loggedIn,
             "userName" => $user->getName(),
             "email" => $user->getEmail(),
-            "acronym" => $user->getAcronym()
+            "acronym" => $user->getAcronym(),
+            "img" => get_gravatar( $user->getEmail(), 80, "mp", "r")
         );
-        if ($userId) {
             return $this->render('user/index.html.twig', $data);
         } else {
             return $this->redirectToRoute('login');
@@ -68,5 +71,19 @@ class UserController extends AbstractController
             $this->addFlash("notice", "Inloggning mysslyckades");
             return $this->redirectToRoute('login');        
         }
+    }
+
+    /**
+     * @Route("/logout_process",
+     * name="logout_process",
+     * methods={"POST"}
+     * )
+     */
+    public function logoutProcess(SessionInterface $session): Response
+    {   
+        $userId = $session->remove('userId');
+        $userId = $session->set('loggedIn', 0);
+        
+        return $this->redirectToRoute('login');        
     }
 }
