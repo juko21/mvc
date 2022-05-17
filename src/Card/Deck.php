@@ -17,7 +17,7 @@ class Deck
                     $this->deck[] = new Card($suit, $i, $counter++);
                 }
             }
-        } else if ($deck != null) {
+        } elseif ($deck != null) {
             $this->deck = $deck;
         }
     }

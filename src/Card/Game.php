@@ -17,12 +17,12 @@ class Game
     private $dealer;
     private $deck;
     private $state;
-    
+
     public function __construct(int $players, array $deck = null)
     {
         if ($deck == null) {
             $this->resetDeck();
-        } else if ($deck != null) {
+        } elseif ($deck != null) {
             $this->deck = new Deck($deck);
         }
         $this->state = 0;

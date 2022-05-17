@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-
 use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\UserRepository;
@@ -17,7 +16,7 @@ class UserController extends AbstractController
 {
     #[Route('/user', name: 'app_user')]
     public function index(SessionInterface $session, UserRepository $userRepository): Response
-    {   
+    {
         $userId = $session->get('userId');
 
         if ($userId) {
@@ -28,26 +27,28 @@ class UserController extends AbstractController
             "userName" => $user->getName(),
             "email" => $user->getEmail(),
             "acronym" => $user->getAcronym(),
-            "img" => get_gravatar( $user->getEmail(), 80, "mp", "r")
-        );
+            "img" => get_gravatar($user->getEmail(), 80, "mp", "r")
+            );
             return $this->render('user/index.html.twig', $data);
-        } else {
-            return $this->redirectToRoute('login');
         }
+        return $this->redirectToRoute('login');
+
     }
 
     /**
      * @Route("/login", name="login")
      */
     public function login(SessionInterface $session): Response
-    {   
+    {
         $userId = $session->get('userId');
         $loggedIn = $session->get('userId');
         if ($userId) {
             return $this->redirectToRoute('app_user');
-        } else {
-            return $this->render('user/login.html.twig', ['controller_name' => 'UserController', "title" => "Logga in", "loggedIn" => $loggedIn]);        
         }
+        return $this->render(
+            'user/login.html.twig',
+            ['controller_name' => 'UserController', "title" => "Logga in", "loggedIn" => $loggedIn]
+        );
     }
 
     /**
@@ -56,21 +57,23 @@ class UserController extends AbstractController
      * methods={"POST"}
      * )
      */
-    public function loginProcess(SessionInterface $session, UserRepository $userRepository, Request $request): Response
-    {   
+    public function loginProcess(
+        SessionInterface $session,
+        UserRepository $userRepository,
+        Request $request
+    ): Response {
         $username = $request->request->get('username');
         $password = $request->request->get('password');
         $user = $userRepository->findOneBy(["name" => $username]);
-        
+
         if (password_verify($password, $user->getPassword())) {
-            $userId = $session->set('userId', $user->getId());
-            $userId = $session->set('loggedIn', 1);
+            $session->set('userId', $user->getId());
+            $session->set('loggedIn', 1);
 
             return $this->redirectToRoute('app_user');
-        } else {
-            $this->addFlash("notice", "Inloggning mysslyckades");
-            return $this->redirectToRoute('login');        
         }
+        $this->addFlash("notice", "Inloggning mysslyckades");
+        return $this->redirectToRoute('login');
     }
 
     /**
@@ -80,11 +83,11 @@ class UserController extends AbstractController
      * )
      */
     public function logoutProcess(SessionInterface $session): Response
-    {   
-        $userId = $session->remove('userId');
-        $userId = $session->set('loggedIn', 0);
-        
-        return $this->redirectToRoute('login');        
+    {
+        $session->remove('userId');
+        $session->set('loggedIn', 0);
+
+        return $this->redirectToRoute('login');
     }
 
     /**
@@ -93,8 +96,10 @@ class UserController extends AbstractController
      * methods={"POST"}
      * )
      */
-    public function updateUser(SessionInterface $session, UserRepository $userRepository, Request $request): Response
-    {   
+    public function updateUser(
+        SessionInterface $session,
+        UserRepository $userRepository,
+    ): Response {
         $userId = $session->get('userId');
         $loggedIn = $session->get('loggedIn');
         $user = $userRepository->find($userId);
@@ -108,10 +113,9 @@ class UserController extends AbstractController
         );
 
         if ($userId) {
-            return $this->render('user/updateuser.html.twig', $data);        
-        } else {
-            return $this->redirectToRoute('app_user');
+            return $this->render('user/updateuser.html.twig', $data);
         }
+        return $this->redirectToRoute('app_user');
     }
 
     /**
@@ -120,8 +124,11 @@ class UserController extends AbstractController
      * methods={"POST"}
      * )
      */
-    public function updateProcess(SessionInterface $session, ManagerRegistry $doctrine, Request $request): Response
-    {
+    public function updateProcess(
+        SessionInterface $session,
+        ManagerRegistry $doctrine,
+        Request $request
+    ): Response {
         $userId = $session->get('userId');
         $userName = $request->request->get('username');
         $oldpassword = $request->request->get('oldpassword');
@@ -131,7 +138,7 @@ class UserController extends AbstractController
 
         $entityManager = $doctrine->getManager();
         $user = $entityManager->getRepository(User::class)->find($userId);
-        
+
         if (password_verify($oldpassword, $user->getPassword())) {
             $user->setName($userName);
             $user->setAcronym($acronym);
@@ -140,20 +147,20 @@ class UserController extends AbstractController
 
             $entityManager->flush();
             return $this->redirectToRoute('app_user');
-        } else {
-            $this->addFlash("notice", "Felaktigt lösenord");
-            return $this->redirectToRoute('user_update',[ 'request' => $request], 307);
         }
+        $this->addFlash("notice", "Felaktigt lösenord");
+        return $this->redirectToRoute('user_update', [ 'request' => $request], 307);
     }
-    
+
     /**
      * @Route(
-     *      "/user/delete", 
+     *      "/user/delete",
      *      name="user_delete",
      *      methods={"POST"}
      * )
      */
-    public function deleteUser(SessionInterface $session, UserRepository $userRepository, Request $request): Response {
+    public function deleteUser(SessionInterface $session, UserRepository $userRepository): Response
+    {
         $userId = $session->get('userId');
         $loggedIn = $session->get('loggedIn');
         $user = $userRepository->find($userId);
@@ -167,21 +174,21 @@ class UserController extends AbstractController
         );
 
         if ($userId) {
-            return $this->render('user/deleteuser.html.twig', $data);        
-        } else {
-            return $this->redirectToRoute('app_user');
+            return $this->render('user/deleteuser.html.twig', $data);
         }
+        return $this->redirectToRoute('app_user');
     }
 
 
     /**
      * @Route(
-     *      "/user/delete_process", 
+     *      "/user/delete_process",
      *      name="user_delete_process",
      *      methods={"POST"}
      * )
      */
-    public function deletePostProcess( SessionInterface $session, ManagerRegistry $doctrine, Request $request): Response {
+    public function deletePostProcess(SessionInterface $session, ManagerRegistry $doctrine, Request $request): Response
+    {
         $userId = $session->get('userId');
         $password = $request->request->get('password');
 
@@ -195,11 +202,9 @@ class UserController extends AbstractController
             $userId = $session->set('loggedIn', 0);
             $this->addFlash("notice", "Användare har tagits bort");
             return $this->redirectToRoute('login');
-        } else {
-            $this->addFlash("notice", "Felaktigt lösenord");
-            return $this->redirectToRoute('user_delete', [ 'request' => $request], 307);
         }
-
+        $this->addFlash("notice", "Felaktigt lösenord");
+        return $this->redirectToRoute('user_delete', [ 'request' => $request], 307);
     }
 
     /**
@@ -208,14 +213,18 @@ class UserController extends AbstractController
      *      name="user_register"
      * )
      */
-    public function registerUser(SessionInterface $session): Response {
+    public function registerUser(SessionInterface $session): Response
+    {
         $loggedIn = $session->get('loggedIn');
 
         if ($loggedIn) {
             $this->addFlash("notice", "Logga ut för att registrera användare");
             return $this->redirectToRoute('app_user');
         }
-        return $this->render('user/registeruser.html.twig', ["title" => "Registrera användare", "loggedIn" => $loggedIn]);
+        return $this->render(
+            'user/registeruser.html.twig',
+            ["title" => "Registrera användare", "loggedIn" => $loggedIn]
+        );
     }
 
     /**
@@ -225,7 +234,8 @@ class UserController extends AbstractController
      *      methods={"POST"}
      * )
      */
-    public function registerUserProcess( ManagerRegistry $doctrine, Request $request): Response {
+    public function registerUserProcess(ManagerRegistry $doctrine, Request $request): Response
+    {
         $userName = $request->request->get('username');
         $email = $request->request->get('email');
         $password = $request->request->get('password');
@@ -244,6 +254,6 @@ class UserController extends AbstractController
         // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
         $this->addFlash("notice", "Användare tillagd");
-        return $this->redirectToRoute('login');        
+        return $this->redirectToRoute('login');
     }
 }

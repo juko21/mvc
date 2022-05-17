@@ -29,7 +29,7 @@ class Hand
     }
 
     /**
-     * Count number of cards in player hand 
+     * Count number of cards in player hand
      */
     public function countCards(): int
     {
@@ -37,7 +37,7 @@ class Hand
     }
 
     /**
-     * Set value of ace for card 
+     * Set value of ace for card
      */
     public function setAceValue(int $cardIndex, bool $highAce): void
     {

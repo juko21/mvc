@@ -27,7 +27,7 @@ class CardController extends AbstractController
             'drawPlayerCards' => $this->generateUrl('draw-player-cards', ['player' => 4, 'number' => 3,])
         ];
         $data['loggedIn'] = $loggedIn;
-        
+
         return $this->render('card/home.html.twig', $data);
     }
 

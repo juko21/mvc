@@ -64,7 +64,7 @@ class Player
     }
 
     /**
-     * Count number of cards in player hand 
+     * Count number of cards in player hand
      */
     public function getHandCount(): int
     {
