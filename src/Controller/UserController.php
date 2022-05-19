@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\UserRepository;
-use App\Gravatar;
 
 class UserController extends AbstractController
 {
@@ -22,17 +21,19 @@ class UserController extends AbstractController
         if ($userId) {
             $loggedIn = $session->get('loggedIn');
             $user = $userRepository->find($userId);
+            $gravUrl = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($user->getEmail())))
+            . "?d=" . urlencode("mp") . "&s=" . "80";
+
             $data = array(
             "loggedIn" => $loggedIn,
             "userName" => $user->getName(),
             "email" => $user->getEmail(),
             "acronym" => $user->getAcronym(),
-            "img" => get_gravatar($user->getEmail(), 80, "mp", "r")
+            "img" => $gravUrl
             );
             return $this->render('user/index.html.twig', $data);
         }
         return $this->redirectToRoute('login');
-
     }
 
     /**

@@ -4,13 +4,21 @@ namespace App\Card;
 
 use App\Card\Card;
 
-    /**
-     * Class for hand of cards
-     */
+/**
+ * Class for hand of cards
+ */
 class Hand
 {
-    private $hand = [];
+    private array $hand;
 
+    public function __construct()
+    {
+        $this->hand = array();
+    }
+
+    /**
+     * Add card to handdd
+     */
     public function addCard(Card $card): void
     {
         $this->hand[$card->getId()] = $card;

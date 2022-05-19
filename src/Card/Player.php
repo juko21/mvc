@@ -10,9 +10,9 @@ use App\Card\Hand;
  */
 class Player
 {
-    private $hand = null;
-    private $totalCash = null;
-    private $currentBet = null;
+    private Hand $hand;
+    private int $totalCash;
+    private int $currentBet;
 
     public function __construct(int $startCash)
     {
