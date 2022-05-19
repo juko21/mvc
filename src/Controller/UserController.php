@@ -67,7 +67,7 @@ class UserController extends AbstractController
         $password = $request->request->get('password');
         $user = $userRepository->findOneBy(["name" => $username]);
 
-        if (password_verify($password, $user->getPassword())) {
+        if ($user && password_verify($password, $user->getPassword())) {
             $session->set('userId', $user->getId());
             $session->set('loggedIn', 1);
 
