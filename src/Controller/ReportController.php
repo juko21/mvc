@@ -46,4 +46,18 @@ class ReportController extends AbstractController
         }
         return $this->render('report.html.twig', ["content" => $content, "loggedIn" => $loggedIn]);
     }
+
+    /**
+     * @Route("/metrics", name="metrics")
+     */
+    public function metrics(SessionInterface $session): Response
+    {
+        $parseDown = new ParsedownExtra();
+        $loggedIn = $session->get('loggedIn');
+
+        $files = glob('content/metrics/metrics.md', GLOB_BRACE);
+        $content[] = "<section>" . $parseDown->text(file_get_contents($file)) . "</section>";
+
+        return $this->render('report.html.twig', ["content" => $content, "loggedIn" => $loggedIn]);
+    }
 }

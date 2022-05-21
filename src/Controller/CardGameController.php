@@ -35,42 +35,61 @@ class CardGameController extends AbstractController
 
     /**
      * @Route(
-     *      "/game/process",
-     *      name="game-post-process",
+     *      "/game/start-process",
+     *      name="game-start-post-process",
      *      methods={"POST"}
      * )
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    public function gamePost(Request $request, SessionInterface $session): Response
+    public function gameStartPost(Request $request, SessionInterface $session): Response
     {
-        $pass = $request->request->get('pass');
         $start = $request->request->get('start');
-        $deal = $request->request->get('deal');
-        $bet = $request->request->get('bet');
-        $newRound = $request->request->get('newRound');
-        $reset = $request->request->get('reset');
-        $changeAce = $request->request->get('changeAce');
-
         $game = $session->get('game');
 
-        if ($start) {
+        if (isset($start))  {
             $game->dealToPlayer(0);
             $game->setState(1);
-        } elseif ($pass) {
-            $game->runDealerAi();
-            $game->dealPoints(0);
-            $winner = $game->checkWinner(0) ? "Spelaren" : "Bankiren";
-            $game->setState(3);
-            $this->addFlash("notice", $winner . " vinner!");
-        } elseif ($bet) {
+        } 
+        $session->set('game', $game);
+        return $this->redirectToRoute('game-home');
+    }
+
+    /**
+     * @Route(
+     *      "/game/bet-process",
+     *      name="game-bet-post-process",
+     *      methods={"POST"}
+     * )
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     */
+    public function gameBetPost(Request $request, SessionInterface $session): Response
+    {
+        $bet = $request->request->get('bet');
+        $game = $session->get('game');
+
+        if ($bet) {
             $game->setPlayerBet(0, $request->request->get('betvalue'));
             $game->setState(2);
-        } elseif ($newRound) {
-            $game->resetHands();
-            $game->resetDeck();
-            $game->dealToPlayer(0);
-            $game->setState(1);
-        } elseif ($deal) {
+        }
+
+        $session->set('game', $game);
+        return $this->redirectToRoute('game-home');
+    }
+
+    /**
+     * @Route(
+     *      "/game/deal-process",
+     *      name="game-deal-post-process",
+     *      methods={"POST"}
+     * )
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     */
+    public function gameDealPost(Request $request, SessionInterface $session): Response
+    {
+        $deal = $request->request->get('deal');
+        $game = $session->get('game');
+        
+        if (isset($deal)) {
             $game->dealToPlayer(0);
             $game->setState(2);
             if ($game->getPlayerHand(0)->countCards() == 2 && $game->getPlayerPoints(0) == 21) {
@@ -82,12 +101,99 @@ class CardGameController extends AbstractController
                 $game->setState(3);
                 $this->addFlash("notice", "Bankiren vinner!");
             }
-        } elseif ($changeAce) {
+        } 
+
+        $session->set('game', $game);
+        return $this->redirectToRoute('game-home');
+    }
+
+    /**
+     * @Route(
+     *      "/game/pass-process",
+     *      name="game-pass-post-process",
+     *      methods={"POST"}
+     * )
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     */
+    public function gamePassPost(Request $request, SessionInterface $session): Response
+    {
+        $pass = $request->request->get('pass');
+        $game = $session->get('game');
+
+        if (isset($pass)) {
+            $game->runDealerAi();
+            $game->dealPoints(0);
+            $winner = $game->checkWinner(0) ? "Spelaren" : "Bankiren";
+            $game->setState(3);
+            $this->addFlash("notice", $winner . " vinner!");
+        }
+
+        $session->set('game', $game);
+        return $this->redirectToRoute('game-home');
+    }
+
+    /**
+     * @Route(
+     *      "/game/setace-process",
+     *      name="game-setace-post-process",
+     *      methods={"POST"}
+     * )
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     */
+    public function gameSetAcePost(Request $request, SessionInterface $session): Response
+    {
+        $changeAce = $request->request->get('changeAce');
+        $game = $session->get('game');
+
+        if (isset($changeAce)) {
             $game->setAceValue(0, substr($changeAce, 4), (bool)(int)$changeAce[3]);
-        } elseif ($reset) {
+        }
+
+        $session->set('game', $game);
+        return $this->redirectToRoute('game-home');
+    }
+
+    /**
+     * @Route(
+     *      "/game/newround-process",
+     *      name="game-newround-post-process",
+     *      methods={"POST"}
+     * )
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     */
+    public function gameNewRoundPost(Request $request, SessionInterface $session): Response
+    {
+        $newRound = $request->request->get('newRound');
+        $game = $session->get('game');
+
+        if (isset($newRound)) {
+            $game->resetHands();
+            $game->resetDeck();
+            $game->dealToPlayer(0);
+            $game->setState(1);
+        }
+
+        $session->set('game', $game);
+        return $this->redirectToRoute('game-home');
+    }
+
+    /**
+     * @Route(
+     *      "/game/reset-process",
+     *      name="game-reset-post-process",
+     *      methods={"POST"}
+     * )
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     */
+    public function gameResetPost(Request $request, SessionInterface $session): Response
+    {
+        $reset = $request->request->get('reset');
+
+        if ($isset) {
             $game = new Game(1);
             $game->setState(0);
         }
+
         $session->set('game', $game);
         return $this->redirectToRoute('game-home');
     }
