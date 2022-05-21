@@ -17,7 +17,7 @@ class Hand
     }
 
     /**
-     * Add card to handdd
+     * Add card to hand
      */
     public function addCard(Card $card): void
     {

@@ -2,8 +2,9 @@
 
 namespace App\Card;
 
-use App\Card\Player;
-
+/**
+ * Class for card deck with 52 cards
+ */
 class Deck
 {
     public array $deck = array();
@@ -17,11 +18,14 @@ class Deck
                     $this->deck[] = new Card($suit, $i, $counter++);
                 }
             }
-        } elseif ($deck != null) {
+        } else if ($deck != null) {
             $this->deck = $deck;
         }
     }
 
+    /**
+     * Return all img srcs for cards
+     */
     public function getAllCardSrc(): array
     {
         $imgSrcs = array();
@@ -31,6 +35,10 @@ class Deck
 
         return $imgSrcs;
     }
+
+    /**
+     * Sort deck
+     */
     public function sorted(): Deck
     {
         $deck = $this;
@@ -39,16 +47,26 @@ class Deck
         });
         return $deck;
     }
+
+    /**
+     * Shuffle deck
+     */
     public function shuffleDeck(): void
     {
         shuffle($this->deck);
     }
 
+    /**
+     * Pop card from top of deck
+     */
     public function popCard(): Card
     {
         return array_pop($this->deck);
     }
 
+    /**
+     * Get number of cards in deck
+     */
     public function getNumber(): int
     {
         return count($this->deck);

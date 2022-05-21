@@ -3,12 +3,11 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+
 use ParsedownExtra;
 use App\Card\Game;
 
@@ -25,7 +24,7 @@ class CardGameController extends AbstractController
 
         $data["game"] = $session->get('game');
         if (!$data["game"]) {
-            $data["game"] = new Game(1);
+            $data["game"] = new Game();
             $session->set('game', $data['game']);
         }
         $data['title'] = '21';
@@ -47,7 +46,7 @@ class CardGameController extends AbstractController
         $game = $session->get('game');
 
         if (isset($start))  {
-            $game->dealToPlayer(0);
+            $game->dealToPlayer();
             $game->setState(1);
         } 
         $session->set('game', $game);
@@ -68,7 +67,7 @@ class CardGameController extends AbstractController
         $game = $session->get('game');
 
         if ($bet) {
-            $game->setPlayerBet(0, $request->request->get('betvalue'));
+            $game->setPlayerBet($request->request->get('betvalue'));
             $game->setState(2);
         }
 
@@ -90,14 +89,14 @@ class CardGameController extends AbstractController
         $game = $session->get('game');
         
         if (isset($deal)) {
-            $game->dealToPlayer(0);
+            $game->dealToPlayer();
             $game->setState(2);
-            if ($game->getPlayerHand(0)->countCards() == 2 && $game->getPlayerPoints(0) == 21) {
-                $game->dealPoints(0);
+            if ($game->getPlayerHand()->countCards() == 2 && $game->getPlayerPoints() == 21) {
+                $game->dealPoints();
                 $game->setState(3);
                 $this->addFlash("notice", "Spelaren vinner!");
-            } elseif ($game->getPlayerPoints(0) > 21) {
-                $game->dealPoints(0);
+            } elseif ($game->getPlayerPoints() > 21) {
+                $game->dealPoints();
                 $game->setState(3);
                 $this->addFlash("notice", "Bankiren vinner!");
             }
@@ -122,8 +121,8 @@ class CardGameController extends AbstractController
 
         if (isset($pass)) {
             $game->runDealerAi();
-            $game->dealPoints(0);
-            $winner = $game->checkWinner(0) ? "Spelaren" : "Bankiren";
+            $game->dealPoints();
+            $winner = $game->checkWinner() ? "Spelaren" : "Bankiren";
             $game->setState(3);
             $this->addFlash("notice", $winner . " vinner!");
         }
@@ -146,7 +145,7 @@ class CardGameController extends AbstractController
         $game = $session->get('game');
 
         if (isset($changeAce)) {
-            $game->setAceValue(0, substr($changeAce, 4), (bool)(int)$changeAce[3]);
+            $game->setAceValue(substr($changeAce, 4), (bool)(int)$changeAce[3]);
         }
 
         $session->set('game', $game);
@@ -169,7 +168,7 @@ class CardGameController extends AbstractController
         if (isset($newRound)) {
             $game->resetHands();
             $game->resetDeck();
-            $game->dealToPlayer(0);
+            $game->dealToPlayer();
             $game->setState(1);
         }
 
@@ -190,7 +189,7 @@ class CardGameController extends AbstractController
         $reset = $request->request->get('reset');
 
         if ($isset) {
-            $game = new Game(1);
+            $game = new Game();
             $game->setState(0);
         }
 

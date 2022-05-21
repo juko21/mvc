@@ -3,7 +3,7 @@
 namespace App\Card;
 
 /**
- * Class for playing car
+ * Class for playing card
  */
 class Card
 {

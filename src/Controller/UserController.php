@@ -7,9 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use App\Entity\User;
-use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\UserRepository;
+use App\Entity\User;
 
 class UserController extends AbstractController
 {
@@ -18,7 +17,7 @@ class UserController extends AbstractController
     {
         $userId = $session->get('userId');
 
-        if ($userId) {
+        if (isset($userId)) {
             $loggedIn = $session->get('loggedIn');
             $user = $userRepository->find($userId);
             $gravUrl = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($user->getEmail())))
@@ -127,7 +126,7 @@ class UserController extends AbstractController
      */
     public function updateProcess(
         SessionInterface $session,
-        ManagerRegistry $doctrine,
+        UserRepository $userRepository,
         Request $request
     ): Response {
         $userId = $session->get('userId');
@@ -137,8 +136,7 @@ class UserController extends AbstractController
         $email = $request->request->get('email');
         $acronym = substr($userName, 0, 3);
 
-        $entityManager = $doctrine->getManager();
-        $user = $entityManager->getRepository(User::class)->find($userId);
+        $user = $userRepository->find($userId);
 
         if (password_verify($oldpassword, $user->getPassword())) {
             $user->setName($userName);
@@ -146,7 +144,7 @@ class UserController extends AbstractController
             $user->setEmail($email);
             $user->setPassword(password_hash($newpassword, PASSWORD_BCRYPT));
 
-            $entityManager->flush();
+            $userRepository->add($user, true);
             return $this->redirectToRoute('app_user');
         }
         $this->addFlash("notice", "Felaktigt lösenord");
@@ -188,19 +186,17 @@ class UserController extends AbstractController
      *      methods={"POST"}
      * )
      */
-    public function deletePostProcess(SessionInterface $session, ManagerRegistry $doctrine, Request $request): Response
+    public function deletePostProcess(SessionInterface $session, UserRepository $userRepository, Request $request): Response
     {
         $userId = $session->get('userId');
         $password = $request->request->get('password');
 
-        $entityManager = $doctrine->getManager();
-        $user = $entityManager->getRepository(User::class)->find($userId);
+        $user = $userRepository->find($userId);
 
         if (password_verify($password, $user->getPassword())) {
-            $entityManager->remove($user);
-            $entityManager->flush();
-            $userId = $session->remove('userId');
-            $userId = $session->set('loggedIn', 0);
+            $userRepository->remove($user, true);
+            $session->remove('userId');
+            $session->set('loggedIn', 0);
             $this->addFlash("notice", "Användare har tagits bort");
             return $this->redirectToRoute('login');
         }
@@ -235,13 +231,11 @@ class UserController extends AbstractController
      *      methods={"POST"}
      * )
      */
-    public function registerUserProcess(ManagerRegistry $doctrine, Request $request): Response
+    public function registerUserProcess(UserRepository $userRepository, Request $request): Response
     {
         $userName = $request->request->get('username');
         $email = $request->request->get('email');
         $password = $request->request->get('password');
-
-        $entityManager = $doctrine->getManager();
 
         $user = new User();
         $user->setName($userName);
@@ -250,10 +244,8 @@ class UserController extends AbstractController
         $user->setAcronym(substr($userName, 0, 3));
         $user->setType("regular");
 
-        $entityManager->persist($user);
+        $userRepository->add($user, true);
 
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
         $this->addFlash("notice", "Användare tillagd");
         return $this->redirectToRoute('login');
     }

@@ -3,14 +3,12 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use App\Card\Deck;
 use App\Card\DeckWithJokers;
-use App\Card\Hand;
 
 class CardController extends AbstractController
 {
@@ -82,7 +80,6 @@ class CardController extends AbstractController
      */
     public function shuffleDeck(SessionInterface $session): Response
     {
-        $hand = new Hand();
         $deck = new Deck();
         $deck->shuffleDeck();
         $session->set('deck', $deck);
@@ -110,20 +107,14 @@ class CardController extends AbstractController
         if (!$deck) {
             $deck = new Deck();
         }
-        $hand = $session->get('hand');
-        if (!$hand) {
-            $hand = new Hand();
-        }
         $notEnoughCards = true;
         $cardImg = null;
         if (count($deck->deck) >= 1) {
             $notEnoughCards = false;
             $tempCard = $deck->popCard();
-            $hand->addCard($tempCard);
             $cardImg = $tempCard->getImgSrc();
         }
         $session->set('deck', $deck);
-        $session->set('hand', $hand);
 
         $data = [
             'title' => 'Hela kortleken',
@@ -146,22 +137,17 @@ class CardController extends AbstractController
         if (!$deck) {
             $deck = new Deck();
         }
-        $hand = $session->get('hand');
-        if (!$hand) {
-            $hand = new Hand();
-        }
+
         $cardImgs = [];
         $notEnoughCards = true;
         if (count($deck->deck) >= $number) {
             $notEnoughCards = false;
             for ($i = 0; $i < $number; $i++) {
                 $tempCard = $deck->popCard();
-                $hand->addCard($tempCard);
                 $cardImgs[] = $tempCard->getImgSrc();
             }
         }
         $session->set('deck', $deck);
-        $session->set('hand', $hand);
 
         $data = [
             'title' => 'Hela kortleken',
@@ -185,10 +171,6 @@ class CardController extends AbstractController
         if (!$deck) {
             $deck = new Deck();
         }
-        $hand = $session->get('hand');
-        if (!$hand) {
-            $hand = new Hand();
-        }
 
         $cardImgs = [];
         $notEnoughCards = true;
@@ -198,13 +180,11 @@ class CardController extends AbstractController
                 $cardImgs[] = [];
                 for ($j = 0; $j < $number; $j++) {
                     $tempCard = $deck->popCard();
-                    $hand->addCard($tempCard);
                     $cardImgs[$i][] = $tempCard->getImgSrc();
                 }
             }
         }
         $session->set('deck', $deck);
-        $session->set('hand', $hand);
 
         $data = [
             'title' => 'Hela kortleken',

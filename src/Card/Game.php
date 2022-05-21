@@ -2,7 +2,6 @@
 
 namespace App\Card;
 
-use App\Card\Card;
 use App\Card\Deck;
 use App\Card\Player;
 use App\Card\Hand;
@@ -18,7 +17,7 @@ class Game
     private $deck;
     private $state;
 
-    public function __construct(int $players, array $deck = null)
+    public function __construct(array $deck = null)
     {
         if ($deck == null) {
             $this->resetDeck();
@@ -27,17 +26,15 @@ class Game
         }
         $this->state = 0;
         $this->dealer = new Player(100);
-        for ($i = 0; $i < $players; $i++) {
-            $this->players[] = new Player(100);
-        }
+        $this->player = new Player(100);
     }
 
     /**
      * Deal card to player
      */
-    public function dealToPlayer(int $playerIndex): void
+    public function dealToPlayer(): void
     {
-        $this->players[$playerIndex]->addCards([$this->deck->popCard()]);
+        $this->player->addCards([$this->deck->popCard()]);
     }
 
     /**
@@ -51,9 +48,9 @@ class Game
     /**
      * Return player points (value of hand)
      */
-    public function getPlayerPoints(int $playerIndex): int
+    public function getPlayerPoints(): int
     {
-        return $this->players[$playerIndex]->getPointsForHand();
+        return $this->player->getPointsForHand();
     }
 
     /**
@@ -75,33 +72,33 @@ class Game
     /**
      * Return player hand
      */
-    public function getPlayerHand(int $playerIndex): Hand
+    public function getPlayerHand(): Hand
     {
-        return $this->players[$playerIndex]->getHand();
+        return $this->player->getHand();
     }
 
     /**
      * Return total cash amount for player
      */
-    public function getPlayerCash(int $playerIndex): int
+    public function getPlayerCash(): int
     {
-        return $this->players[$playerIndex]->getMoney();
+        return $this->player->getMoney();
     }
 
     /**
      * Set player bet
      */
-    public function setPlayerBet(int $playerIndex, int $bet): void
+    public function setPlayerBet(int $bet): void
     {
-        $this->players[$playerIndex]->setBet($bet);
+        $this->player->setBet($bet);
     }
 
     /**
      * Return current player bet
      */
-    public function getPlayerBet(int $playerIndex): int
+    public function getPlayerBet(): int
     {
-        return $this->players[$playerIndex]->getBet();
+        return $this->player->getBet();
     }
 
     /**
@@ -123,9 +120,9 @@ class Game
     /**
      * Count number of cards in player hand and return
      */
-    public function countPlayerHand(int $playerIndex): int
+    public function countPlayerHand(): int
     {
-        return $this->players[$playerIndex]->getHandCount();
+        return $this->player->getHandCount();
     }
 
     /**
@@ -141,7 +138,7 @@ class Game
      */
     public function setState(int $state): void
     {
-        if ($state == 0 || $state == 1 || $state == 2 || $state == 3) {
+        if ($state > -1 && $state < 4) {
             $this->state = $state;
         }
     }
@@ -159,18 +156,18 @@ class Game
     /**
      * Set ace value for player and card
      */
-    public function setAceValue(int $playerIndex, int $cardIndex, bool $highAce): void
+    public function setAceValue(int $cardIndex, bool $highAce): void
     {
-        $this->players[$playerIndex]->setAceValue($cardIndex, $highAce);
+        $this->player->setAceValue($cardIndex, $highAce);
     }
 
     /**
      * Check winning conditions against player and dealer hands
      */
-    public function checkWinner(int $playerIndex): bool
+    public function checkWinner(): bool
     {
         $dealerPoints = $this->getDealerPoints();
-        $playerPoints = $this->getPlayerPoints($playerIndex);
+        $playerPoints = $this->getPlayerPoints();
         if ($playerPoints > 21) {
             return false;
         } elseif ($dealerPoints > 21 || $playerPoints > $dealerPoints) {
@@ -182,9 +179,9 @@ class Game
     /**
      * Deal points to player
      */
-    public function dealPoints(int $playerIndex): void
+    public function dealPoints(): void
     {
-        $this->players[$playerIndex]->addMoney($this->checkWinner($playerIndex));
+        $this->player->addMoney($this->checkWinner());
     }
 
     /**
@@ -193,9 +190,7 @@ class Game
     public function resetHands(): void
     {
         $this->dealer->resetHand();
-        foreach ($this->players as $player) {
-            $player->resetHand();
-        }
+        $this->player->resetHand();
     }
 
     /**

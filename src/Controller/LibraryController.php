@@ -8,7 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Entity\Book;
-use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\BookRepository;
 
 class LibraryController extends AbstractController
@@ -47,14 +46,12 @@ class LibraryController extends AbstractController
      *      methods={"POST"}
      * )
      */
-    public function createBookPostProcess(ManagerRegistry $doctrine, Request $request): Response
+    public function createBookPostProcess(BookRepository $bookRepository, Request $request): Response
     {
         $title = $request->request->get('title');
         $isbn = $request->request->get('isbn');
         $author = $request->request->get('author');
         $img = $request->request->get('img');
-
-        $entityManager = $doctrine->getManager();
 
         $book = new Book();
         $book->setTitle($title);
@@ -62,12 +59,8 @@ class LibraryController extends AbstractController
         $book->setAuthor($author);
         $book->setImg($img);
 
-        // tell Doctrine you want to (eventually) save the Product
-        // (no queries yet)
-        $entityManager->persist($book);
+        $bookRepository->add($book, true);
 
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
         $this->addFlash("notice", "Lade till boken " . $book->getTitle());
 
         return $this->redirectToRoute('library_create');
@@ -152,7 +145,7 @@ class LibraryController extends AbstractController
      *      methods={"POST"}
      * )
      */
-    public function updateBookPostProcess(ManagerRegistry $doctrine, Request $request): Response
+    public function updateBookPostProcess(BookRepository $bookRepository, Request $request): Response
     {
         $title = $request->request->get('title');
         $isbn = $request->request->get('isbn');
@@ -160,8 +153,7 @@ class LibraryController extends AbstractController
         $img = $request->request->get('img');
         $bookId = $request->request->get('submit');
 
-        $entityManager = $doctrine->getManager();
-        $book = $entityManager->getRepository(Book::class)->find($bookId);
+        $book = $bookRepository->find($bookId);
 
         $book->setTitle($title);
         $book->setIsbn($isbn);
@@ -169,7 +161,7 @@ class LibraryController extends AbstractController
         $book->setImg($img);
 
         // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
+        $bookRepository->add($book, true);
 
         return $this->redirectToRoute('library_show_by_isbn', ["isbn" => $isbn]);
     }
@@ -203,15 +195,13 @@ class LibraryController extends AbstractController
      *      methods={"POST"}
      * )
      */
-    public function deleteBookPostProcess(ManagerRegistry $doctrine, Request $request): Response
+    public function deleteBookPostProcess(BookRepository $bookRepository, Request $request): Response
     {
         $bookId = $request->request->get('submit');
 
-        $entityManager = $doctrine->getManager();
-        $book = $entityManager->getRepository(Book::class)->find($bookId);
+        $book = $bookRepository->find($bookId);
 
-        $entityManager->remove($book);
-        $entityManager->flush();
+        $bookRepository->remove($book, true);
 
         return $this->redirectToRoute('library_show_all');
     }
