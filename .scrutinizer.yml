@@ -8,6 +8,7 @@ filter:
         - 'tools/*'
         - '*/vendor/*'
         - 'build/*'
+        - 'migrations/*'
     dependency_paths:
         - 'tools/*'
 
