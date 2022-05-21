@@ -46,15 +46,17 @@
 
                 {% endfor %}
             </div>
-            <form  class="middle-button" method="POST" action="{{ path('game-deal-post-process') }}">
+            <div class="middle-button" >
+            <form  method="POST" action="{{ path('game-deal-post-process') }}">
                 <button type="submit" name="deal" value="deal">Dela ut kort</button>
             </form>
-            <form  class="middle-button" method="POST" action="{{ path('game-pass-post-process') }}">
+            <form method="POST" action="{{ path('game-pass-post-process') }}">
                 <button type="submit" name="pass" value="pass">Stopp</button>
                         </form>
-            <form  class="middle-button" method="POST" action="{{ path('game-reset-post-process') }}">
+            <form method="POST" action="{{ path('game-reset-post-process') }}">
                 <button type="submit" name="reset" value="reset">Återställ</button>
             </form>
+            </div>
             <p class="game-info" ><b>Kontanter:</b> {{ game.getPlayerCash(0) }}<br>
             <b>Insats:</b> {{ game.getPlayerBet(0) }}</p>
         {% elseif game.getState() == 3 %}

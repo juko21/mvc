@@ -188,7 +188,7 @@ class CardGameController extends AbstractController
     {
         $reset = $request->request->get('reset');
 
-        if ($isset) {
+        if (isset($reset)) {
             $game = new Game();
             $game->setState(0);
         }

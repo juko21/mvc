@@ -36,6 +36,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.middle-button form {
+    display: inline-block;
+}
 button {
     padding: 10px;
     cursor: pointer;

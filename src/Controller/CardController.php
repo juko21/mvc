@@ -83,7 +83,6 @@ class CardController extends AbstractController
         $deck = new Deck();
         $deck->shuffleDeck();
         $session->set('deck', $deck);
-        $session->set('hand', $hand);
         $cardImgs = $deck->getAllCardSrc();
         $loggedIn = $session->get('loggedIn');
 

@@ -43,7 +43,7 @@ class ReportController extends AbstractController
         foreach ($files as $file) {
             $content[] = "<section>" . $parseDown->text(file_get_contents($file)) . "</section>";
         }
-        return $this->render('report.html.twig', ["content" => $content, "loggedIn" => $loggedIn]);
+        return $this->render('report.html.twig', ["title" => "Rapporter", "content" => $content, "loggedIn" => $loggedIn]);
     }
 
     /**
@@ -54,9 +54,9 @@ class ReportController extends AbstractController
         $parseDown = new ParsedownExtra();
         $loggedIn = $session->get('loggedIn');
 
-        $files = glob('content/metrics/metrics.md', GLOB_BRACE);
+        $file = 'content/metrics/metrics.md';
         $content[] = "<section>" . $parseDown->text(file_get_contents($file)) . "</section>";
 
-        return $this->render('report.html.twig', ["content" => $content, "loggedIn" => $loggedIn]);
+        return $this->render('report.html.twig', ["title" => "Metrics", "content" => $content, "loggedIn" => $loggedIn]);
     }
 }
