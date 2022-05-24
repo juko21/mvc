@@ -18,7 +18,8 @@
                     <li> <a href="{{ path('report') }}">RAPPORT</a></li>
                     <li> <a href="{{ path('app_library') }}">BIBLIOTEK</a></li>
                     <li> <a href="{{ path('metrics') }}">METRICS</a></li>
-                    <li> 
+                    <li> <a href="{{ path('proj-home') }}">PROJEKT</a></li>
+                    <li>
                     {% if loggedIn|default(0) %}
                         <a href="{{ path('app_user') }}">ANVÄNDARE</a>
                     {% else %}
@@ -42,6 +43,7 @@
                     <li> <a href="{{ path('report') }}">RAPPORT</a></li>
                     <li> <a href="{{ path('app_library') }}">BIBLIOTEK</a></li>
                     <li> <a href="{{ path('metrics') }}">METRICS</a></li>
+                    <li> <a href="{{ path('proj-home') }}">PROJEKT</a></li>
                     <li> 
                     {% if loggedIn|default(0) %}
                         <a href="{{ path('app_user') }}">ANVÄNDARE</a>

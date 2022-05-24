@@ -1,0 +1,30 @@
+:root {
+    --main-bg-color: #F0FEEE;
+    --main-color: #65a9c4;
+    --sec-color: #51aa3f;
+    --tert-color: #E6BA67;
+    --main-font-color: #505050;
+    --sec-font-color: #F0FEEE;
+    --accent-font-color: #51aa3f;
+    --def-margin: calc(1rem * 1.4);
+    --main-margin: calc((100% - 1000px) / 2);
+}
+
+@media (max-width: 1264px) {
+    footer {
+        width: 100%;
+        padding: 2rem;
+    }
+
+    .main {
+        width: 100%;
+        padding: 4rem 2rem;
+    }
+    .title {
+        left: 2rem;
+    }
+    :root {
+        --def-margin: calc(1rem * 1.4);
+        --main-margin: calc(1rem * 2.8);
+    }
+}

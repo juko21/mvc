@@ -1,0 +1,37 @@
+{# templates/proj/index.html.twig #}
+{% extends "proj/base.html.twig" %}
+{% block title %}{{ title }}{% endblock %}
+{% block header %}{{ header | raw }}{% endblock %}
+{% block subHeader %}{{ subHeader }}{% endblock %}
+
+{% block body %}
+<div class="row">
+    <h2 class="full-width">{{ contentTitle}}</h2>
+</div>
+<div class="row">
+    <div class="full-width">
+        {{ content | raw }}
+    </div>
+</div>
+{% for key, chart in charts %}
+<div class="row indicator-block">
+    {% if key % 2 == 0 %}
+    <div class="c45">
+        <h3>{{ chartHeaders[key] }}</h3>
+        <p>{{ chartTexts[key] }}</p>
+    </div>
+    <div class="c45">
+        {{ render_chart(charts[key]) }}
+    </div>
+    {% else %}
+    <div class="c45">
+        {{ render_chart(charts[key]) }}
+    </div>
+    <div class="c45">
+        <h3>{{ chartHeaders[key] }}</h3>
+        <p>{{ chartTexts[key] }}</p>
+    </div>
+    {% endif %}
+</div>
+{% endfor %}
+{% endblock %}

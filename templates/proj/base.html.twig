@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{% block title %}{% endblock %} - Objektorienterade webbteknologier</title>
+
+        <link rel="stylesheet" href="{{ asset('css/proj/style.css') }}" type="text/css" />
+        {{ encore_entry_script_tags('app') }}
+    </head>
+    <body>
+        {% include 'proj/includes/nav.html.twig' %}
+        <div class="spacefiller"></div>
+        <div class="header">
+            <div class="title">
+                <h1>{% block header %}{% endblock %}</h1>
+                <h3>{% block subHeader %}{% endblock %}</h3>
+            </div>
+        </div>
+        <main class="main">{% block body %}{% endblock %}</main>
+        {% include 'proj/includes/footer.html.twig' %}
+
+        <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+    </body>
+</html>

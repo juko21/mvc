@@ -1,0 +1,67 @@
+.color-block-container {
+    display: flexbox;
+    flex-wrap: wrap;
+    gap: var(--def-margin);
+}
+
+.color-block {
+    flex: 1;
+    width: 45%;
+    min-height: 200px;
+    padding: var(--def-margin);
+}
+
+.color-block p,
+.color-block h3 {
+    color: white;
+}
+
+.color-block:nth-child(odd) {
+    background-color: var(--main-color);
+}
+
+.color-block:nth-child(even) {
+    background-color: var(--sec-color);
+}
+
+.indicator-block {  
+    width: 100%;
+    min-height: 200px;
+    padding: calc(var(--def-margin) * 2);
+}
+
+.indicator-block p,
+.indicator-block h3 {
+    color: white;
+}
+
+.indicator-block:nth-child(odd) {
+    background-color: var(--main-color);
+}
+
+.indicator-block:nth-child(even) {
+    background-color: var(--sec-color);
+}
+
+.indicator-block:nth-child(odd) * * {
+    text-align: left;
+}
+
+.indicator-block:nth-child(even) div * {
+    text-align: right;
+}
+
+
+@media (max-width: 900px) {
+    .indicator-block:nth-child(even) .c45:first-child {
+        order: 2;
+    }
+    
+    .indicator-block:nth-child(even) .c45:last-child {
+        order: 1;
+    }
+    
+    .indicator-block:nth-child(even) .c45 * {
+        text-align: left;
+    }
+}
