@@ -51,7 +51,9 @@
     text-align: right;
 }
 
-
+.chart {
+    max-height: 400px;
+}
 @media (max-width: 900px) {
     .indicator-block:nth-child(even) .c45:first-child {
         order: 2;

@@ -12,15 +12,16 @@ class Charts
     /**
      * Creates a bar chart using chartjs
      */
-    static function getBarChartSettings(array $datax, array $datay, array $label, bool $multiple = false): array {
+    static function getBarChartSettings(array $datax, array $datay, array $label, bool $multiple = false, bool $inverted = false): array {
         $colors = ["rgb(255, 255, 175)", "rgb(175, 255, 255)", "rgb(255, 175, 255)", "rgb(255, 175, 175)", "rgb(175, 175, 255"];
-        
+        $fontColor = $inverted ? 'rgb(255, 255, 255)' : 'rgb(80, 80, 80)' ;
+        $gridColor = $inverted ? 'rgb(255, 255, 255, 0.3)' : 'rgb(80, 80, 80)' ;
         $settings[] = ['labels' => $datax, 'datasets' => []];
         
         for($i = 0; $i < ($multiple ? count($datay) : 1); $i++){
             $settings[0]['datasets'][] = [
                 'label' => $label[$i],
-                'fontColor' => 'rgb(255, 255, 255)',
+                'fontColor' => $fontColor,
                 'backgroundColor' => $colors[$i],
                 'borderColor' => $colors[$i],
                 "color" => $colors[$i],
@@ -28,10 +29,11 @@ class Charts
             ];
         }
         $settings[] = [
+            'maintainAspectRatio' => false,
             'plugins' => [
                 'legend' => [
                     'labels' => [
-                        'color' => "rgb(255, 255, 255)"
+                        'color' => $fontColor
                     ],
                     'position' => 'bottom'
                 ]
@@ -41,24 +43,24 @@ class Charts
                     'suggestedMin' => 0,
                     'suggestedMax' => max($datay),
                     'ticks'=> [
-                        'color' => 'rgb(255, 255, 255)',
+                        'color' => $fontColor,
                     ], 
                     'title' => [
                         'title'=> $label,
-                        'color' => 'rgb(255, 255, 255)'
+                        'color' => $fontColor
                     ],
                     'grid'=> [
-                        'color' => 'rgba(255, 255, 255, 0.3)',
-                        'borderColor' => 'rgba(255, 255, 255, 0.3)'
+                        'color' => $gridColor,
+                        'borderColor' => $gridColor
                     ]                           
                 ],
                 'x' => [
                     'ticks' => [
-                        'color' => 'rgb(255, 255, 255)',
+                        'color' => $fontColor,
                     ],
                     'grid'=> [
-                        'color' => 'rgba(255, 255, 255, 0.3)',
-                        'borderColor' => 'rgba(255, 255, 255, 0.3)'
+                        'color' => $gridColor,
+                        'borderColor' => $gridColor
                     ]                    
                 ],
             ],

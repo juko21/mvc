@@ -109,13 +109,13 @@ class ProjectController extends AbstractController
         if(!$multiple) {
             for ( $i = 0; $i < count($statData) - 1; $i++) {
                 $charts[] = $chartBuilder->createChart($chartData[0]->getType());
-                $chartSets = Charts::getBarChartSettings($statData[0], [$statData[$i + 1]], [$chartHeaders[$i]]);
+                $chartSets = Charts::getBarChartSettings($statData[0], [$statData[$i + 1]], [$chartHeaders[$i]], false, true);
                 $charts[$i]->setData($chartSets[0]);
                 $charts[$i]->setOptions($chartSets[1]);
             }
         } else {
             $charts[] = $chartBuilder->createChart($chartData[0]->getType());
-            $chartSets = Charts::getBarChartSettings($statData[0], array_slice($statData, 1), $chartHeaders, true);
+            $chartSets = Charts::getBarChartSettings($statData[0], array_slice($statData, 1), $chartHeaders, true, true);
             $charts[0]->setData($chartSets[0]);
             $charts[0]->setOptions($chartSets[1]);
             $chartTexts = [implode('', $chartTexts)];
