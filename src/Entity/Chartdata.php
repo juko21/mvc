@@ -22,9 +22,6 @@ class Chartdata
     #[ORM\Column(type: 'string', length: 255)]
     private $type;
 
-    #[ORM\Column(type: 'boolean')]
-    private $multiple;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -62,18 +59,6 @@ class Chartdata
     public function setType(string $type): self
     {
         $this->type = $type;
-
-        return $this;
-    }
-
-    public function isMultiple(): ?bool
-    {
-        return $this->multiple;
-    }
-
-    public function setMultiple(bool $multiple): self
-    {
-        $this->multiple = $multiple;
 
         return $this;
     }

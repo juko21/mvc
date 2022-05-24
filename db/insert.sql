@@ -43,13 +43,13 @@ IGNORE 1 LINES
 ;
 
 DROP TABLE IF EXISTS indicator;
-CREATE TABLE indicator (id INT AUTO_INCREMENT NOT NULL, route VARCHAR(255) NOT NULL, article_id INT NOT NULL, header VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;
+CREATE TABLE indicator (id INT AUTO_INCREMENT NOT NULL, route VARCHAR(255) NOT NULL, article_id INT NOT NULL, header VARCHAR(255) NOT NULL, multiple TINYINT(1) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;
 
-INSERT INTO indicator (route, article_id, header)
+INSERT INTO indicator (route, article_id, header, multiple)
 VALUES 
-    ("utslapp", 3, "Konsumtionsbaserade utsläpp i Sverige och andra länder"),
-    ("matsvinn", 4, "Matsvinn i Sverige"),
-    ("atervinning", 5, "Återvinning och bortskaffning")
+    ("utslapp", 3, "Konsumtionsbaserade utsläpp i Sverige och andra länder", 1),
+    ("matsvinn", 4, "Matsvinn i Sverige", 0),
+    ("atervinning", 5, "Återvinning och bortskaffning", 0)
 ;
 
 DROP TABLE IF EXISTS chartdata;

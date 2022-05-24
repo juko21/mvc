@@ -17,19 +17,17 @@
 <div class="row indicator-block">
     {% if key % 2 == 0 %}
     <div class="c45">
-        <h3>{{ chartHeaders[key] }}</h3>
-        <p>{{ chartTexts[key] }}</p>
+        {{ chartTexts[key] |raw }}
     </div>
     <div class="c45">
-        {{ render_chart(charts[key]) }}
+        {{ render_chart(charts[key], {'class': 'chart'}) }}
     </div>
     {% else %}
     <div class="c45">
-        {{ render_chart(charts[key]) }}
+        {{ render_chart(charts[key], {'class': 'chart'}) }}
     </div>
     <div class="c45">
-        <h3>{{ chartHeaders[key] }}</h3>
-        <p>{{ chartTexts[key] }}</p>
+        {{ chartTexts[key] |raw }}
     </div>
     {% endif %}
 </div>
