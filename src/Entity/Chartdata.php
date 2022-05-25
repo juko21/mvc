@@ -11,7 +11,7 @@ class Chartdata
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private $id; /** @phpstan-ignore-line */
 
     #[ORM\Column(type: 'integer')]
     private $article_id;
@@ -71,7 +71,7 @@ class Chartdata
     {
         return $this->indicator;
     }
-
+    
     public function setIndicator(?Indicator $indicator): self
     {
         $this->indicator = $indicator;
