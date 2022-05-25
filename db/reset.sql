@@ -1,6 +1,6 @@
 -- MariaDB dump 10.19  Distrib 10.6.5-MariaDB, for Win64 (AMD64)
 --
--- Host: localhost    Database: library
+-- Host: localhost    Database: mvcproject
 -- ------------------------------------------------------
 -- Server version	10.6.5-MariaDB
 
@@ -319,13 +319,13 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `acronym` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `acronym` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -334,7 +334,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin','$2y$10$pQa5nhZvV.efYGeSfrgLMOScUB3G.w8WMulxZTMjgQtKvdTegZVm2','admin@example.com','admin','adm'),(2,'doe','$2y$10$hWI2dsyrDeBpb/PT4q6DN.AHBjuJFoTnY.WJzb7w7VQqvNFiOIsBK','doe@justforexample.com','admin','doe'),(7,'juhani','$2y$10$KoO8rNX4cqRzZ94xjwBZB.9RJJp8cGWCzGPEjzB1OsuiqS.OqYZMq','hej@exempel.com','regular','juh');
+INSERT INTO `user` VALUES (3,'$2y$10$2i5AG194XDGqJ/z32Bb3KOwsY.oO2kkcg/WZusvC2s3nMMYmWMUqW','admin@admin.com','admin','admin','https://www.gravatar.com/avatar/64e1b8d34f425d19e1ee2ea7236d3028?d=mp&s=80'),(10,'$2y$10$4XixhsXLlECNwZRMw58k/.KfwTHyTi7lQ4LWi1FAV8/wHmsleDOka','doe@example.com','regular','doe','https://www.gravatar.com/avatar/de21b8c123847c80205e93b301437b45?d=mp&s=80');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -347,4 +347,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-25 17:43:12
+-- Dump completed on 2022-05-25 23:51:46

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Charts;
+namespace App\ChartSettings;
 
 use App\Repository\ArticleRepository;
 use App\Repository\DemographicsRepository;
@@ -10,7 +10,7 @@ use App\Entity\Demographics;
 /**
  * Class ChartSettings:
  * Initiates with datasets and options used for generating datasets and chart options
- * in the correct format to be used by chartjs. Datasets and charts 
+ * in the correct format to be used by chartjs. Datasets and charts
  * fetched with getDataset and getOptions
  *
  * @method array getDataset() Returns dataset formatted in array for chartjs
@@ -28,32 +28,28 @@ class ChartSettings
     private array $datax;
     private array $datay;
     private array $labels;
-    private bool $multiple = false;
     private bool $inverted = false;
 
     /**
      * Creates new ChartSettings object
      * Initiates with datasets and options used for generating datasets and chart options
-     * in the correct format to be used by chartjs. Datasets and charts 
+     * in the correct format to be used by chartjs. Datasets and charts
      * fetched with getDataset and getOptions
      *
      * @param array $datax Array of dataset-values to be used for x-value on chart
      * @param array $datay Array of dataset-values to be used for y-value on chart
      * @param array $labels Array of labels for y-values
-     * @param bool $multiple Whether chart is multi or single line
      * @param bool $inverted Whether chart colours are inverted or not
      */
     public function __construct(
         array $datax,
         array $datay,
         array $labels,
-        bool $multiple,
         bool $inverted
     ) {
         $this->datax = $datax;
         $this->datay = $datay;
         $this->labels = $labels;
-        $this->multiple = $multiple;
         $this->inverted = $inverted;
     }
 
@@ -63,7 +59,8 @@ class ChartSettings
      *
      * @return array Returns dataset formatted in array for chartjs
      */
-    public function getDataset() {
+    public function getDataset()
+    {
         $dataset = ['labels' => $this->datax, 'datasets' => []];
         $fontColor = $this->inverted ? 'rgb(255, 255, 255)' : 'rgb(80, 80, 80)' ;
         $count = count($this->datay);
@@ -86,7 +83,8 @@ class ChartSettings
      *
      * @return array Returns options formatted in array for chartjs
      */
-    public function getOptions() {
+    public function getOptions()
+    {
         $fontColor = $this->inverted ? 'rgb(255, 255, 255)' : 'rgb(80, 80, 80)' ;
         $gridColor = $this->inverted ? 'rgb(255, 255, 255, 0.3)' : 'rgb(80, 80, 80)';
         $options = [

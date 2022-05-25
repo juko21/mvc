@@ -12,8 +12,6 @@
 
     <exclude-pattern>cache</exclude-pattern>
     <exclude-pattern>vendor</exclude-pattern>
-    <exclude-pattern>repository</exclude-pattern>
-    <exclude-pattern>entity</exclude-pattern>
 
     <rule ref="rulesets/design.xml" />
     <rule ref="rulesets/cleancode.xml" />

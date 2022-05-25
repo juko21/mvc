@@ -21,7 +21,7 @@ class UserController extends AbstractController
             $loggedIn = $session->get('loggedIn');
             $user = $userRepository->find($userId);
             $acronym = $user->getAcronym();
-            
+
             $data = array(
             "title" => "DIN PROFIL",
             "header" => "DIN PROFIL",
@@ -33,10 +33,10 @@ class UserController extends AbstractController
             "img" => $user->getImg(),
             "userId" => $userId
             );
-            if($user->getType() == "admin") {
+            if ($user->getType() == "admin") {
                 $allUsers = $user = $userRepository->findAll();
                 $users = [];
-                foreach ($allUsers as $key => $value) {
+                foreach ($allUsers as $value) {
                     $users[] = [
                         "id" => $value->getId(),
                         "acronym" => $value->getAcronym(),
@@ -201,8 +201,7 @@ class UserController extends AbstractController
         SessionInterface $session,
         Request $request,
         UserRepository $userRepository
-    ): Response
-    {
+    ): Response {
         $userId = $session->get('userId');
         $deleteUser = $request->request->get('delete');
         $loggedIn = $session->get('loggedIn');
@@ -241,7 +240,7 @@ class UserController extends AbstractController
 
         $deleteUser = $userRepository->find($deleteUserId);
         $currentUser = $userRepository->find($currentUserId);
-        
+
         if (password_verify($password, $currentUser->getPassword())) {
             $userRepository->remove($deleteUser, true);
             if ($currentUserId == $deleteUserId) {
@@ -264,8 +263,7 @@ class UserController extends AbstractController
     public function registerUser(
         SessionInterface $session,
         UserRepository $userRepository,
-        ): Response
-    {
+    ): Response {
         $loggedIn = $session->get('loggedIn');
         $userId = $session->get('userId');
 
@@ -288,19 +286,19 @@ class UserController extends AbstractController
      */
     public function registerUserProcess(
         UserRepository $userRepository,
-        Request $request): Response
-    {
+        Request $request
+    ): Response {
         $acronym = $request->request->get('acronym');
         $email = $request->request->get('email');
         $password = $request->request->get('password');
         $img = $request->request->get('img');
-        
-        if( $userRepository->findBy(["acronym" => $acronym])) {
+
+        if ($userRepository->findBy(["acronym" => $acronym])) {
             $this->addFlash("notice", "Användare existerar");
             return $this->redirectToRoute('app_user');
         }
 
-        if( $userRepository->findBy(["email" => $email])) {
+        if ($userRepository->findBy(["email" => $email])) {
             $this->addFlash("notice", "Epost redan registrerad");
             return $this->redirectToRoute('app_user');
         }

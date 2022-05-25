@@ -18,13 +18,14 @@ use App\Entity\Recycling;
 use App\Entity\Material;
 use App\Entity\Indicator;
 use App\Entity\Chartdata;
-use App\Charts\ChartSettings;
+use App\ChartSettings\ChartSettings;
+use Doctrine\DBAL\Connection;
 
 class ProjectController extends AbstractController
 {
     /**
      * Route method for main landing page for project
-     * 
+     *
      * @Route("/proj", name="proj-home")
      */
     public function index(
@@ -61,14 +62,13 @@ class ProjectController extends AbstractController
 
     /**
      * Route method for about page for project
-     * 
+     *
      * @Route("/proj/about", name="proj-about")
      */
     public function about(
         ManagerRegistry $doctrine,
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $loggedIn = $session->get("loggedIn");
         $parseDown = new ParsedownExtra();
         $entityManager = $doctrine->getManager();
@@ -90,11 +90,11 @@ class ProjectController extends AbstractController
 
     /**
      * Route method for database reset page
-     * 
+     *
      * @Route("/proj/reset", name="proj-reset")
      */
     public function reset(SessionInterface $session): Response
-    {   
+    {
         $loggedIn = $session->get("loggedIn");
         $data = [
             'title' => 'Återställ databas',
@@ -107,20 +107,20 @@ class ProjectController extends AbstractController
 
     /**
      * Route method for database reset page
-     * 
+     *
      * @Route("/proj/reset-processing", name="proj-reset-processing")
      */
     public function resetProcess(
         Request $request,
-        ManagerRegistry $doctrine
+        Connection $connection
     ): Response {
         if ($request->request->get("reset") !== null) {
             $sql = file_get_contents($this->getParameter('kernel.project_dir') . '/db/reset.sql');
-    
-            $conn = $em = $doctrine->getManager()->getConnection();
-            $stmt = $conn->prepare($sql);
-            $resultSet = $stmt->executeQuery();
-            
+            //$entityManager = $doctrine->getManager();
+            //$conn = $entityManager->getConnection();
+            $stmt = $connection->prepare($sql);
+            $stmt->executeQuery();
+
             $this->addFlash("notice", "Databas återställd");
             return $this->redirectToRoute('proj-reset');
         }
@@ -131,7 +131,7 @@ class ProjectController extends AbstractController
     /**
      * Route method for indicatorSelect. Used with parameter
      * to send user to correct indicator page
-     * 
+     *
      * @Route("/proj/indikatorer/{indicator}", name="proj-indicator-select")
      */
     public function indicatorSelect(
@@ -162,7 +162,7 @@ class ProjectController extends AbstractController
 
         $indicatorAll = $entityManager->getRepository(Indicator::class)->findAll();
         $indicatorData = $entityManager->getRepository(Indicator::class)->findOneBy(["route" => $indicator]);
-        
+
         $indicators = array_map(function ($item) {
             return $item->getHeader();
         }, $indicatorAll);
@@ -182,7 +182,7 @@ class ProjectController extends AbstractController
             $chartTexts[$key] .= '<p>' . $articleRep->find($chart->getArticleId())->getContent()  . '</p>';
         }
         $charts = [];
-        $count = count($statData) -1;
+        $count = count($statData) - 1;
         if ($multiple) {
             $count = 1;
             $chartTexts = [implode('', $chartTexts)];
@@ -193,7 +193,6 @@ class ProjectController extends AbstractController
                 $statData[0],
                 $multiple ? array_slice($statData, 1) : [$statData[$i + 1]],
                 $multiple ? $chartHeaders : [$chartHeaders[$i]],
-                $multiple,
                 true
             );
             $charts[$i]->setData($chartSets->getDataset());
