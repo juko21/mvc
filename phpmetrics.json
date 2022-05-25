@@ -3,9 +3,7 @@
         "src"
     ],
     "exclude": [
-      "test[s]?",
-      "repository",
-      "entity"
+      "test[s]?"
     ],
     "report": {
         "html": "docs/metrics"

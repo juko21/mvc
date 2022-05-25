@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends "proj/base.html.twig" %}
 {% block title %}{{ title }}{% endblock %}
 {% block header %}Användare{% endblock %}
 
@@ -9,10 +9,12 @@
         {{ message }}
     </p>
     {% endfor %}
+    <p>Alla fält måste fyllas i förutom bildlänk, om du inte anger länk hämtas en gravitar för din mailadress, om registrerad."</p>
     <form method="POST" action="{{ path('user_register_process') }}">
-            <p><input type="text" name="username" required placeholder="Namn" min="3" ></p>
+            <p><input type="text" name="acronym" required placeholder="Akronym" min="3" ></p>
             <p><input type="text" name="email" required placeholder="Epost"></p>
             <p><input type="password" name="password" required placeholder="Lösenord" min="3"></p>
+            <p><input type="text" name="img" placeholder="Länk till bild"></p>
             <p><button type="submit" name="register">Registrera användare</button></p>
     </form>
 {% endblock %}

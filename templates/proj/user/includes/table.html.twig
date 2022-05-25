@@ -1,0 +1,27 @@
+<table class="userlist">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <th>Akronym</th>
+            <th>Epost</th>
+            <th>Typ</th>
+            <th>Åtgärder</th>
+        <tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.acronym }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.type }}</td>
+            <td>
+                <form class="userlist-form" method="POST" action="{{ path('user_update') }}">
+                        <button type="submit" name="update" value="{{ user.id }}">Uppdatera</button>
+                </form>
+                <form class="userlist-form" method="POST" action="{{ path('user_delete') }}">
+                        <button type="submit" name="delete" value="{{ user.id }}">Radera</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

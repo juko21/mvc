@@ -1,0 +1,35 @@
+{% extends "proj/base.html.twig" %}
+{% block title %}{{ title }}{% endblock %}
+{% block header %}Användare{% endblock %}
+
+{% block body %}
+    <div class="row">
+    <h2>{{ title }}</h2>
+    </div>
+    <div class="row">
+        <form method="POST" action="{{ path('user_update_process') }}">
+            {% for message in app.flashes('notice') %}
+            <p>
+                {{ message }}
+            </p>
+            {% endfor %}
+            <p>Lämna lösenord tomt om du ej vill uppdatera. Lämna bildlänk tom för att hämta gravitar.</p>
+            <p><input type="text" name="acronym" required placeholder="Akronym" min="3" value="{{ acronym }}"></p>
+            <p><input type="text" name="email" required placeholder="Epost" value="{{ email }}"></p>
+            <p><input type="text" name="img" required placeholder="Länk till bild" value="{{ img }}"></p>
+
+            {% if type | default() %}
+            <p>
+                <select name="type">
+                    <option {{ type == "admin" ? "selected" : "" }} value="{{ "admin" }}">Admin</option>
+                    <option {{ type == "regular" ? "selected" : "" }} value="{{ "regular" }}">Vanlig</option>
+                </select>
+                <label for="type">Rättigheter</label>
+            </p>
+            {% endif %}
+            <p><input type="password" name="oldpassword" required placeholder="Ditt lösenord" min="3"></p>
+            <p><input type="password" name="newpassword" placeholder="Nytt lösenord" min="3"></p>
+            <p><button type="submit" name="update" value="{{ userId }}">Uppdatera uppgifter</button></p>
+        </form>
+    </div>
+{% endblock %}

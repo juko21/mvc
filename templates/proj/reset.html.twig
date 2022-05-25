@@ -1,0 +1,26 @@
+{# templates/proj/index.html.twig #}
+{% extends "proj/base.html.twig" %}
+{% block title %}{{ title }}{% endblock %}
+{% block header %}{{ header | raw }}{% endblock %}
+{% block subHeader %}{{ subHeader }}{% endblock %}
+
+{% block body %}
+<div class="row">
+    <h2 class="full-width">{{ title }}</h2>
+</div>
+<div class="row">
+    <div class="full-width">
+        {% for message in app.flashes('notice') %}
+        <p>
+            {{ message }}
+        </p>
+        {% endfor %}
+        <p>Klicka på knappen nedan för att återställa databasen</p>
+        <form method="POST" action="{{ path('proj-reset-processing') }}">
+            <button type="submit" name="reset" value="reset">Återställ databas</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+

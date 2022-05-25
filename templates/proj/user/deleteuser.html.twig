@@ -1,0 +1,22 @@
+{% extends "proj/base.html.twig" %}
+{% block title %}{{ title }}{% endblock %}
+{% block header %}Användare{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <h2>{{ title }}</h2>
+    </div>
+    <div class="row">
+        <form method="POST" action="{{ path('user_delete_process') }}">
+            {% for message in app.flashes('notice') %}
+            <p>
+                {{ message }}
+            </p>
+            {% endfor %}
+                <p><input type="text" name="username" disabled placeholder="Namn" min="3" value="{{ acronym }}"></p>
+                <p><input type="text" name="email" disabled placeholder="Epost" value="{{ email }}"></p>
+                <p><input type="password" name="password" required placeholder="Ditt lösenord" min="3"></p>
+                <p><button type="submit" name="delete" value="{{ userId }}">Radera konto</button></p>
+        </form>
+    </div>
+{% endblock %}

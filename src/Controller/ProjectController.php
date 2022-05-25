@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 use Symfony\UX\Chartjs\Model\Chart;
@@ -22,11 +23,11 @@ use App\Charts\ChartSettings;
 class ProjectController extends AbstractController
 {
     /**
-     * @Route("/proj/", name="proj-home")
+     * Route method for main landing page for project
+     * 
+     * @Route("/proj", name="proj-home")
      */
-    public function index(
-        ManagerRegistry $doctrine
-    ): Response {
+    public function index( ManagerRegistry $doctrine ): Response {
         $parseDown = new ParsedownExtra();
         $entityManager = $doctrine->getManager();
 
@@ -54,14 +55,65 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route("/proj/about/", name="proj-about")
+     * Route method for about page for project
+     * 
+     * @Route("/proj/about", name="proj-about")
      */
-    public function about(): Response
+    public function about( ManagerRegistry $doctrine ): Response
     {
-        return $this->render('proj/index.html.twig');
+        $parseDown = new ParsedownExtra();
+        $entityManager = $doctrine->getManager();
+
+        $content = $entityManager->getRepository(Article::class)->find(2);
+        $contentTitle = $content->getTitle();
+        $content = $parseDown->text($content->getContent());
+
+        $data = [
+            "title" => "KMOM10: Om slutprojektet",
+            "header" => "KMOM10",
+            "subHeader" => "Om slutprojektet",
+            "contentTitle" => $contentTitle,
+            "content" => $content,
+        ];
+        return $this->render('proj/about.html.twig', $data);
     }
 
     /**
+     * Route method for database reset page
+     * 
+     * @Route("/proj/reset", name="proj-reset")
+     */
+    public function reset(): Response
+    {   
+        $data = ['title' => 'Återställ databas', 'header' => 'Kmom10 projekt', 'subHeader' => 'Återställ databas'];
+        return $this->render('proj/reset.html.twig', $data);
+    }
+
+    /**
+     * Route method for database reset page
+     * 
+     * @Route("/proj/reset-processing", name="proj-reset-processing")
+     */
+    public function resetProcess(Request $request, ManagerRegistry $doctrine): Response
+    {
+        if ($request->request->get("reset") !== null) {
+            $sql = file_get_contents($this->getParameter('kernel.project_dir') . '/db/reset.sql');
+    
+            $conn = $em = $doctrine->getManager()->getConnection();
+            $stmt = $conn->prepare($sql);
+            $resultSet = $stmt->executeQuery();
+            
+            $this->addFlash("notice", "Databas återställd");
+            return $this->redirectToRoute('proj-reset');
+        }
+        $this->addFlash("notice", "Felaktig åtkomst av route");
+        return $this->redirectToRoute('proj-reset');
+    }
+
+    /**
+     * Route method for indicatorSelect. Used with parameter
+     * to send user to correct indicator page
+     * 
      * @Route("/proj/indikatorer/{indicator}", name="proj-indicator-select")
      */
     public function indicatorSelect(
@@ -75,8 +127,6 @@ class ProjectController extends AbstractController
         ];
         $entityManager = $doctrine->getManager();
 
-        // Fetch chart data from Repository, make accessible dynamically (without knowing
-        // column names and method names in entity) and flip 2d array so that each column gets an array
         $parseDown = new ParsedownExtra();
         $statData = [];
         $dbStatData = $entityManager->getRepository('App\Entity\\' . $entityTypes[$indicator])->findAll();

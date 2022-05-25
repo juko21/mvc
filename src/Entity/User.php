@@ -13,8 +13,6 @@ class User
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $name;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $password;
@@ -25,24 +23,15 @@ class User
     #[ORM\Column(type: 'string', length: 255)]
     private $type;
 
-    #[ORM\Column(type: 'string', length: 3)]
+    #[ORM\Column(type: 'string', length: 255)]
     private $acronym;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $img;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getPassword(): ?string
@@ -89,6 +78,18 @@ class User
     public function setAcronym(string $acronym): self
     {
         $this->acronym = $acronym;
+
+        return $this;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(string $img): self
+    {
+        $this->img = $img;
 
         return $this;
     }

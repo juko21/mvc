@@ -1,0 +1,35 @@
+{% extends 'proj/base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block header %}{{ header | raw }}{% endblock %}
+{% block subHeader %}{{ subHeader }}{% endblock %}
+
+{% block body %}
+
+<img class="profile-img" src="{{ img }}">
+<div class="row">
+        <h2>{{ subHeader }}</h2>
+</div>
+<div class="row">
+        <div class="c25">
+                <h3>Användaruppgifter</h3>
+                <p><b>Akronym: </b>{{ acronym }}</p>
+                <p><b>Epost: </b>{{ email }}</p>
+                <form method="POST" action="{{ path('logout_process') }}">
+                        <p><button type="submit" name="logout">Logga ut</button></p>
+                </form>
+                <form method="POST" action="{{ path('user_update') }}">
+                        <p><button type="submit" name="update" value="{{ userId }}">Uppdatera uppgifter</button></p>
+                </form>
+                <form method="POST" action="{{ path('user_delete') }}">
+                        <p><button type="submit" name="delete" value="{{ userId }}">Radera användare</button></p>
+                </form>
+        </div>
+        <div class="c65">
+                <h3>Användare</h3>
+                {% include 'proj/user/includes/table.html.twig' %}
+                <p><a href="{{ path('user_register') }}">Registrera ny användare</a></p>
+
+        </div>
+</div>
+{% endblock %}

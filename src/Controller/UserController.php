@@ -12,7 +12,7 @@ use App\Entity\User;
 
 class UserController extends AbstractController
 {
-    #[Route('/user', name: 'app_user')]
+    #[Route('/proj/user', name: 'app_user')]
     public function index(SessionInterface $session, UserRepository $userRepository): Response
     {
         $userId = $session->get('userId');
@@ -20,23 +20,40 @@ class UserController extends AbstractController
         if (isset($userId)) {
             $loggedIn = $session->get('loggedIn');
             $user = $userRepository->find($userId);
-            $gravUrl = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($user->getEmail())))
-            . "?d=" . urlencode("mp") . "&s=" . "80";
-
+            $acronym = $user->getAcronym();
+            
             $data = array(
+            "title" => "DIN PROFIL",
+            "header" => "DIN PROFIL",
+            "subHeader" => "Hej " . $acronym . "!",
             "loggedIn" => $loggedIn,
-            "userName" => $user->getName(),
+            "userName" => $acronym,
             "email" => $user->getEmail(),
-            "acronym" => $user->getAcronym(),
-            "img" => $gravUrl
+            "acronym" => $acronym,
+            "img" => $user->getImg(),
+            "userId" => $userId
             );
-            return $this->render('user/index.html.twig', $data);
+            if($user->getType() == "admin") {
+                $allUsers = $user = $userRepository->findAll();
+                $users = [];
+                foreach ($allUsers as $key => $value) {
+                    $users[] = [
+                        "id" => $value->getId(),
+                        "acronym" => $value->getAcronym(),
+                        "email" => $value->getEmail(),
+                        "type" => $value->getType()
+                    ];
+                }
+                $data['users'] = $users;
+                return $this->render('proj/user/user_admin.html.twig', $data);
+            }
+            return $this->render('proj/user/user.html.twig', $data);
         }
         return $this->redirectToRoute('login');
     }
 
     /**
-     * @Route("/login", name="login")
+     * @Route("/proj/user/login", name="login")
      */
     public function login(SessionInterface $session): Response
     {
@@ -45,14 +62,18 @@ class UserController extends AbstractController
         if ($userId) {
             return $this->redirectToRoute('app_user');
         }
-        return $this->render(
-            'user/login.html.twig',
-            ['controller_name' => 'UserController', "title" => "Logga in", "loggedIn" => $loggedIn]
-        );
+
+        $data = [
+            "title" => "Logga in",
+            "header" => "LOGGA IN",
+            "subHeader" => "",
+            "loggedIn" => $loggedIn
+        ];
+        return $this->render('/proj/user/login.html.twig', $data);
     }
 
     /**
-     * @Route("/login_process",
+     * @Route("/proj/user/login_process",
      * name="login_process",
      * methods={"POST"}
      * )
@@ -62,9 +83,9 @@ class UserController extends AbstractController
         UserRepository $userRepository,
         Request $request
     ): Response {
-        $username = $request->request->get('username');
+        $acronym = $request->request->get('acronym');
         $password = $request->request->get('password');
-        $user = $userRepository->findOneBy(["name" => $username]);
+        $user = $userRepository->findOneBy(["acronym" => $acronym]);
 
         if ($user && password_verify($password, $user->getPassword())) {
             $session->set('userId', $user->getId());
@@ -91,7 +112,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/user/update",
+     * @Route("/proj/user/update",
      * name="user_update",
      * methods={"POST"}
      * )
@@ -99,21 +120,28 @@ class UserController extends AbstractController
     public function updateUser(
         SessionInterface $session,
         UserRepository $userRepository,
+        Request $request
     ): Response {
-        $userId = $session->get('userId');
+        $currentUserId = $session->get('userId');
+        $updateUserId = $request->request->get('update');
         $loggedIn = $session->get('loggedIn');
-        $user = $userRepository->find($userId);
+        $admin = $userRepository->find($currentUserId)->getType();
+        $user = $userRepository->find($updateUserId);
 
         $data = array(
             "loggedIn" => $loggedIn,
-            "userName" => $user->getName(),
-            "email" => $user->getEmail(),
             "acronym" => $user->getAcronym(),
-            "title" => "Uppdatera användare"
+            "email" => $user->getEmail(),
+            "img" => $user->getImg(),
+            "title" => "Uppdatera användare",
+            "userId" => $updateUserId
         );
+        if ($admin == "admin") {
+            $data['type'] = $user->getType();
+        }
 
-        if ($userId) {
-            return $this->render('user/updateuser.html.twig', $data);
+        if ($currentUserId) {
+            return $this->render('proj/user/updateuser.html.twig', $data);
         }
         return $this->redirectToRoute('app_user');
     }
@@ -129,21 +157,32 @@ class UserController extends AbstractController
         UserRepository $userRepository,
         Request $request
     ): Response {
-        $userId = $session->get('userId');
-        $userName = $request->request->get('username');
+        $currentUserId = $session->get('userId');
+        $updateUserId = $request->request->get("update");
         $oldpassword = $request->request->get('oldpassword');
         $newpassword = $request->request->get('newpassword');
         $email = $request->request->get('email');
-        $acronym = substr($userName, 0, 3);
+        $acronym = $request->request->get('acronym');
+        $img = $request->request->get('img');
+        $type = $request->request->get('type');
 
-        $user = $userRepository->find($userId);
+        if (!$img) {
+            $img = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($email)))
+            . "?d=" . urlencode("mp") . "&s=" . "80";
+        }
+        $user = $userRepository->find($updateUserId);
+        $currentUser = $userRepository->find($currentUserId);
 
-        if (password_verify($oldpassword, $user->getPassword())) {
-            $user->setName($userName);
+        if (password_verify($oldpassword, $currentUser->getPassword())) {
             $user->setAcronym($acronym);
             $user->setEmail($email);
-            $user->setPassword(password_hash($newpassword, PASSWORD_BCRYPT));
-
+            $user->setImg($img);
+            if ($newpassword) {
+                $user->setPassword(password_hash($newpassword, PASSWORD_BCRYPT));
+            }
+            if ($type) {
+                $user->setType($type);
+            }
             $userRepository->add($user, true);
             return $this->redirectToRoute('app_user');
         }
@@ -158,22 +197,27 @@ class UserController extends AbstractController
      *      methods={"POST"}
      * )
      */
-    public function deleteUser(SessionInterface $session, UserRepository $userRepository): Response
+    public function deleteUser(
+        SessionInterface $session,
+        Request $request,
+        UserRepository $userRepository
+    ): Response
     {
         $userId = $session->get('userId');
+        $deleteUser = $request->request->get('delete');
         $loggedIn = $session->get('loggedIn');
-        $user = $userRepository->find($userId);
+        $user = $userRepository->find($deleteUser);
 
         $data = array(
             "loggedIn" => $loggedIn,
-            "userName" => $user->getName(),
-            "email" => $user->getEmail(),
             "acronym" => $user->getAcronym(),
-            "title" => "Radera användare"
+            "email" => $user->getEmail(),
+            "title" => "Radera användare",
+            "userId" => $deleteUser
         );
 
         if ($userId) {
-            return $this->render('user/deleteuser.html.twig', $data);
+            return $this->render('proj/user/deleteuser.html.twig', $data);
         }
         return $this->redirectToRoute('app_user');
     }
@@ -191,16 +235,20 @@ class UserController extends AbstractController
         UserRepository $userRepository,
         Request $request
     ): Response {
-        $userId = $session->get('userId');
+        $currentUserId = $session->get('userId');
+        $deleteUserId = $request->request->get('delete');
         $password = $request->request->get('password');
 
-        $user = $userRepository->find($userId);
-
-        if (password_verify($password, $user->getPassword())) {
-            $userRepository->remove($user, true);
-            $session->remove('userId');
-            $session->set('loggedIn', 0);
-            $this->addFlash("notice", "Användare har tagits bort");
+        $deleteUser = $userRepository->find($deleteUserId);
+        $currentUser = $userRepository->find($currentUserId);
+        
+        if (password_verify($password, $currentUser->getPassword())) {
+            $userRepository->remove($deleteUser, true);
+            if ($currentUserId == $deleteUserId) {
+                $session->remove('userId');
+                $session->set('loggedIn', 0);
+                $this->addFlash("notice", "Användare har tagits bort");
+            }
             return $this->redirectToRoute('login');
         }
         $this->addFlash("notice", "Felaktigt lösenord");
@@ -209,20 +257,24 @@ class UserController extends AbstractController
 
     /**
      * @Route(
-     *      "/user/register",
+     *      "/proj/user/register",
      *      name="user_register"
      * )
      */
-    public function registerUser(SessionInterface $session): Response
+    public function registerUser(
+        SessionInterface $session,
+        UserRepository $userRepository,
+        ): Response
     {
         $loggedIn = $session->get('loggedIn');
+        $userId = $session->get('userId');
 
-        if ($loggedIn) {
+        if ($loggedIn && $userRepository->find($userId)->getType() !== "admin") {
             $this->addFlash("notice", "Logga ut för att registrera användare");
             return $this->redirectToRoute('app_user');
         }
         return $this->render(
-            'user/registeruser.html.twig',
+            'proj/user/registeruser.html.twig',
             ["title" => "Registrera användare", "loggedIn" => $loggedIn]
         );
     }
@@ -234,22 +286,40 @@ class UserController extends AbstractController
      *      methods={"POST"}
      * )
      */
-    public function registerUserProcess(UserRepository $userRepository, Request $request): Response
+    public function registerUserProcess(
+        UserRepository $userRepository,
+        Request $request): Response
     {
-        $userName = $request->request->get('username');
+        $acronym = $request->request->get('acronym');
         $email = $request->request->get('email');
         $password = $request->request->get('password');
+        $img = $request->request->get('img');
+        
+        if( $userRepository->findBy(["acronym" => $acronym])) {
+            $this->addFlash("notice", "Användare existerar");
+            return $this->redirectToRoute('app_user');
+        }
+
+        if( $userRepository->findBy(["email" => $email])) {
+            $this->addFlash("notice", "Epost redan registrerad");
+            return $this->redirectToRoute('app_user');
+        }
+
+        if (!$img) {
+            $img = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($email)))
+            . "?d=" . urlencode("mp") . "&s=" . "80";
+        }
 
         $user = new User();
-        $user->setName($userName);
+        $user->setAcronym($acronym);
         $user->setEmail($email);
         $user->setPassword(password_hash($password, PASSWORD_BCRYPT));
-        $user->setAcronym(substr($userName, 0, 3));
+        $user->setImg($img);
         $user->setType("regular");
 
         $userRepository->add($user, true);
 
         $this->addFlash("notice", "Användare tillagd");
-        return $this->redirectToRoute('login');
+        return $this->redirectToRoute('app_user');
     }
 }

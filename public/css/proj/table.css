@@ -1,0 +1,25 @@
+.userlist {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--def-margin);
+}
+
+.userlist th,
+.userlist td {
+    padding: 0.5rem;
+    height: 4rem;
+    border-bottom: 1px solid var(--main-font-color);
+    text-align: left;
+}
+
+.userlist-form {
+    display: inline-block;
+    float: left;
+    margin-right: 0.5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.userlist-form button {
+    display: inline-block;
+}
