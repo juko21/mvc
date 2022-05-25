@@ -9,7 +9,7 @@ use App\Card\Card;
  */
 class Hand
 {
-    private array $hand;
+    private array $hand = [];
 
     public function __construct()
     {

@@ -186,8 +186,11 @@ class UserController extends AbstractController
      *      methods={"POST"}
      * )
      */
-    public function deletePostProcess(SessionInterface $session, UserRepository $userRepository, Request $request): Response
-    {
+    public function deletePostProcess(
+        SessionInterface $session,
+        UserRepository $userRepository,
+        Request $request
+    ): Response {
         $userId = $session->get('userId');
         $password = $request->request->get('password');
 

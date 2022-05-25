@@ -81,5 +81,4 @@ class Recycling
     {
         return [$this->year, $this->recycling, $this->other, $this->dumping];
     }
-
 }

@@ -12,7 +12,7 @@ use App\Card\Hand;
  */
 class Game
 {
-    private $players = array();
+    private $player;
     private $dealer;
     private $deck;
     private $state;

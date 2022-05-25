@@ -22,7 +22,7 @@ class Chartdata
     #[ORM\Column(type: 'string', length: 255)]
     private $type;
 
-    #[ORM\ManyToOne(targetEntity: indicator::class, inversedBy: 'chartdatas')]
+    #[ORM\ManyToOne(targetEntity: Indicator::class, inversedBy: 'chartdatas')]
     #[ORM\JoinColumn(nullable: false)]
     private $indicator;
 
@@ -67,12 +67,12 @@ class Chartdata
         return $this;
     }
 
-    public function getIndicator(): ?indicator
+    public function getIndicator(): ?Indicator
     {
         return $this->indicator;
     }
 
-    public function setIndicator(?indicator $indicator): self
+    public function setIndicator(?Indicator $indicator): self
     {
         $this->indicator = $indicator;
 

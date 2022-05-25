@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-
 use ParsedownExtra;
 use App\Card\Game;
 
@@ -45,10 +44,10 @@ class CardGameController extends AbstractController
         $start = $request->request->get('start');
         $game = $session->get('game');
 
-        if (isset($start))  {
+        if (isset($start)) {
             $game->dealToPlayer();
             $game->setState(1);
-        } 
+        }
         $session->set('game', $game);
         return $this->redirectToRoute('game-home');
     }
@@ -87,7 +86,7 @@ class CardGameController extends AbstractController
     {
         $deal = $request->request->get('deal');
         $game = $session->get('game');
-        
+
         if (isset($deal)) {
             $game->dealToPlayer();
             $game->setState(2);
@@ -100,7 +99,7 @@ class CardGameController extends AbstractController
                 $game->setState(3);
                 $this->addFlash("notice", "Bankiren vinner!");
             }
-        } 
+        }
 
         $session->set('game', $game);
         return $this->redirectToRoute('game-home');
@@ -191,9 +190,8 @@ class CardGameController extends AbstractController
         if (isset($reset)) {
             $game = new Game();
             $game->setState(0);
+            $session->set('game', $game);
         }
-
-        $session->set('game', $game);
         return $this->redirectToRoute('game-home');
     }
 
