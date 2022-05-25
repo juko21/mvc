@@ -25,6 +25,11 @@ td {
     color: var(--main-font-color)
 }
 
+a {
+    font-weight: 400;
+    text-decoration: none;
+}
+
 a:link { color: var(--main-font-color); font-weight: 400; }
 a:visited { color: var(--main-font-color); font-weight: 400; }
 a:hover { color: var(--accent-font-color); font-weight: 700; }

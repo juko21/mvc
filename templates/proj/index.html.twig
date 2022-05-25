@@ -14,22 +14,14 @@
     </div>
 </div>
 <div class="row color-block-container">
-    <div class="color-block">
-        <h3>INDIKATOR 1</h3>
-    </div>
-    <div class="color-block">
-        <h3>INDIKATOR 1</h3>
-    </div>
-    <div class="color-block">
-        <h3>INDIKATOR 1</h3>
-    </div>
-    <div>
-    {% if charts | default(null) %}
-        {% for chart in charts %}
-            {{ render_chart(chart) }}
-        {% endfor %}
-    {% endif %}
-    </div>
+<div class="row">
+    <h3 class="full-width">{{ indicatorTitle }}</h3>
+</div>
+{% for key, indicator in indicators %}
+    <a class="color-block" href="{{ path('proj-indicator-select', { indicator : indicatorRoutes[key] }) }}">
+            <h3>{{ indicator }}</h3>
+    </a>
+{% endfor %}
 </div>
 {% endblock %}
 

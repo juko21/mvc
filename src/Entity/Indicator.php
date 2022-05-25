@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\IndicatorRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: IndicatorRepository::class)]
@@ -24,6 +26,14 @@ class Indicator
 
     #[ORM\Column(type: 'boolean')]
     private $multiple;
+
+    #[ORM\OneToMany(mappedBy: 'indicator', targetEntity: Chartdata::class)]
+    private $chartdatas;
+
+    public function __construct()
+    {
+        $this->chartdatas = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +84,36 @@ class Indicator
     public function setMultiple(bool $multiple): self
     {
         $this->multiple = $multiple;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Chartdata>
+     */
+    public function getChartdatas(): Collection
+    {
+        return $this->chartdatas;
+    }
+
+    public function addChartdata(Chartdata $chartdata): self
+    {
+        if (!$this->chartdatas->contains($chartdata)) {
+            $this->chartdatas[] = $chartdata;
+            $chartdata->setIndicator($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChartdata(Chartdata $chartdata): self
+    {
+        if ($this->chartdatas->removeElement($chartdata)) {
+            // set the owning side to null (unless already changed)
+            if ($chartdata->getIndicator() === $this) {
+                $chartdata->setIndicator(null);
+            }
+        }
 
         return $this;
     }

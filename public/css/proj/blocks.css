@@ -1,14 +1,15 @@
 .color-block-container {
-    display: flexbox;
+    display: flex;
     flex-wrap: wrap;
     gap: var(--def-margin);
 }
 
 .color-block {
-    flex: 1;
-    width: 45%;
+    display: block;
+    flex: 45%;
     min-height: 200px;
     padding: var(--def-margin);
+    background-color: var(--main-color);
 }
 
 .color-block p,
@@ -16,13 +17,13 @@
     color: white;
 }
 
-.color-block:nth-child(odd) {
-    background-color: var(--main-color);
-}
+.color-block:hover { background-color: var(--tert-color); }
 
-.color-block:nth-child(even) {
-    background-color: var(--sec-color);
-}
+
+.color-block:nth-child(1) { background-color: var(--sec-color); }
+.color-block:nth-child(4) { background-color: var(--sec-color); }
+.color-block:nth-child(5) { background-color: var(--sec-color); }
+
 
 .indicator-block {  
     width: 100%;
@@ -55,6 +56,21 @@
     max-height: 400px;
 }
 @media (max-width: 900px) {
+
+    .color-block:any-link {
+        display: block;
+        flex: 100%;
+        min-height: 200px;
+        padding: var(--def-margin);
+        background-color: var(--main-color);
+    }
+    .color-block:hover { background-color: var(--tert-color); }
+
+    .color-block:nth-child(even) {
+        background-color: var(--sec-color);
+    }
+    .color-block:nth-child(even):hover { background-color: var(--tert-color); }
+
     .indicator-block:nth-child(even) .c45:first-child {
         order: 2;
     }
