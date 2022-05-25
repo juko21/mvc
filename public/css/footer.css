@@ -3,7 +3,8 @@ footer {
     padding: 2rem;
     margin: auto;
     bottom: 0;
-    background-color: #fff
+    background-color: #fff;
+    background-size: cover;
 }
 
 footer p,
