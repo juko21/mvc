@@ -36,4 +36,10 @@ a:hover { color: var(--accent-font-color); font-weight: 700; }
 a:active { color: var(--accent-font-color); font-weight: 700; }
 
 p { margin-bottom: var(--def-margin )}
-p:last-child { margin-bottom: 0;}
+p:last-child,
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child { 
+    margin-bottom: 0;
+}

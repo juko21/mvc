@@ -45,7 +45,7 @@ class ProjectController extends AbstractController
             "subHeader" => "",
             "contentTitle" => $contentTitle,
             "content" => $content,
-            "indicatorTitle" => "Indikatorer",
+            "indicatorsTitle" => "Indikatorer",
             "indicators" => $indicators,
             "indicatorRoutes" => $indicatorRoutes
         ];
@@ -102,11 +102,15 @@ class ProjectController extends AbstractController
             }
         }
 
+        $indicatorAll = $entityManager->getRepository(Indicator::class)->findAll();
         $indicatorData = $entityManager->getRepository(Indicator::class)->findOneBy(["route" => $indicator]);
+        $indicators = array_map(function($item) { return $item->getHeader(); }, $indicatorAll);
+        $indicatorRoutes = array_map(function($item) { return $item->getRoute(); }, $indicatorAll);
+
         $chartData = $indicatorData->getChartdatas();
         $articleRep = $entityManager->getRepository(Article::class);
         $multiple = $indicatorData->isMultiple();
-        
+    
         foreach ($chartData as $key => $chart) {
             $chartHeaders[$key] = $articleRep->find($chart->getArticleId())->getTitle();
             $chartTexts[$key] = '<h3>' . $chartHeaders[$key] . '</h3>';
@@ -135,7 +139,10 @@ class ProjectController extends AbstractController
             "contentTitle" => $articleRep->find($indicatorData->getArticleId())->getTitle(),
             "content" => $parseDown->text($articleRep->find($indicatorData->getArticleId())->getContent()),
             "charts" => $charts,
-            "chartTexts" => $chartTexts
+            "chartTexts" => $chartTexts,
+            "indicatorsTitle" => "Övriga indikatorer",
+            "indicators" => $indicators,
+            "indicatorRoutes" => $indicatorRoutes
         ];
         return $this->render('proj/indicator.html.twig', $data);
     }
