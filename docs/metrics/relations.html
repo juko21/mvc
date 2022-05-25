@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2022-05-21 18:20:39        , with PHPMetrics v2.8.1 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2022-05-25 17:59:51        , with PHPMetrics v2.8.1 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -93,7 +93,7 @@
                             <path d="M0 0h24v24H0z" fill="none"/>
                             <path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/>
                         </svg>
-                        Violations (6)
+                        Violations (8)
                     </a>
                 </li>
                                     <li>
@@ -183,6 +183,12 @@
                             <path d="M17 20.41L18.41 19 15 15.59 13.59 17 17 20.41zM7.5 8H11v5.59L5.59 19 7 20.41l6-6V8h3.5L12 3.5 7.5 8z"/>
                         </svg>
                         Package relations
+                    </a>
+                </li>
+                                <li>
+                    <a href="git.html">
+                        <img src="images/logo-git.png" alt="">
+                        Git
                     </a>
                 </li>
                                 <!--<li>
@@ -275,6 +281,11 @@
     },
     {
         "name": "\\App\\Card\\Hand",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Charts\\ChartSettings",
         "size": 3000,
         "relations": []
     },
@@ -372,6 +383,29 @@
         "relations": []
     },
     {
+        "name": "\\App\\Controller\\ProjectController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\ParsedownExtra",
+            "\\Symfony\\Component\\Routing\\Annotation\\Route",
+            "\\Symfony\\UX\\Chartjs\\Builder\\ChartBuilderInterface",
+            "\\App\\Charts\\ChartSettings"
+        ]
+    },
+    {
+        "name": "\\Doctrine\\Persistence\\ManagerRegistry",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\UX\\Chartjs\\Builder\\ChartBuilderInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
         "name": "\\App\\Controller\\ReportController",
         "size": 3000,
         "relations": [
@@ -410,6 +444,56 @@
         "relations": []
     },
     {
+        "name": "\\App\\Entity\\Article",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Entity\\Chartdata",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Entity\\Demographics",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Entity\\Foodwaste",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Entity\\Indicator",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Doctrine\\Common\\Collections\\ArrayCollection",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Doctrine\\Common\\Collections\\Collection",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Entity\\Material",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Entity\\Pollution",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Entity\\Recycling",
+        "size": 3000,
+        "relations": []
+    },
+    {
         "name": "\\App\\Kernel",
         "size": 3000,
         "relations": [
@@ -422,14 +506,81 @@
         "relations": []
     },
     {
+        "name": "\\App\\Repository\\ArticleRepository",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\App\\Entity\\Article"
+        ]
+    },
+    {
         "name": "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
         "size": 3000,
         "relations": []
     },
     {
-        "name": "\\Doctrine\\Persistence\\ManagerRegistry",
+        "name": "\\App\\Repository\\ChartdataRepository",
         "size": 3000,
-        "relations": []
+        "relations": [
+            "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\App\\Entity\\Chartdata"
+        ]
+    },
+    {
+        "name": "\\App\\Repository\\DemographicsRepository",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\App\\Entity\\Demographics"
+        ]
+    },
+    {
+        "name": "\\App\\Repository\\FoodwasteRepository",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\App\\Entity\\Foodwaste"
+        ]
+    },
+    {
+        "name": "\\App\\Repository\\IndicatorRepository",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\App\\Entity\\Indicator"
+        ]
+    },
+    {
+        "name": "\\App\\Repository\\MaterialRepository",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\App\\Entity\\Material"
+        ]
+    },
+    {
+        "name": "\\App\\Repository\\PollutionRepository",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\App\\Entity\\Pollution"
+        ]
+    },
+    {
+        "name": "\\App\\Repository\\RecyclingRepository",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\App\\Entity\\Recycling"
+        ]
     }
 ];
 
