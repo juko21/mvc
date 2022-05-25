@@ -27,7 +27,11 @@ class ProjectController extends AbstractController
      * 
      * @Route("/proj", name="proj-home")
      */
-    public function index( ManagerRegistry $doctrine ): Response {
+    public function index(
+        ManagerRegistry $doctrine,
+        SessionInterface $session
+    ): Response {
+        $loggedIn = $session->get("loggedIn");
         $parseDown = new ParsedownExtra();
         $entityManager = $doctrine->getManager();
 
@@ -49,7 +53,8 @@ class ProjectController extends AbstractController
             "content" => $content,
             "indicatorsTitle" => "Indikatorer",
             "indicators" => $indicators,
-            "indicatorRoutes" => $indicatorRoutes
+            "indicatorRoutes" => $indicatorRoutes,
+            'loggedIn' => $loggedIn
         ];
         return $this->render('proj/index.html.twig', $data);
     }
@@ -59,8 +64,12 @@ class ProjectController extends AbstractController
      * 
      * @Route("/proj/about", name="proj-about")
      */
-    public function about( ManagerRegistry $doctrine ): Response
+    public function about(
+        ManagerRegistry $doctrine,
+        SessionInterface $session
+    ): Response
     {
+        $loggedIn = $session->get("loggedIn");
         $parseDown = new ParsedownExtra();
         $entityManager = $doctrine->getManager();
 
@@ -74,6 +83,7 @@ class ProjectController extends AbstractController
             "subHeader" => "Om slutprojektet",
             "contentTitle" => $contentTitle,
             "content" => $content,
+            'loggedIn' => $loggedIn
         ];
         return $this->render('proj/about.html.twig', $data);
     }
@@ -83,9 +93,15 @@ class ProjectController extends AbstractController
      * 
      * @Route("/proj/reset", name="proj-reset")
      */
-    public function reset(): Response
+    public function reset(SessionInterface $session): Response
     {   
-        $data = ['title' => 'Återställ databas', 'header' => 'Kmom10 projekt', 'subHeader' => 'Återställ databas'];
+        $loggedIn = $session->get("loggedIn");
+        $data = [
+            'title' => 'Återställ databas',
+            'header' => 'Kmom10 projekt',
+            'subHeader' => 'Återställ databas',
+            'loggedIn' => $loggedIn
+        ];
         return $this->render('proj/reset.html.twig', $data);
     }
 
@@ -94,8 +110,10 @@ class ProjectController extends AbstractController
      * 
      * @Route("/proj/reset-processing", name="proj-reset-processing")
      */
-    public function resetProcess(Request $request, ManagerRegistry $doctrine): Response
-    {
+    public function resetProcess(
+        Request $request,
+        ManagerRegistry $doctrine
+    ): Response {
         if ($request->request->get("reset") !== null) {
             $sql = file_get_contents($this->getParameter('kernel.project_dir') . '/db/reset.sql');
     
@@ -119,8 +137,10 @@ class ProjectController extends AbstractController
     public function indicatorSelect(
         ManagerRegistry $doctrine,
         string $indicator,
-        ChartBuilderInterface $chartBuilder
+        ChartBuilderInterface $chartBuilder,
+        SessionInterface $session
     ): Response {
+        $loggedIn = $session->get("loggedIn");
         $entityTypes = [
             "utslapp" => "Pollution", "matsvinn" => "Foodwaste",
             "atervinning" => "Recycling", "materialfotavtryck" => "Material"
@@ -190,7 +210,8 @@ class ProjectController extends AbstractController
             "chartTexts" => $chartTexts,
             "indicatorsTitle" => "Övriga indikatorer",
             "indicators" => $indicators,
-            "indicatorRoutes" => $indicatorRoutes
+            "indicatorRoutes" => $indicatorRoutes,
+            'loggedIn' => $loggedIn
         ];
         return $this->render('proj/indicator.html.twig', $data);
     }

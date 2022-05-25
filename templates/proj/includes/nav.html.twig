@@ -1,21 +1,35 @@
 
 <nav class="navbar">
     <ul class="h_nav">
-            <li> <a href="{{ path('proj-home') }}">HEM</a></li>
-            <li> <a href="{{ path('home') }}">RAPPORT</a></li>
-            <li> <a href="{{ path('proj-about') }}">OM</a></li>
+        <li> <a href="{{ path('proj-home') }}">HEM</a></li>
+        <li> <a href="{{ path('home') }}">RAPPORT</a></li>
+        <li> <a href="{{ path('proj-about') }}">OM</a></li>
+        <li>
+        {% if loggedIn|default(0) %}
+                <a href="{{ path('app_user') }}">ANVÄNDARE</a>
+        {% else %}
+                <a href="{{ path('login') }}">LOGGA IN</a></li>
+        {% endif %}
+        </li>
     </ul>
     <div class="m_nav">
-            <div class="hamburger" >
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+        <div class="hamburger" >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
     <ul class="dropdown_menu">
-            <li> <a href="{{ path('proj-home') }}">HEM</a></li>
-            <li> <a href="{{ path('home') }}">RAPPORT</a></li>
-            <li> <a href="{{ path('about') }}">OM</a></li>
+        <li> <a href="{{ path('proj-home') }}">HEM</a></li>
+        <li> <a href="{{ path('home') }}">RAPPORT</a></li>
+        <li> <a href="{{ path('about') }}">OM</a></li>
+        <li>
+        {% if loggedIn|default(0) %}
+                <a href="{{ path('app_user') }}">ANVÄNDARE</a>
+        {% else %}
+                <a href="{{ path('login') }}">LOGGA IN</a>
+        {% endif %}
+        </li>
     </ul>
 </nav>
