@@ -122,7 +122,7 @@ class ChartCreator
     public function getOptions()
     {
         $fontColor = $this->inverted ? 'rgb(255, 255, 255)' : 'rgb(80, 80, 80)' ;
-        $gridColor = $this->inverted ? 'rgb(255, 255, 255, 0.3)' : 'rgb(80, 80, 80)';
+        $gridColor = $this->inverted ? 'rgba(255, 255, 255, 0.3)' : 'rgb(80, 80, 80)';
         $options = [
             'maintainAspectRatio' => false,
             'plugins' => [
@@ -136,7 +136,7 @@ class ChartCreator
             'scales' => [
                 'y' => [
                     'suggestedMin' => 0,
-                    'suggestedMax' => max($this->datay),
+                    'suggestedMax' => max(array_map(function($item) { return max($item); }, $this->datay)),
                     'ticks' => [
                         'color' => $fontColor,
                     ],

@@ -44,10 +44,6 @@ class ProjectController extends AbstractController
         $indicatorRoutes = array_map(function ($item) {
             return $item->getRoute();
         }, $indicatorData);
-        $datax = [1992, 1993, 1993, 1994, 1995, 1996, 1997];
-        $datay = [1, 2, 3, 4, 5, 6, 7];
-        $chartCreator = new ChartCreator($datax, [$datay], ["Hamburgers per day"], true, true, "line");
-        $chart = $chartCreator->createChart();
         
         $data = [
             "title" => "HÅLLBAR KONSUMTIONOCH PRODUKTION",
@@ -58,8 +54,7 @@ class ProjectController extends AbstractController
             "indicatorsTitle" => "Indikatorer",
             "indicators" => $indicators,
             "indicatorRoutes" => $indicatorRoutes,
-            'loggedIn' => $loggedIn,
-            'chart' => $chart
+            'loggedIn' => $loggedIn
         ];
         return $this->render('proj/index.html.twig', $data);
     }
