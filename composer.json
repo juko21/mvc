@@ -121,7 +121,7 @@
             "@phpstan"
         ],
         "phpdoc": "tools/phpdoc/phpdoc",
-        "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit",
+        "phpunit": "coverage vendor/bin/phpunit",
         "phpmetrics": "tools/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json --junit=build/junit.xml"
     },
     "conflict": {
