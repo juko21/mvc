@@ -7,8 +7,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
-use Symfony\UX\Chartjs\Model\Chart;
 use ParsedownExtra;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Entity\Article;
@@ -18,7 +16,7 @@ use App\Entity\Recycling;
 use App\Entity\Material;
 use App\Entity\Indicator;
 use App\Entity\Chartdata;
-use App\ChartSettings\ChartSettings;
+use App\ChartSettings\ChartCreator;
 use Doctrine\DBAL\Connection;
 
 class ProjectController extends AbstractController
@@ -141,39 +139,54 @@ class ProjectController extends AbstractController
         SessionInterface $session
     ): Response {
         $loggedIn = $session->get("loggedIn");
+        $parseDown = new ParsedownExtra();
+        $entityManager = $doctrine->getManager();
+
         $entityTypes = [
             "utslapp" => "Pollution", "matsvinn" => "Foodwaste",
             "atervinning" => "Recycling", "materialfotavtryck" => "Material"
         ];
-        $entityManager = $doctrine->getManager();
 
-        $parseDown = new ParsedownExtra();
-        $statData = [];
-        $dbStatData = $entityManager->getRepository('App\Entity\\' . $entityTypes[$indicator])->findAll();
-        $dbStatData = array_map(function ($item) {
-            return $item->getAll();
-        }, $dbStatData);
-        $count = count($dbStatData[0]);
-        for ($i = 0; $i < $count; $i++) {
-            foreach ($dbStatData as $key => $value) {
-                $statData[$i][] = $value[$i];
-            }
-        }
-
+        // Get indicator for route as well as all indicators for links
         $indicatorAll = $entityManager->getRepository(Indicator::class)->findAll();
         $indicatorData = $entityManager->getRepository(Indicator::class)->findOneBy(["route" => $indicator]);
 
-        $indicators = array_map(function ($item) {
+        // fetch indicator headers and routes
+        $indicatorHeaders = array_map(function ($item) {
             return $item->getHeader();
         }, $indicatorAll);
         $indicatorRoutes = array_map(function ($item) {
             return $item->getRoute();
         }, $indicatorAll);
 
-        $chartData = $indicatorData->getChartdatas();
+        // Get articleRepository
         $articleRep = $entityManager->getRepository(Article::class);
+
+        // Get all entities containing data for corresponding indicator
+        $dataEntities = [];
+        $dataEntities = $entityManager->getRepository('App\Entity\\' . $entityTypes[$indicator])->findAll();
+
+        // Fetch raw data from data entities
+        $rawStatistics = array_map(function ($item) {
+            return $item->getAll();
+        }, $dataEntities);
+
+        // Flip the arrays so that values from each db table column are put in its own array
+        $statistics = [];
+        $count = count($rawStatistics[0]);
+        for ($i = 0; $i < $count; $i++) {
+            foreach ($rawStatistics as $key => $value) {
+                $statistics[$i][] = $value[$i];
+            }
+        }
+
+        // Get chart data settings from db
+        $chartData = $indicatorData->getChartdatas();
+
+        // Get bool multiple, signifies whether datasets are combined into chart or separate
         $multiple = $indicatorData->isMultiple();
 
+        // Get chartheaders for datasets and corresponding texts
         $chartHeaders = [];
         $chartTexts = [];
         foreach ($chartData as $key => $chart) {
@@ -181,24 +194,28 @@ class ProjectController extends AbstractController
             $chartTexts[$key] = '<h3>' . $chartHeaders[$key] . '</h3>';
             $chartTexts[$key] .= '<p>' . $articleRep->find($chart->getArticleId())->getContent()  . '</p>';
         }
+    
+        // Construct charts
         $charts = [];
-        $count = count($statData) - 1;
+        $count = count($statistics) - 1;
+
         if ($multiple) {
-            $count = 1;
-            $chartTexts = [implode('', $chartTexts)];
+            $count = 1; // Set number of charts to 1 if multiple line chart is indicated
+            $chartTexts = [implode('', $chartTexts)]; // Implode all chart texts to 1-element array neater display
         }
         for ($i = 0; $i < $count; $i++) {
-            $charts[] = $chartBuilder->createChart($chartData[0]->getType());
-            $chartSets = new ChartSettings(
-                $statData[0],
-                $multiple ? array_slice($statData, 1) : [$statData[$i + 1]],
-                $multiple ? $chartHeaders : [$chartHeaders[$i]],
-                true
+            $chartCreator = new ChartCreator(
+            $statistics[0],
+            $multiple ? array_slice($statistics, 1) : [$statistics[$i + 1]],
+            $multiple ? $chartHeaders : [$chartHeaders[$i]],
+            true,
+            true,
+            $chartData[0]->getType()
             );
-            $charts[$i]->setData($chartSets->getDataset());
-            $charts[$i]->setOptions($chartSets->getOptions());
+            $charts[] = $chartCreator->createChart();
         }
 
+        // Set data for twig template
         $data = [
             "title" => "Indikatorer: " . $indicatorData->getHeader(),
             "header" => "INDIKATORER",
@@ -208,10 +225,29 @@ class ProjectController extends AbstractController
             "charts" => $charts,
             "chartTexts" => $chartTexts,
             "indicatorsTitle" => "Övriga indikatorer",
-            "indicators" => $indicators,
+            "indicators" => $indicatorHeaders,
             "indicatorRoutes" => $indicatorRoutes,
             'loggedIn' => $loggedIn
         ];
         return $this->render('proj/indicator.html.twig', $data);
     }
 }
+
+
+
+
+        /*
+        // Loop through datasets and create charts, if multiple line chart indicated, send all datasets at once
+        // an finish loop after 1 iteration
+        for ($i = 0; $i < $count; $i++) {
+            $charts[] = $chartBuilder->createChart($chartData[0]->getType());
+            $chartSets = new ChartSettings(
+                $statistics[0],
+                $multiple ? array_slice($statistics, 1) : [$statistics[$i + 1]],
+                $multiple ? $chartHeaders : [$chartHeaders[$i]],
+                true
+            );
+            $charts[$i]->setData($chartSets->getDataset());
+            $charts[$i]->setOptions($chartSets->getOptions());
+        }
+        */

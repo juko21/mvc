@@ -15,11 +15,9 @@ class LibraryController extends AbstractController
     #[Route('/library', name: 'app_library')]
     public function index(SessionInterface $session): Response
     {
-        $loggedIn = $session->get('loggedIn');
-
         return $this->render(
             'library/index.html.twig',
-            ['controller_name' => 'LibraryController', "loggedIn" => $loggedIn]
+            ['controller_name' => 'LibraryController']
         );
     }
 
@@ -31,11 +29,9 @@ class LibraryController extends AbstractController
      */
     public function createBook(SessionInterface $session): Response
     {
-        $loggedIn = $session->get('loggedIn');
-
         return $this->render(
             'library/createbook.html.twig',
-            ["headerH2" => "Registrera ny bok", "loggedIn" => $loggedIn]
+            ["headerH2" => "Registrera ny bok"]
         );
     }
 
@@ -73,12 +69,11 @@ class LibraryController extends AbstractController
         BookRepository $bookRepository,
         SessionInterface $session
     ): Response {
-        $loggedIn = $session->get('loggedIn');
         $books = $bookRepository->findAll();
 
         return $this->render(
             'library/showbooks.html.twig',
-            ["title" => "Visa böcker", "books" => $books, "loggedIn" => $loggedIn]
+            ["title" => "Visa böcker", "books" => $books]
         );
     }
 
@@ -90,12 +85,11 @@ class LibraryController extends AbstractController
         BookRepository $bookRepository,
         int $bookId
     ): Response {
-        $loggedIn = $session->get('loggedIn');
         $book = $bookRepository->find($bookId);
 
         return $this->render(
             'library/showbooks.html.twig',
-            ["title" => "Visa bok", "books" => [$book], "loggedIn" => $loggedIn]
+            ["title" => "Visa bok", "books" => [$book]]
         );
     }
 
@@ -107,12 +101,11 @@ class LibraryController extends AbstractController
         BookRepository $bookRepository,
         string $isbn
     ): Response {
-        $loggedIn = $session->get('loggedIn');
         $book = $bookRepository->findOneBy(["isbn" => $isbn]);
 
         return $this->render(
             'library/showbooks.html.twig',
-            ["title" => "Visa bok", "books" => [$book], "loggedIn" => $loggedIn]
+            ["title" => "Visa bok", "books" => [$book]]
         );
     }
 
@@ -129,12 +122,11 @@ class LibraryController extends AbstractController
         Request $request
     ): Response {
         $bookId = $request->request->get('update');
-        $loggedIn = $session->get('loggedIn');
         $book = $bookRepository->find($bookId);
 
         return $this->render(
             'library/updatebook.html.twig',
-            ["title" => "Uppdatera bok", "book" => $book, "loggedIn" => $loggedIn]
+            ["title" => "Uppdatera bok", "book" => $book]
         );
     }
 
@@ -179,12 +171,11 @@ class LibraryController extends AbstractController
         Request $request
     ): Response {
         $bookId = $request->request->get('delete');
-        $loggedIn = $session->get('loggedIn');
         $book = $bookRepository->find($bookId);
 
         return $this->render(
             'library/deletebook.html.twig',
-            ["title" => "Radera bok", "book" => $book, "loggedIn" => $loggedIn]
+            ["title" => "Radera bok", "book" => $book]
         );
     }
 

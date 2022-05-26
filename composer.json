@@ -121,8 +121,8 @@
             "@phpstan"
         ],
         "phpdoc": "tools/phpdoc/phpdoc",
-        "phpunit": "vendor/bin/phpunit",
-        "phpmetrics": "tools/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json"
+        "phpunit": "vendor/bin/phpunit --log-junit build/junit.xml",
+        "phpmetrics": "tools/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json --junit=build/junit.xml"
     },
     "conflict": {
         "symfony/symfony": "*"

@@ -15,9 +15,7 @@ class ReportController extends AbstractController
      */
     public function index(SessionInterface $session): Response
     {
-        $loggedIn = $session->get('loggedIn');
-
-        return $this->render('index.html.twig', ["loggedIn" => $loggedIn]);
+        return $this->render('index.html.twig');
     }
 
     /**
@@ -25,9 +23,7 @@ class ReportController extends AbstractController
      */
     public function about(SessionInterface $session): Response
     {
-        $loggedIn = $session->get('loggedIn');
-
-        return $this->render('about.html.twig', ["loggedIn" => $loggedIn]);
+        return $this->render('about.html.twig');
     }
 
     /**
@@ -36,16 +32,16 @@ class ReportController extends AbstractController
     public function report(SessionInterface $session): Response
     {
         $parseDown = new ParsedownExtra();
-        $loggedIn = $session->get('loggedIn');
-
         $files = glob('content/report/*.{md}', GLOB_BRACE);
         $content = [];
+
         foreach ($files as $file) {
             $content[] = "<section>" . $parseDown->text(file_get_contents($file)) . "</section>";
         }
+
         return $this->render(
             'report.html.twig',
-            ["title" => "Rapporter", "content" => $content, "loggedIn" => $loggedIn]
+            ["title" => "Rapporter", "content" => $content]
         );
     }
 
@@ -55,14 +51,12 @@ class ReportController extends AbstractController
     public function metrics(SessionInterface $session): Response
     {
         $parseDown = new ParsedownExtra();
-        $loggedIn = $session->get('loggedIn');
-
         $file = 'content/metrics/metrics.md';
         $content = "<section>" . $parseDown->text(file_get_contents($file)) . "</section>";
 
         return $this->render(
             'report.html.twig',
-            ["title" => "Metrics", "content" => [$content], "loggedIn" => $loggedIn]
+            ["title" => "Metrics", "content" => [$content]]
         );
     }
 }

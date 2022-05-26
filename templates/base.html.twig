@@ -19,13 +19,6 @@
                     <li> <a href="{{ path('app_library') }}">BIBLIOTEK</a></li>
                     <li> <a href="{{ path('metrics') }}">METRICS</a></li>
                     <li> <a href="{{ path('proj-home') }}">PROJEKT</a></li>
-                    <li>
-                    {% if loggedIn|default(0) %}
-                        <a href="{{ path('app_user') }}">ANVÄNDARE</a>
-                    {% else %}
-                        <a href="{{ path('login') }}">LOGGA IN</a></li>
-                    {% endif %}
-                    </li>
             </ul>
             <div class="m_nav">
                     <div class="hamburger" >
@@ -44,14 +37,6 @@
                     <li> <a href="{{ path('app_library') }}">BIBLIOTEK</a></li>
                     <li> <a href="{{ path('metrics') }}">METRICS</a></li>
                     <li> <a href="{{ path('proj-home') }}">PROJEKT</a></li>
-                    <li> 
-                    {% if loggedIn|default(0) %}
-                        <a href="{{ path('app_user') }}">ANVÄNDARE</a>
-                    {% else %}
-                        <a href="{{ path('login') }}">LOGGA IN</a></li>
-                    {% endif %}
-                    </li>
-
             </ul>
         </nav>
         <div class="spacefiller"></div>
