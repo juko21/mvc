@@ -17,7 +17,7 @@ class ChartCreatorTest extends TestCase
     {
         $datax = [1992, 1993];
         $datay = [1, 2, 3, 4];
-        $chartCreator = new ChartCreator($datax, [$datay], ["Hamburgers per day"], true, true, "bar");
+        $chartCreator = new ChartCreator($datax, ["Hamburgers per day" => $datay], true, "bar");
         $this->assertInstanceOf("\App\ChartCreator\ChartCreator", $chartCreator);
     }
 
@@ -29,10 +29,12 @@ class ChartCreatorTest extends TestCase
     {
         $datax = [1992, 1993, 1993, 1994, 1995, 1996, 1997];
         $datay = [1, 2, 3, 4, 5, 6, 7];
-        $chartCreator = new ChartCreator($datax, [$datay], ["Hamburgers per day"], true, true, "line");
+        $chartCreator = new ChartCreator($datax, ["Hamburgers per day" => $datay], true, "bar");
         $chart = $chartCreator->createChart();
         
         $this->assertInstanceOf("\Symfony\UX\Chartjs\Model\Chart", $chart);
+        $this->assertInstanceOf("\Symfony\UX\Chartjs\Model\Chart", $chartCreator->getChart());
+
     }
 
     /**
@@ -42,12 +44,16 @@ class ChartCreatorTest extends TestCase
     public function testCreateMultipleLineChart()
     {
         $datax = [1992, 1993, 1993, 1994, 1995, 1996, 1997];
-        $datay = [[1, 2, 3, 4, 5, 6, 7], [4 ,6 ,4 ,8 ,4 ,4, 2], [4 ,1 ,4 ,2 ,4 ,20, 3]];
-        $labels = ["Numbers", "More numbers", "Even more numbers"];
-        $chartCreator = new ChartCreator($datax, $datay, $labels, true, false, "line");
+        $datay = [
+            "Numbers" =>[1, 2, 3, 4, 5, 6, 7],
+            "More numbers" => [4 ,6 ,4 ,8 ,4 ,4, 2],
+            "Even more numbers" => [4 ,1 ,4 ,2 ,4 ,20, 3]
+        ];
+        $chartCreator = new ChartCreator($datax, $datay, false, "line");
         $chart = $chartCreator->createChart();
         
         $this->assertInstanceOf("\Symfony\UX\Chartjs\Model\Chart", $chart);
+        $this->assertInstanceOf("\Symfony\UX\Chartjs\Model\Chart", $chartCreator->getChart());
     }
 
     /**
@@ -58,7 +64,7 @@ class ChartCreatorTest extends TestCase
     {
         $datax = [1992, 1993, 1993, 1994, 1995, 1996, 1997];
         $datay = [1, 2, 3, 4, 5, 6, 7];
-        $chartCreator = new ChartCreator($datax, [$datay], ["Hamburgers per day"], true, true, "line");
+        $chartCreator = new ChartCreator($datax, ["Hamburgers per day" => $datay], true, "bar");
         $exp = [
             'labels' => $datax,
             'datasets' => [
@@ -83,7 +89,7 @@ class ChartCreatorTest extends TestCase
     {
         $datax = [1992, 1993, 1993, 1994, 1995, 1996, 1997];
         $datay = [1, 2, 3, 4, 5, 6, 7];
-        $chartCreator = new ChartCreator($datax, [$datay], ["Hamburgers per day"], true, true, "line");
+        $chartCreator = new ChartCreator($datax, ["Hamburgers per day" => $datay], true, "bar");
         $exp = [
             'maintainAspectRatio' => false,
             'plugins' => [
@@ -131,9 +137,12 @@ class ChartCreatorTest extends TestCase
     public function testMultipleLineDatasets()
     {
         $datax = [1992, 1993, 1993, 1994, 1995, 1996, 1997];
-        $datay = [[1, 2, 3, 4, 5, 6, 7], [4 ,6 ,4 ,8 ,4 ,4, 2], [4 ,1 ,4 ,2 ,4 ,20, 3]];
-        $labels = ["Numbers", "More numbers", "Even more numbers"];
-        $chartCreator = new ChartCreator($datax, $datay, $labels, true, false, "line");
+        $datay = [
+            "Numbers" =>[1, 2, 3, 4, 5, 6, 7],
+            "More numbers" => [4 ,6 ,4 ,8 ,4 ,4, 2],
+            "Even more numbers" => [4 ,1 ,4 ,2 ,4 ,20, 3]
+        ];
+        $chartCreator = new ChartCreator($datax, $datay, false, "line");
         $exp = [
             'labels' => $datax,
             'datasets' => [
@@ -173,9 +182,12 @@ class ChartCreatorTest extends TestCase
     public function testMultipleLineOptions()
     {
         $datax = [1992, 1993, 1993, 1994, 1995, 1996, 1997];
-        $datay = [[1, 2, 3, 4, 5, 6, 7], [4 ,6 ,4 ,8 ,4 ,4, 2], [4 ,1 ,4 ,2 ,4 ,20, 3]];
-        $labels = ["Numbers", "More numbers", "Even more numbers"];
-        $chartCreator = new ChartCreator($datax, $datay, $labels, true, false, "line");
+        $datay = [
+            "Numbers" =>[1, 2, 3, 4, 5, 6, 7],
+            "More numbers" => [4 ,6 ,4 ,8 ,4 ,4, 2],
+            "Even more numbers" => [4 ,1 ,4 ,2 ,4 ,20, 3]
+        ];
+        $chartCreator = new ChartCreator($datax, $datay, false, "line");
         $exp = [
             'maintainAspectRatio' => false,
             'plugins' => [
@@ -194,7 +206,7 @@ class ChartCreatorTest extends TestCase
                         'color' => 'rgb(80, 80, 80)',
                     ],
                     'title' => [
-                        'title' => $labels,
+                        'title' => array_keys($datay),
                         'color' => 'rgb(80, 80, 80)'
                     ],
                     'grid' => [

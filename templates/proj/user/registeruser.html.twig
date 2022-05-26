@@ -1,9 +1,9 @@
 {% extends "proj/base.html.twig" %}
-{% block title %}{{ title }}{% endblock %}
-{% block header %}Användare{% endblock %}
+{% block title %}Registrera användare{% endblock %}
+{% block header %}Registrera Användare{% endblock %}
 
 {% block body %}
-    <h2>{{ title }}</h2>
+    <h2>Registrera nytt konto</h2>
     {% for message in app.flashes('notice') %}
     <p>
         {{ message }}

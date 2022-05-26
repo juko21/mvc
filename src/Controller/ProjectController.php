@@ -162,6 +162,12 @@ class ProjectController extends AbstractController
         // Get articleRepository
         $articleRep = $entityManager->getRepository(Article::class);
 
+        // Get chart data settings from db
+        $chartData = $indicatorData->getChartdatas();
+
+        // Get bool multiple, signifies whether datasets are combined into chart or separate
+        $multiple = $indicatorData->isMultiple();
+
         // Get all entities containing data for corresponding indicator
         $dataEntities = $entityManager->getRepository('App\Entity\\' . $entityTypes[$indicator])->findAll();
 
@@ -179,39 +185,38 @@ class ProjectController extends AbstractController
             }
         }
 
-        // Get chart data settings from db
-        $chartData = $indicatorData->getChartdatas();
-
-        // Get bool multiple, signifies whether datasets are combined into chart or separate
-        $multiple = $indicatorData->isMultiple();
-
-        // Get chartheaders for datasets and corresponding texts
+        // Create new arrays for $dataX and $dataY
+        $dataX = $statistics[0];
+        $dataY = [];
+    
+        // Get chartheaders for datasets and corresponding texts 
+        // and assign labels => data as $key => value for $dataY
         $chartHeaders = [];
         $chartTexts = [];
         foreach ($chartData as $key => $chart) {
             $chartHeaders[] = $articleRep->find($chart->getArticleId())->getTitle();
             $chartTexts[$key] = '<h3>' . $chartHeaders[$key] . '</h3>';
             $chartTexts[$key] .= '<p>' . $articleRep->find($chart->getArticleId())->getContent()  . '</p>';
+            $dataY[$chartHeaders[$key]] = $statistics[$key + 1];
         }
     
         // Construct charts
         $charts = [];
-        $count = count($statistics) - 1;
 
         if ($multiple) {
-            $count = 1; // Set number of charts to 1 if multiple line chart is indicated
             $chartTexts = [implode('', $chartTexts)]; // Implode all chart texts to 1-element array neater display
+            $dataY = [$dataY];
         }
-        for ($i = 0; $i < $count; $i++) {
+        $count = 0;
+        foreach ($dataY as $value) {
             $chartCreator = new ChartCreator(
-                $statistics[0],
-                $multiple ? array_slice($statistics, 1) : [$statistics[$i + 1]],
-                $multiple ? $chartHeaders : [$chartHeaders[$i]],
+                $dataX,
+                $multiple ? $value : [$value],
                 true,
-                true,
-                $chartData[0]->getType()
+                $chartData[$count]->getType()
             );
             $charts[] = $chartCreator->createChart();
+            $count++;
         }
 
         // Set data for twig template

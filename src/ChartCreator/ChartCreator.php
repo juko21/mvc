@@ -41,21 +41,18 @@ class ChartCreator
      * fetched with getDataset and getOptions
      *
      * @param array $datax Array of dataset-values to be used for x-value on chart
-     * @param array $datay Array of dataset-values to be used for y-value on chart
-     * @param array $labels Array of labels for y-values
+     * @param array $datay Key-value array of dataset-values with valuesfor y-axis
      * @param bool $inverted Whether chart colours are inverted or not
      * @param string $type Chart type
      */
     public function __construct(
         array $datax,
         array $datay,
-        array $labels,
         bool $inverted,
         string $type
     ) {
         $this->datax = $datax;
         $this->datay = $datay;
-        $this->labels = $labels;
         $this->inverted = $inverted;
         $this->type = $type;
     }
@@ -97,16 +94,17 @@ class ChartCreator
     {
         $dataset = ['labels' => $this->datax, 'datasets' => []];
         $fontColor = $this->inverted ? 'rgb(255, 255, 255)' : 'rgb(80, 80, 80)' ;
-        $count = count($this->datay);
-        for ($i = 0; $i < $count; $i++) {
+        $count = 0;
+        foreach ($this->datay as $key => $value){
             $dataset['datasets'][] = [
-                'label' => $this->labels[$i],
+                'label' => $key,
                 'fontColor' => $fontColor,
-                'backgroundColor' => $this->colors[$i],
-                'borderColor' => $this->colors[$i],
-                "color" => $this->colors[$i],
-                'data' => $this->datay[$i]
+                'backgroundColor' => $this->colors[$count],
+                'borderColor' => $this->colors[$count],
+                "color" => $this->colors[$count],
+                'data' => $value
             ];
+            $count++;
         }
         return $dataset;
     }
@@ -139,7 +137,7 @@ class ChartCreator
                         'color' => $fontColor,
                     ],
                     'title' => [
-                        'title' => $this->labels,
+                        'title' => array_keys($this->datay),
                         'color' => $fontColor
                     ],
                     'grid' => [

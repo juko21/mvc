@@ -1,10 +1,10 @@
 {% extends "proj/base.html.twig" %}
-{% block title %}{{ title }}{% endblock %}
-{% block header %}Användare{% endblock %}
+{% block title %}Uppdatera användare{% endblock %}
+{% block header %}Uppdatera användare{% endblock %}
 
 {% block body %}
     <div class="row">
-    <h2>{{ title }}</h2>
+    <h2>Uppdatera användarkonto</h2>
     </div>
     <div class="row">
         <form method="POST" action="{{ path('user_update_process') }}">
@@ -16,7 +16,7 @@
             <p>Lämna lösenord tomt om du ej vill uppdatera. Lämna bildlänk tom för att hämta gravitar.</p>
             <p><input type="text" name="acronym" required placeholder="Akronym" min="3" value="{{ acronym }}"></p>
             <p><input type="text" name="email" required placeholder="Epost" value="{{ email }}"></p>
-            <p><input type="text" name="img" required placeholder="Länk till bild" value="{{ img }}"></p>
+            <p><input type="text" name="img" placeholder="Länk till bild" value="{{ img }}"></p>
 
             {% if type | default() %}
             <p>

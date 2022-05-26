@@ -17,7 +17,7 @@ use App\Entity\User;
 class UserController extends AbstractController
 {
     #[Route('/proj/user', name: 'app_user')]
-    public function index(SessionInterface $session, UserRepository $userRepository): Response
+    public function userHome(SessionInterface $session, UserRepository $userRepository): Response
     {
         $userId = $session->get('userId');
 
@@ -27,11 +27,7 @@ class UserController extends AbstractController
             $acronym = $user->getAcronym();
 
             $data = [
-                "title" => "DIN PROFIL",
-                "header" => "DIN PROFIL",
-                "subHeader" => "Hej " . $acronym . "!",
                 "loggedIn" => $loggedIn,
-                "userName" => $acronym,
                 "email" => $user->getEmail(),
                 "acronym" => $acronym,
                 "img" => $user->getImg(),
@@ -61,20 +57,12 @@ class UserController extends AbstractController
      * @Route("/proj/user/login", name="login")
      */
     public function login(SessionInterface $session): Response
-    {
-        $userId = $session->get('userId');
-        $loggedIn = $session->get('userId');
-        if ($userId) {
+    {   
+        $loggedIn = $session->get('loggedIn');
+        if ($loggedIn) {
             return $this->redirectToRoute('app_user');
         }
-
-        $data = [
-            "title" => "Logga in",
-            "header" => "LOGGA IN",
-            "subHeader" => "",
-            "loggedIn" => $loggedIn
-        ];
-        return $this->render('/proj/user/login.html.twig', $data);
+        return $this->render('/proj/user/login.html.twig', ["loggeIn" => $loggedIn]);
     }
 
     /**
@@ -138,7 +126,6 @@ class UserController extends AbstractController
             "acronym" => $user->getAcronym(),
             "email" => $user->getEmail(),
             "img" => $user->getImg(),
-            "title" => "Uppdatera användare",
             "userId" => $updateUserId
         );
         if ($admin == "admin") {
@@ -216,7 +203,6 @@ class UserController extends AbstractController
             "loggedIn" => $loggedIn,
             "acronym" => $user->getAcronym(),
             "email" => $user->getEmail(),
-            "title" => "Radera användare",
             "userId" => $deleteUser
         );
 
@@ -278,7 +264,7 @@ class UserController extends AbstractController
         }
         return $this->render(
             'proj/user/registeruser.html.twig',
-            ["title" => "Registrera användare", "loggedIn" => $loggedIn]
+            ["loggedIn" => $loggedIn]
         );
     }
 
