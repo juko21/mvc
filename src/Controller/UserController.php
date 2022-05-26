@@ -35,7 +35,7 @@ class UserController extends AbstractController
             ];
 
             if ($user->getType() == "admin") {
-                $allUsers = $user = $userRepository->findAll();
+                $allUsers = $userRepository->findAll();
                 $users = [];
                 foreach ($allUsers as $value) {
                     $users[] = [
