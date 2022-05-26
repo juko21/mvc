@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'e1783e530a6f05a335cf628730391326658d6cff',
+        'reference' => 'bd9670f070d61bfefcc8a06c7c8be906c99674e9',
         'name' => 'jkot21/report',
         'dev' => true,
     ),
@@ -196,7 +196,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'e1783e530a6f05a335cf628730391326658d6cff',
+            'reference' => 'bd9670f070d61bfefcc8a06c7c8be906c99674e9',
             'dev_requirement' => false,
         ),
         'laminas/laminas-code' => array(
@@ -448,8 +448,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache-implementation' => array(
