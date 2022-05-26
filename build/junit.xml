@@ -1,57 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="37" assertions="99" errors="0" warnings="0" failures="0" skipped="0" time="0.054175">
-    <testsuite name="all" tests="37" assertions="99" errors="0" warnings="0" failures="0" skipped="0" time="0.054175">
-      <testsuite name="App\Card\CardTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\CardTest.php" tests="2" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="0.006019">
-        <testcase name="testCreateObject" class="App\Card\CardTest" classname="App.Card.CardTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\CardTest.php" line="16" assertions="5" time="0.005120"/>
-        <testcase name="testChangeAce" class="App\Card\CardTest" classname="App.Card.CardTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\CardTest.php" line="34" assertions="3" time="0.000898"/>
+  <testsuite name="" tests="39" assertions="101" errors="0" warnings="0" failures="0" skipped="0" time="0.058782">
+    <testsuite name="all" tests="39" assertions="101" errors="0" warnings="0" failures="0" skipped="0" time="0.058782">
+      <testsuite name="App\Utils\ArrayUtilsTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ArrayUtils\ArrayUtilsTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.005706">
+        <testcase name="testArrayFlip" class="App\Utils\ArrayUtilsTest" classname="App.Utils.ArrayUtilsTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ArrayUtils\ArrayUtilsTest.php" line="15" assertions="1" time="0.005011"/>
+        <testcase name="testArrayFlipUnevenArray" class="App\Utils\ArrayUtilsTest" classname="App.Utils.ArrayUtilsTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ArrayUtils\ArrayUtilsTest.php" line="27" assertions="1" time="0.000694"/>
       </testsuite>
-      <testsuite name="App\Card\DeckTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\DeckTest.php" tests="3" assertions="9" errors="0" warnings="0" failures="0" skipped="0" time="0.007245">
-        <testcase name="testCreateObject" class="App\Card\DeckTest" classname="App.Card.DeckTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\DeckTest.php" line="16" assertions="2" time="0.001403"/>
-        <testcase name="testShuffleSort" class="App\Card\DeckTest" classname="App.Card.DeckTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\DeckTest.php" line="33" assertions="4" time="0.004851"/>
-        <testcase name="testPopAndCount" class="App\Card\DeckTest" classname="App.Card.DeckTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\DeckTest.php" line="46" assertions="3" time="0.000991"/>
+      <testsuite name="App\Card\CardTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\CardTest.php" tests="2" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="0.002684">
+        <testcase name="testCreateObject" class="App\Card\CardTest" classname="App.Card.CardTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\CardTest.php" line="16" assertions="5" time="0.001857"/>
+        <testcase name="testChangeAce" class="App\Card\CardTest" classname="App.Card.CardTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\CardTest.php" line="34" assertions="3" time="0.000827"/>
       </testsuite>
-      <testsuite name="App\Card\DeckWithJokersTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\DeckWithJokersTest.php" tests="3" assertions="9" errors="0" warnings="0" failures="0" skipped="0" time="0.006760">
-        <testcase name="testCreateObject" class="App\Card\DeckWithJokersTest" classname="App.Card.DeckWithJokersTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\DeckWithJokersTest.php" line="16" assertions="2" time="0.001497"/>
-        <testcase name="testShuffleSort" class="App\Card\DeckWithJokersTest" classname="App.Card.DeckWithJokersTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\DeckWithJokersTest.php" line="33" assertions="4" time="0.004214"/>
-        <testcase name="testPopAndCount" class="App\Card\DeckWithJokersTest" classname="App.Card.DeckWithJokersTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\DeckWithJokersTest.php" line="46" assertions="3" time="0.001050"/>
+      <testsuite name="App\Card\DeckTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\DeckTest.php" tests="3" assertions="9" errors="0" warnings="0" failures="0" skipped="0" time="0.007175">
+        <testcase name="testCreateObject" class="App\Card\DeckTest" classname="App.Card.DeckTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\DeckTest.php" line="16" assertions="2" time="0.001477"/>
+        <testcase name="testShuffleSort" class="App\Card\DeckTest" classname="App.Card.DeckTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\DeckTest.php" line="33" assertions="4" time="0.004732"/>
+        <testcase name="testPopAndCount" class="App\Card\DeckTest" classname="App.Card.DeckTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\DeckTest.php" line="46" assertions="3" time="0.000966"/>
       </testsuite>
-      <testsuite name="App\Card\GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" tests="10" assertions="34" errors="0" warnings="0" failures="0" skipped="0" time="0.020997">
-        <testcase name="testCreateObject" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="16" assertions="3" time="0.001874"/>
-        <testcase name="testDeal" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="28" assertions="3" time="0.001418"/>
-        <testcase name="testState" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="44" assertions="4" time="0.001091"/>
-        <testcase name="testDealWithSortedDeck" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="59" assertions="3" time="0.003903"/>
-        <testcase name="testWinningConditions" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="76" assertions="5" time="0.001322"/>
-        <testcase name="testDealerAi" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="143" assertions="2" time="0.000897"/>
-        <testcase name="testGetPlayerCash" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="169" assertions="3" time="0.007166"/>
-        <testcase name="testBet" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="193" assertions="2" time="0.001125"/>
+      <testsuite name="App\Card\DeckWithJokersTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\DeckWithJokersTest.php" tests="3" assertions="9" errors="0" warnings="0" failures="0" skipped="0" time="0.007269">
+        <testcase name="testCreateObject" class="App\Card\DeckWithJokersTest" classname="App.Card.DeckWithJokersTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\DeckWithJokersTest.php" line="16" assertions="2" time="0.001703"/>
+        <testcase name="testShuffleSort" class="App\Card\DeckWithJokersTest" classname="App.Card.DeckWithJokersTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\DeckWithJokersTest.php" line="33" assertions="4" time="0.004372"/>
+        <testcase name="testPopAndCount" class="App\Card\DeckWithJokersTest" classname="App.Card.DeckWithJokersTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\DeckWithJokersTest.php" line="46" assertions="3" time="0.001194"/>
+      </testsuite>
+      <testsuite name="App\Card\GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" tests="10" assertions="34" errors="0" warnings="0" failures="0" skipped="0" time="0.022223">
+        <testcase name="testCreateObject" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="16" assertions="3" time="0.001801"/>
+        <testcase name="testDeal" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="28" assertions="3" time="0.001855"/>
+        <testcase name="testState" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="44" assertions="4" time="0.001090"/>
+        <testcase name="testDealWithSortedDeck" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="59" assertions="3" time="0.004183"/>
+        <testcase name="testWinningConditions" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="76" assertions="5" time="0.001334"/>
+        <testcase name="testDealerAi" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="143" assertions="2" time="0.000909"/>
+        <testcase name="testGetPlayerCash" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="169" assertions="3" time="0.007766"/>
+        <testcase name="testBet" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="193" assertions="2" time="0.001068"/>
         <testcase name="testSetAceValue" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="203" assertions="3" time="0.000674"/>
-        <testcase name="testResetHandDeck" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="217" assertions="6" time="0.001527"/>
+        <testcase name="testResetHandDeck" class="App\Card\GameTest" classname="App.Card.GameTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\GameTest.php" line="217" assertions="6" time="0.001543"/>
       </testsuite>
-      <testsuite name="App\Card\HandTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\HandTest.php" tests="5" assertions="11" errors="0" warnings="0" failures="0" skipped="0" time="0.003104">
-        <testcase name="testCreateObject" class="App\Card\HandTest" classname="App.Card.HandTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\HandTest.php" line="16" assertions="2" time="0.000600"/>
-        <testcase name="testAddGetCountCards" class="App\Card\HandTest" classname="App.Card.HandTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\HandTest.php" line="27" assertions="4" time="0.000605"/>
-        <testcase name="testSetAceValue" class="App\Card\HandTest" classname="App.Card.HandTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\HandTest.php" line="47" assertions="3" time="0.000661"/>
-        <testcase name="testCalculateValue" class="App\Card\HandTest" classname="App.Card.HandTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\HandTest.php" line="65" assertions="1" time="0.000637"/>
-        <testcase name="testGetAllCardImgSrc" class="App\Card\HandTest" classname="App.Card.HandTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\HandTest.php" line="83" assertions="1" time="0.000602"/>
+      <testsuite name="App\Card\HandTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\HandTest.php" tests="5" assertions="11" errors="0" warnings="0" failures="0" skipped="0" time="0.003142">
+        <testcase name="testCreateObject" class="App\Card\HandTest" classname="App.Card.HandTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\HandTest.php" line="16" assertions="2" time="0.000638"/>
+        <testcase name="testAddGetCountCards" class="App\Card\HandTest" classname="App.Card.HandTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\HandTest.php" line="27" assertions="4" time="0.000692"/>
+        <testcase name="testSetAceValue" class="App\Card\HandTest" classname="App.Card.HandTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\HandTest.php" line="47" assertions="3" time="0.000607"/>
+        <testcase name="testCalculateValue" class="App\Card\HandTest" classname="App.Card.HandTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\HandTest.php" line="65" assertions="1" time="0.000597"/>
+        <testcase name="testGetAllCardImgSrc" class="App\Card\HandTest" classname="App.Card.HandTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\HandTest.php" line="83" assertions="1" time="0.000606"/>
       </testsuite>
-      <testsuite name="App\Card\PlayerTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\PlayerTest.php" tests="7" assertions="19" errors="0" warnings="0" failures="0" skipped="0" time="0.004391">
-        <testcase name="testCreateObject" class="App\Card\PlayerTest" classname="App.Card.PlayerTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\PlayerTest.php" line="16" assertions="4" time="0.000570"/>
-        <testcase name="testAddCountCards" class="App\Card\PlayerTest" classname="App.Card.PlayerTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\PlayerTest.php" line="29" assertions="1" time="0.000571"/>
-        <testcase name="testGetPoints" class="App\Card\PlayerTest" classname="App.Card.PlayerTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\PlayerTest.php" line="38" assertions="1" time="0.000594"/>
-        <testcase name="testSetAceValue" class="App\Card\PlayerTest" classname="App.Card.PlayerTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\PlayerTest.php" line="54" assertions="3" time="0.000696"/>
-        <testcase name="testSetGetBet" class="App\Card\PlayerTest" classname="App.Card.PlayerTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\PlayerTest.php" line="70" assertions="2" time="0.000563"/>
-        <testcase name="testAddMoney" class="App\Card\PlayerTest" classname="App.Card.PlayerTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\PlayerTest.php" line="82" assertions="3" time="0.000601"/>
-        <testcase name="testResetHand" class="App\Card\PlayerTest" classname="App.Card.PlayerTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\PlayerTest.php" line="98" assertions="5" time="0.000795"/>
+      <testsuite name="App\Card\PlayerTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\PlayerTest.php" tests="7" assertions="19" errors="0" warnings="0" failures="0" skipped="0" time="0.004693">
+        <testcase name="testCreateObject" class="App\Card\PlayerTest" classname="App.Card.PlayerTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\PlayerTest.php" line="16" assertions="4" time="0.000563"/>
+        <testcase name="testAddCountCards" class="App\Card\PlayerTest" classname="App.Card.PlayerTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\PlayerTest.php" line="29" assertions="1" time="0.000563"/>
+        <testcase name="testGetPoints" class="App\Card\PlayerTest" classname="App.Card.PlayerTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\PlayerTest.php" line="38" assertions="1" time="0.000574"/>
+        <testcase name="testSetAceValue" class="App\Card\PlayerTest" classname="App.Card.PlayerTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\PlayerTest.php" line="54" assertions="3" time="0.000650"/>
+        <testcase name="testSetGetBet" class="App\Card\PlayerTest" classname="App.Card.PlayerTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\PlayerTest.php" line="70" assertions="2" time="0.000540"/>
+        <testcase name="testAddMoney" class="App\Card\PlayerTest" classname="App.Card.PlayerTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\PlayerTest.php" line="82" assertions="3" time="0.001091"/>
+        <testcase name="testResetHand" class="App\Card\PlayerTest" classname="App.Card.PlayerTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\Card\PlayerTest.php" line="98" assertions="5" time="0.000712"/>
       </testsuite>
-      <testsuite name="App\ChartCreator\ChartCreatorTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ChartCreator\ChartCreatorTest.php" tests="7" assertions="9" errors="0" warnings="0" failures="0" skipped="0" time="0.005659">
-        <testcase name="testCreateObject" class="App\ChartCreator\ChartCreatorTest" classname="App.ChartCreator.ChartCreatorTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ChartCreator\ChartCreatorTest.php" line="16" assertions="1" time="0.000892"/>
-        <testcase name="testCreateSingleLineChart" class="App\ChartCreator\ChartCreatorTest" classname="App.ChartCreator.ChartCreatorTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ChartCreator\ChartCreatorTest.php" line="28" assertions="2" time="0.001523"/>
-        <testcase name="testCreateMultipleLineChart" class="App\ChartCreator\ChartCreatorTest" classname="App.ChartCreator.ChartCreatorTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ChartCreator\ChartCreatorTest.php" line="44" assertions="2" time="0.000651"/>
-        <testcase name="testSingleLineDatasets" class="App\ChartCreator\ChartCreatorTest" classname="App.ChartCreator.ChartCreatorTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ChartCreator\ChartCreatorTest.php" line="63" assertions="1" time="0.000610"/>
-        <testcase name="testSingleLineOptions" class="App\ChartCreator\ChartCreatorTest" classname="App.ChartCreator.ChartCreatorTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ChartCreator\ChartCreatorTest.php" line="88" assertions="1" time="0.000566"/>
-        <testcase name="testMultipleLineDatasets" class="App\ChartCreator\ChartCreatorTest" classname="App.ChartCreator.ChartCreatorTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ChartCreator\ChartCreatorTest.php" line="137" assertions="1" time="0.000844"/>
-        <testcase name="testMultipleLineOptions" class="App\ChartCreator\ChartCreatorTest" classname="App.ChartCreator.ChartCreatorTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ChartCreator\ChartCreatorTest.php" line="182" assertions="1" time="0.000573"/>
+      <testsuite name="App\ChartCreator\ChartCreatorTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ChartCreator\ChartCreatorTest.php" tests="7" assertions="9" errors="0" warnings="0" failures="0" skipped="0" time="0.005891">
+        <testcase name="testCreateObject" class="App\ChartCreator\ChartCreatorTest" classname="App.ChartCreator.ChartCreatorTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ChartCreator\ChartCreatorTest.php" line="16" assertions="1" time="0.000950"/>
+        <testcase name="testCreateSingleLineChart" class="App\ChartCreator\ChartCreatorTest" classname="App.ChartCreator.ChartCreatorTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ChartCreator\ChartCreatorTest.php" line="28" assertions="2" time="0.001424"/>
+        <testcase name="testCreateMultipleLineChart" class="App\ChartCreator\ChartCreatorTest" classname="App.ChartCreator.ChartCreatorTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ChartCreator\ChartCreatorTest.php" line="43" assertions="2" time="0.000661"/>
+        <testcase name="testSingleLineDatasets" class="App\ChartCreator\ChartCreatorTest" classname="App.ChartCreator.ChartCreatorTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ChartCreator\ChartCreatorTest.php" line="62" assertions="1" time="0.001200"/>
+        <testcase name="testSingleLineOptions" class="App\ChartCreator\ChartCreatorTest" classname="App.ChartCreator.ChartCreatorTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ChartCreator\ChartCreatorTest.php" line="87" assertions="1" time="0.000556"/>
+        <testcase name="testMultipleLineDatasets" class="App\ChartCreator\ChartCreatorTest" classname="App.ChartCreator.ChartCreatorTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ChartCreator\ChartCreatorTest.php" line="136" assertions="1" time="0.000538"/>
+        <testcase name="testMultipleLineOptions" class="App\ChartCreator\ChartCreatorTest" classname="App.ChartCreator.ChartCreatorTest" file="C:\Users\jkota\dbwebb-kurser\mvc\me\report\tests\ChartCreator\ChartCreatorTest.php" line="181" assertions="1" time="0.000563"/>
       </testsuite>
     </testsuite>
   </testsuite>

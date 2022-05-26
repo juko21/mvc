@@ -16,7 +16,7 @@ class Card
 
     /**
      * Constructor for class Card
-     * 
+     *
      * @param string $suit Suit of card
      * @param int $rank Rank of card
      * @param int $cardId
@@ -31,7 +31,7 @@ class Card
 
     /**
      * Sets value of ace to 1 or 14
-     * 
+     *
      * @param bool $highAce True for (14) high ace value, false for low (1)
      * @return void
      */
@@ -42,7 +42,7 @@ class Card
 
     /**
      * Get rank of card
-     * 
+     *
      * @return int Rank of card
      */
     public function getRank(): int
@@ -52,7 +52,7 @@ class Card
 
     /**
      * Get card suit
-     * 
+     *
     * @return string Suit of card
      */
     public function getSuit(): string
@@ -62,7 +62,7 @@ class Card
 
     /**
      * Get img src for card
-     * 
+     *
      * @return string img source
      */
     public function getImgSrc(): string
@@ -72,7 +72,7 @@ class Card
 
     /**
      * Get card Id
-     * 
+     *
      * @return int card Id
      */
     public function getId(): int
@@ -82,7 +82,7 @@ class Card
 
     /**
      * Get card name as string
-     * 
+     *
      * @return string Name and rank of card as string
      */
     public function getStr(): string

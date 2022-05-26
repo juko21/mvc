@@ -21,8 +21,8 @@ class Hand
 
     /**
      * Add card to hand
-     * 
-     * @param Card Card to add
+     *
+     * @param Card $card Card to add
      * @return void
      */
     public function addCard(Card $card): void
@@ -32,7 +32,7 @@ class Hand
 
     /**
      * Calculate and return value of cards in hand
-     * 
+     *
      * @return int Value of cards in hand
      */
     public function calculateValue(): int
@@ -46,7 +46,7 @@ class Hand
 
     /**
      * Count number of cards in player hand
-     * 
+     *
      * @return int Number of cards in hand
      */
     public function countCards(): int
@@ -56,8 +56,8 @@ class Hand
 
     /**
      * Sets value of ace to 1 or 14
-     * 
-     * @param int $cardIndexIndex of card to be changed
+     *
+     * @param int $cardIndex Index of card to be changed
      * @param bool $highAce True for (14) high ace value, false for low (1)
      * @return void
      */
@@ -68,7 +68,7 @@ class Hand
 
     /**
      * Return hand (array of cards)
-     * 
+     *
      * @return array Array of cards (hand)
      */
     public function getHand(): array
@@ -78,7 +78,7 @@ class Hand
 
     /**
      * Get img srcs for all cards n hand
-     * 
+     *
      * @return array Array of strings containing img srcs
      */
     public function getAllCardSrc(): array

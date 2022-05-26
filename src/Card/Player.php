@@ -22,7 +22,7 @@ class Player
 
     /**
      * Add/deduct bet from player cash dep. on win/loss
-     * 
+     *
      * @param bool $win Win or loss
      * @return void
      */
@@ -33,7 +33,7 @@ class Player
 
     /**
      * Return total player cash
-     * 
+     *
      * @return int Total player cash
      */
     public function getMoney(): int
@@ -43,7 +43,7 @@ class Player
 
     /**
      * Get points (value) for hand
-     * 
+     *
      * @return int Value(points) for hand
      */
     public function getPointsForHand(): int
@@ -53,8 +53,8 @@ class Player
 
     /**
      * Add an array of cards to hand
-     * 
-     * @param array Array of cards
+     *
+     * @param array $cards Array of cards
      */
     public function addCards(array $cards): void
     {
@@ -65,7 +65,7 @@ class Player
 
     /**
      * Sets value of ace to 1 or 14
-     * 
+     *
      * @param int $cardIndex Index of card to be changed
      * @param bool $highAce True for (14) high ace value, false for low (1)
      * @return void
@@ -77,7 +77,7 @@ class Player
 
     /**
      * Count number of cards in player hand
-     * 
+     *
      * @return int Number of cards in hand
      */
     public function getHandCount(): int
@@ -87,7 +87,7 @@ class Player
 
     /**
      * Return player hand
-     * 
+     *
      * @return Hand Player hand
      */
     public function getHand(): Hand
@@ -97,7 +97,7 @@ class Player
 
     /**
      * Reset player hand
-     * 
+     *
      * @return void
      */
     public function resetHand(): void
@@ -108,7 +108,7 @@ class Player
 
     /**
      * Set player bet
-     * 
+     *
      * @param int $bet betvalue
      * @return void
      */
@@ -119,7 +119,7 @@ class Player
 
     /**
      * Return current bet
-     * 
+     *
      * @return int Current bet
      */
     public function getBet(): int

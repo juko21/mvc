@@ -1,8 +1,8 @@
 <?php
 
 namespace  App\ChartCreator;
-use Symfony\UX\Chartjs\Model\Chart;
 
+use Symfony\UX\Chartjs\Model\Chart;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -22,7 +22,7 @@ class ChartCreatorTest extends TestCase
     }
 
     /**
-     * Construct ChartCreator object, create single line chart and verify that returned 
+     * Construct ChartCreator object, create single line chart and verify that returned
      * chart is of right type
      */
     public function testCreateSingleLineChart()
@@ -31,33 +31,32 @@ class ChartCreatorTest extends TestCase
         $datay = [1, 2, 3, 4, 5, 6, 7];
         $chartCreator = new ChartCreator($datax, ["Hamburgers per day" => $datay], true, "bar");
         $chart = $chartCreator->createChart();
-        
+
         $this->assertInstanceOf("\Symfony\UX\Chartjs\Model\Chart", $chart);
         $this->assertInstanceOf("\Symfony\UX\Chartjs\Model\Chart", $chartCreator->getChart());
-
     }
 
     /**
-     * Construct ChartCreator object, create single line chart and verify that returned 
+     * Construct ChartCreator object, create single line chart and verify that returned
      * chart is of right type
      */
     public function testCreateMultipleLineChart()
     {
         $datax = [1992, 1993, 1993, 1994, 1995, 1996, 1997];
         $datay = [
-            "Numbers" =>[1, 2, 3, 4, 5, 6, 7],
+            "Numbers" => [1, 2, 3, 4, 5, 6, 7],
             "More numbers" => [4 ,6 ,4 ,8 ,4 ,4, 2],
             "Even more numbers" => [4 ,1 ,4 ,2 ,4 ,20, 3]
         ];
         $chartCreator = new ChartCreator($datax, $datay, false, "line");
         $chart = $chartCreator->createChart();
-        
+
         $this->assertInstanceOf("\Symfony\UX\Chartjs\Model\Chart", $chart);
         $this->assertInstanceOf("\Symfony\UX\Chartjs\Model\Chart", $chartCreator->getChart());
     }
 
     /**
-     * Construct ChartCreator object, create single line chart and verify that datasets 
+     * Construct ChartCreator object, create single line chart and verify that datasets
      * are generated correctly
      */
     public function testSingleLineDatasets()
@@ -82,7 +81,7 @@ class ChartCreatorTest extends TestCase
     }
 
     /**
-     * Construct ChartCreator object, create single line chart and verify that datasets 
+     * Construct ChartCreator object, create single line chart and verify that datasets
      * are generated correctly
      */
     public function testSingleLineOptions()
@@ -131,14 +130,14 @@ class ChartCreatorTest extends TestCase
     }
 
     /**
-     * Construct ChartCreator object, create multiple line chart and verify that datasets 
+     * Construct ChartCreator object, create multiple line chart and verify that datasets
      * are generated correctly
      */
     public function testMultipleLineDatasets()
     {
         $datax = [1992, 1993, 1993, 1994, 1995, 1996, 1997];
         $datay = [
-            "Numbers" =>[1, 2, 3, 4, 5, 6, 7],
+            "Numbers" => [1, 2, 3, 4, 5, 6, 7],
             "More numbers" => [4 ,6 ,4 ,8 ,4 ,4, 2],
             "Even more numbers" => [4 ,1 ,4 ,2 ,4 ,20, 3]
         ];
@@ -176,14 +175,14 @@ class ChartCreatorTest extends TestCase
     }
 
     /**
-     * Construct ChartCreator object, create multiple line chart and verify that options 
+     * Construct ChartCreator object, create multiple line chart and verify that options
      * are generated correctly
      */
     public function testMultipleLineOptions()
     {
         $datax = [1992, 1993, 1993, 1994, 1995, 1996, 1997];
         $datay = [
-            "Numbers" =>[1, 2, 3, 4, 5, 6, 7],
+            "Numbers" => [1, 2, 3, 4, 5, 6, 7],
             "More numbers" => [4 ,6 ,4 ,8 ,4 ,4, 2],
             "Even more numbers" => [4 ,1 ,4 ,2 ,4 ,20, 3]
         ];

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1653564793">
-  <project timestamp="1653564793">
+<coverage generated="1653570365">
+  <project timestamp="1653570365">
     <file name="C:\Users\jkota\dbwebb-kurser\mvc\me\report\src\Card\Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="8" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="17" coveredelements="17"/>
@@ -198,14 +198,14 @@
     </file>
     <file name="C:\Users\jkota\dbwebb-kurser\mvc\me\report\src\ChartCreator\ChartCreator.php">
       <class name="App\ChartCreator\ChartCreator" namespace="global">
-        <metrics complexity="9" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="30" elements="35" coveredelements="35"/>
+        <metrics complexity="9" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="32" elements="37" coveredelements="37"/>
       </class>
-      <line num="48" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="7"/>
+      <line num="47" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="7"/>
+      <line num="53" type="stmt" count="7"/>
       <line num="54" type="stmt" count="7"/>
       <line num="55" type="stmt" count="7"/>
       <line num="56" type="stmt" count="7"/>
-      <line num="57" type="stmt" count="7"/>
-      <line num="66" type="method" name="createChart" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="65" type="method" name="createChart" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="69" type="stmt" count="2"/>
       <line num="70" type="stmt" count="2"/>
       <line num="71" type="stmt" count="2"/>
@@ -230,12 +230,14 @@
       <line num="122" type="stmt" count="4"/>
       <line num="127" type="stmt" count="4"/>
       <line num="135" type="stmt" count="4"/>
+      <line num="136" type="stmt" count="4"/>
       <line num="137" type="stmt" count="4"/>
-      <line num="140" type="stmt" count="4"/>
-      <line num="144" type="stmt" count="4"/>
-      <line num="153" type="stmt" count="4"/>
-      <line num="159" type="stmt" count="4"/>
-      <metrics loc="162" ncloc="116" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="30" coveredstatements="30" elements="35" coveredelements="35"/>
+      <line num="139" type="stmt" count="4"/>
+      <line num="142" type="stmt" count="4"/>
+      <line num="146" type="stmt" count="4"/>
+      <line num="155" type="stmt" count="4"/>
+      <line num="161" type="stmt" count="4"/>
+      <metrics loc="164" ncloc="118" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="32" elements="37" coveredelements="37"/>
     </file>
     <file name="C:\Users\jkota\dbwebb-kurser\mvc\me\report\src\Kernel.php">
       <class name="App\Kernel" namespace="global">
@@ -243,6 +245,22 @@
       </class>
       <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <metrics files="8" loc="876" ncloc="537" classes="7" methods="59" coveredmethods="59" conditionals="0" coveredconditionals="0" statements="135" coveredstatements="135" elements="194" coveredelements="194"/>
+    <file name="C:\Users\jkota\dbwebb-kurser\mvc\me\report\src\Utils\ArrayUtils.php">
+      <class name="App\Utils\ArrayUtils" namespace="global">
+        <metrics complexity="4" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="10" coveredelements="10"/>
+      </class>
+      <line num="7" type="method" name="arrayFlip" visibility="public" complexity="4" crap="4" count="2"/>
+      <line num="9" type="stmt" count="2"/>
+      <line num="10" type="stmt" count="2"/>
+      <line num="11" type="stmt" count="2"/>
+      <line num="12" type="stmt" count="1"/>
+      <line num="13" type="stmt" count="1"/>
+      <line num="14" type="stmt" count="1"/>
+      <line num="15" type="stmt" count="1"/>
+      <line num="18" type="stmt" count="1"/>
+      <line num="20" type="stmt" count="1"/>
+      <metrics loc="22" ncloc="22" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="10" coveredelements="10"/>
+    </file>
+    <metrics files="9" loc="900" ncloc="561" classes="8" methods="60" coveredmethods="60" conditionals="0" coveredconditionals="0" statements="146" coveredstatements="146" elements="206" coveredelements="206"/>
   </project>
 </coverage>

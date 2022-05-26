@@ -19,7 +19,7 @@ class Game
 
     /**
      * Constructor for class Card
-     * 
+     *
      * @param array $deck Optional - array of cards to initiate deck with
      */
     public function __construct(array $deck = null)
@@ -36,7 +36,7 @@ class Game
 
     /**
      * Deals card to player
-     * 
+     *
      * @return void
      */
     public function dealToPlayer(): void
@@ -46,7 +46,7 @@ class Game
 
     /**
      * Deal card to dealer
-     * 
+     *
      * @return void
      */
     public function dealToDealer(): void
@@ -56,7 +56,7 @@ class Game
 
     /**
      * Return player points (value of hand)
-     * 
+     *
      * @return int Value of current player hand
      */
     public function getPlayerPoints(): int
@@ -66,7 +66,7 @@ class Game
 
     /**
      * Return dealer points (value of hand)
-     * 
+     *
      * @return int Value of current dealer hand
      */
     public function getDealerPoints(): int
@@ -76,7 +76,7 @@ class Game
 
     /**
      * Return dealer hand
-     * 
+     *
      * @return Hand Dealer hand
      */
     public function getDealerHand(): Hand
@@ -86,7 +86,7 @@ class Game
 
     /**
      * Return player hand
-     * 
+     *
      * @return Hand Player hand
      */
     public function getPlayerHand(): Hand
@@ -96,7 +96,7 @@ class Game
 
     /**
      * Return total cash amount for player
-     * 
+     *
      * @return int Current player cash
      */
     public function getPlayerCash(): int
@@ -106,7 +106,7 @@ class Game
 
     /**
      * Set player bet
-     * 
+     *
      * @return void
      */
     public function setPlayerBet(int $bet): void
@@ -116,7 +116,7 @@ class Game
 
     /**
      * Return current player bet
-     * 
+     *
      * @return int Current player bet
      */
     public function getPlayerBet(): int
@@ -126,7 +126,7 @@ class Game
 
     /**
      * Return current state
-     * 
+     *
      * @return int Current game state
      */
     public function getState(): int
@@ -136,7 +136,7 @@ class Game
 
     /**
      * Count number of cards in deck and return
-     * 
+     *
      * @return int Number of cards in deck
      */
     public function countDeck(): int
@@ -146,7 +146,7 @@ class Game
 
     /**
      * Count number of cards in player hand and return
-     * 
+     *
      * @return int Number of cards in player hand
      */
     public function countPlayerHand(): int
@@ -156,7 +156,7 @@ class Game
 
     /**
      * Count number of cards in dealer hand and return
-     * 
+     *
      * @return int Number of cards in dealer hand
      */
     public function countDealerHand(): int
@@ -166,7 +166,7 @@ class Game
 
     /**
      * Set state
-     * 
+     *
      * @return void
      */
     public function setState(int $state): void
@@ -178,7 +178,7 @@ class Game
 
     /**
      * Run dealer ai (deal cards while total value under 18)
-     * 
+     *
      * @return void
      */
     public function runDealerAi(): void
@@ -190,7 +190,7 @@ class Game
 
     /**
      * Sets value of ace to 1 or 14
-     * 
+     *
      * @param int $cardIndex of card to be changed
      * @param bool $highAce True for (14) high ace value, false for low (1)
      * @return void
@@ -202,7 +202,7 @@ class Game
 
     /**
      * Check winning conditions against player and dealer hands
-     * 
+     *
      * @return bool Win or loss
      */
     public function checkWinner(): bool
@@ -219,7 +219,7 @@ class Game
 
     /**
      * Deal points and add or remove money from player
-     * 
+     *
      * @return void
      */
     public function dealPoints(): void
@@ -229,7 +229,7 @@ class Game
 
     /**
      * Reset player and dealer hands
-     * 
+     *
      * @return void
      */
     public function resetHands(): void
@@ -240,7 +240,7 @@ class Game
 
     /**
      * Reset deck
-     * 
+     *
      * @return void
      */
     public function resetDeck(): void
@@ -251,7 +251,7 @@ class Game
 
     /**
      * Sort deck (for testing)
-     * 
+     *
      * @return void
      */
     public function sortDeck(): void

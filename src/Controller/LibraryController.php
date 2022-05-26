@@ -140,8 +140,8 @@ class LibraryController extends AbstractController
         $author = $request->request->get('author');
         $img = $request->request->get('img');
         $bookId = $request->request->get('submit');
-        
-        if($bookId) {
+
+        if ($bookId) {
             $book = $bookRepository->find($bookId);
 
             $book->setTitle($title);
@@ -187,9 +187,9 @@ class LibraryController extends AbstractController
         $bookId = $request->request->get('submit');
 
         $book = $bookRepository->find($bookId);
-        if(isset($book)) {
+        if (isset($book)) {
             $bookRepository->remove($book, true);
         }
-            return $this->redirectToRoute('library_show_all');
+        return $this->redirectToRoute('library_show_all');
     }
 }

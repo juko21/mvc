@@ -29,7 +29,6 @@ class ChartCreator
     ];
     private array $datax;
     private array $datay;
-    private array $labels;
     private bool $inverted = false;
     private Chart $chart;
     private string $type;
@@ -60,13 +59,14 @@ class ChartCreator
     /**
      * createChartset()
      * Builds the charts from given data
-     * 
+     *
      * @return Chart Returns the chart
      */
-    public function createChart(): Chart {
+    public function createChart(): Chart
+    {
         // Loop through datasets and create charts, if multiple line chart indicated, send all datasets at once
         // an finish loop after 1 iteration
-        $chartBuilder = new ChartBuilder;
+        $chartBuilder = new ChartBuilder();
         $this->chart = $chartBuilder->createChart($this->type);
         $this->chart->setData($this->getDataset());
         $this->chart->setOptions($this->getOptions());
@@ -76,11 +76,11 @@ class ChartCreator
     /**
      * getCharts()
      * Returns chart
-     * 
+     *
      * @return Chart Returns chart
      */
-    public function getChart(): Chart {
-
+    public function getChart(): Chart
+    {
         return $this->chart;
     }
 
@@ -90,12 +90,12 @@ class ChartCreator
      *
      * @return array Returns dataset formatted in array for chartjs
      */
-    public function getDataset() : array
+    public function getDataset(): array
     {
         $dataset = ['labels' => $this->datax, 'datasets' => []];
         $fontColor = $this->inverted ? 'rgb(255, 255, 255)' : 'rgb(80, 80, 80)' ;
         $count = 0;
-        foreach ($this->datay as $key => $value){
+        foreach ($this->datay as $key => $value) {
             $dataset['datasets'][] = [
                 'label' => $key,
                 'fontColor' => $fontColor,
@@ -132,7 +132,9 @@ class ChartCreator
             'scales' => [
                 'y' => [
                     'suggestedMin' => 0,
-                    'suggestedMax' => max(array_map(function($item) { return max($item); }, $this->datay)),
+                    'suggestedMax' => max(array_map(function ($item) {
+                        return max($item);
+                    }, $this->datay)),
                     'ticks' => [
                         'color' => $fontColor,
                     ],

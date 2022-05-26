@@ -71,7 +71,7 @@ class Chartdata
     {
         return $this->indicator;
     }
-    
+
     public function setIndicator(?Indicator $indicator): self
     {
         $this->indicator = $indicator;
