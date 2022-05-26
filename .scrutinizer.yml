@@ -2,8 +2,13 @@ imports:
     - php
 
 filter:
-    excluded_paths: [vendor/*, test/*]
-
+    excluded_paths: 
+        - 'tests/*'
+        - 'bin/*'
+        - 'tools/*'
+        - '*/vendor/*'
+        - 'build/*'
+        - 'migrations/*'
 build:
     nodes:
         my-tests:

@@ -8,6 +8,12 @@ namespace App\Card;
 class Deck
 {
     public array $deck = array();
+
+    /**
+     * Constructor for class Deck
+     * 
+     * @param array deck Optional - initiate deck with array of cards
+     */
     public function __construct(array $deck = null)
     {
         if ($deck == null) {
@@ -25,6 +31,8 @@ class Deck
 
     /**
      * Return all img srcs for cards
+     * 
+     * @return array Array of img source strings for all cards
      */
     public function getAllCardSrc(): array
     {
@@ -38,6 +46,8 @@ class Deck
 
     /**
      * Sort deck
+     * 
+     * @return Deck This deck sorted
      */
     public function sorted(): Deck
     {
@@ -49,7 +59,9 @@ class Deck
     }
 
     /**
-     * Shuffle deck
+     * Shuffles deck
+     * 
+     * @return void
      */
     public function shuffleDeck(): void
     {
@@ -58,6 +70,8 @@ class Deck
 
     /**
      * Pop card from top of deck
+     * 
+     * @return Card Card popped from top of deck
      */
     public function popCard(): Card
     {
@@ -66,6 +80,8 @@ class Deck
 
     /**
      * Get number of cards in deck
+     * 
+     * @return int Number of cards in deck
      */
     public function getNumber(): int
     {
