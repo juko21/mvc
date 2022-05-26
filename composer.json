@@ -121,7 +121,6 @@
             "@phpstan"
         ],
         "phpdoc": "tools/phpdoc/phpdoc",
-        "phpunit": "vendor/bin/phpunit --coverage-html ",
         "phpmetrics": "tools/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json --junit=<junit.xml>"
     },
     "conflict": {
