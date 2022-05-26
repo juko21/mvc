@@ -142,7 +142,24 @@ hamburger menu triggering a dropdown menu using a hidden checkbox and a clickabl
     top: -72px;
 }
 
-@media screen and (max-width: 1000px) {
-    .m_nav { display: block; }
-    .h_nav { display: none; }
+@media screen and (max-width: 520) {
+    .h_nav li {
+        display: inline-block;
+        margin: 0 0.5rem;
+    }
+    
+    .h_nav li:last-child {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .h_nav li {
+        display: inline-block;
+        margin: 0 0.3rem;
+    }
+    
+    .h_nav li:last-child {
+        margin-right: 0;
+    }
 }
