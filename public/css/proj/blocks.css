@@ -27,7 +27,8 @@
 
 .indicator-block {  
     width: 100%;
-    min-height: 200px;
+    min-height: 300px;
+    height: auto;
     padding: calc(var(--def-margin) * 2);
 }
 

@@ -5,9 +5,12 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{% block title %}{% endblock %} - Objektorienterade webbteknologier</title>
-
         <link rel="stylesheet" href="{{ asset('css/proj/style.css') }}" type="text/css" />
-        {{ encore_entry_script_tags('app') }}
+        <script type="text/javascript" src="{{ asset('builds/app.9a2f131e.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('builds/247.2199887e.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('builds/runtime.61b1725c.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+
     </head>
     <body>
         {% include 'proj/includes/nav.html.twig' %}
@@ -21,6 +24,6 @@
         <main class="main">{% block body %}{% endblock %}</main>
         {% include 'proj/includes/footer.html.twig' %}
 
-        <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+
     </body>
 </html>
