@@ -5,7 +5,6 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use ParsedownExtra;
 
 class ReportController extends AbstractController
@@ -13,7 +12,7 @@ class ReportController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(SessionInterface $session): Response
+    public function index(): Response
     {
         return $this->render('index.html.twig');
     }
@@ -21,7 +20,7 @@ class ReportController extends AbstractController
     /**
      * @Route("/about", name="about")
      */
-    public function about(SessionInterface $session): Response
+    public function about(): Response
     {
         return $this->render('about.html.twig');
     }
@@ -29,7 +28,7 @@ class ReportController extends AbstractController
     /**
      * @Route("/report", name="report")
      */
-    public function report(SessionInterface $session): Response
+    public function report(): Response
     {
         $parseDown = new ParsedownExtra();
         $files = glob('content/report/*.{md}', GLOB_BRACE);
@@ -48,7 +47,7 @@ class ReportController extends AbstractController
     /**
      * @Route("/metrics", name="metrics")
      */
-    public function metrics(SessionInterface $session): Response
+    public function metrics(): Response
     {
         $parseDown = new ParsedownExtra();
         $file = 'content/metrics/metrics.md';

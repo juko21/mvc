@@ -15,7 +15,7 @@ class CardController extends AbstractController
     /**
      * @Route("/card", name="card-home")
      */
-    public function home(SessionInterface $session): Response
+    public function home(): Response
     {
         $data = [
             'title' => 'Kortlek',

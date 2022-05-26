@@ -5,11 +5,15 @@ namespace App\Card;
 use App\Card\Card;
 use App\Card\Deck;
 
-    /**
-     * Class for deck with jokers (54 cards)
-     */
+/**
+ * Class for deck with jokers (54 cards).
+ * Inherits from App\Card\Deck
+*/
 class DeckWithJokers extends Deck
 {
+    /**
+     * Constructor for class Deck with jokers
+     */
     public function __construct()
     {
         $suits = ["clubs", "diamonds", "hearts", "spades"];

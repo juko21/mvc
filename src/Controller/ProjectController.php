@@ -163,7 +163,6 @@ class ProjectController extends AbstractController
         $articleRep = $entityManager->getRepository(Article::class);
 
         // Get all entities containing data for corresponding indicator
-        $dataEntities = [];
         $dataEntities = $entityManager->getRepository('App\Entity\\' . $entityTypes[$indicator])->findAll();
 
         // Fetch raw data from data entities

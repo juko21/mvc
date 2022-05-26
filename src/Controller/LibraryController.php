@@ -13,7 +13,7 @@ use App\Repository\BookRepository;
 class LibraryController extends AbstractController
 {
     #[Route('/library', name: 'app_library')]
-    public function index(SessionInterface $session): Response
+    public function index(): Response
     {
         return $this->render(
             'library/index.html.twig',

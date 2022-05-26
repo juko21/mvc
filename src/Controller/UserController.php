@@ -26,17 +26,18 @@ class UserController extends AbstractController
             $user = $userRepository->find($userId);
             $acronym = $user->getAcronym();
 
-            $data = array(
-            "title" => "DIN PROFIL",
-            "header" => "DIN PROFIL",
-            "subHeader" => "Hej " . $acronym . "!",
-            "loggedIn" => $loggedIn,
-            "userName" => $acronym,
-            "email" => $user->getEmail(),
-            "acronym" => $acronym,
-            "img" => $user->getImg(),
-            "userId" => $userId
-            );
+            $data = [
+                "title" => "DIN PROFIL",
+                "header" => "DIN PROFIL",
+                "subHeader" => "Hej " . $acronym . "!",
+                "loggedIn" => $loggedIn,
+                "userName" => $acronym,
+                "email" => $user->getEmail(),
+                "acronym" => $acronym,
+                "img" => $user->getImg(),
+                "userId" => $userId
+            ];
+
             if ($user->getType() == "admin") {
                 $allUsers = $user = $userRepository->findAll();
                 $users = [];

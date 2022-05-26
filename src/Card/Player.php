@@ -22,6 +22,9 @@ class Player
 
     /**
      * Add/deduct bet from player cash dep. on win/loss
+     * 
+     * @param bool @win Win or loss
+     * @return void
      */
     public function addMoney(bool $win): void
     {
@@ -30,6 +33,8 @@ class Player
 
     /**
      * Return total player cash
+     * 
+     * @return int Total player cash
      */
     public function getMoney(): int
     {
@@ -38,6 +43,8 @@ class Player
 
     /**
      * Get points (value) for hand
+     * 
+     * @return int Value(points) for hand
      */
     public function getPointsForHand(): int
     {
@@ -45,7 +52,9 @@ class Player
     }
 
     /**
-     * Add card to hand
+     * Add an array of cards to hand
+     * 
+     * @param array Array of cards
      */
     public function addCards(array $cards): void
     {
@@ -55,8 +64,12 @@ class Player
     }
 
     /**
-     * Set ace value for card
-     */
+     * Sets value of ace to 1 or 14
+     * 
+     * @param int Index of card to be changed
+     * @param bool $highAce True for (14) high ace value, false for low (1)
+     * @return void
+    */
     public function setAceValue(int $cardIndex, bool $highAce): void
     {
         $this->hand->setAceValue($cardIndex, $highAce);
@@ -64,6 +77,8 @@ class Player
 
     /**
      * Count number of cards in player hand
+     * 
+     * @return int Number of cards in hand
      */
     public function getHandCount(): int
     {
@@ -72,6 +87,8 @@ class Player
 
     /**
      * Return player hand
+     * 
+     * @return Hand Player hand
      */
     public function getHand(): Hand
     {
@@ -80,6 +97,8 @@ class Player
 
     /**
      * Reset player hand
+     * 
+     * @return void
      */
     public function resetHand(): void
     {
@@ -89,6 +108,9 @@ class Player
 
     /**
      * Set player bet
+     * 
+     * @param int @bet betvalue
+     * @return void
      */
     public function setBet(int $bet): void
     {
@@ -97,6 +119,8 @@ class Player
 
     /**
      * Return current bet
+     * 
+     * @return int Current bet
      */
     public function getBet(): int
     {

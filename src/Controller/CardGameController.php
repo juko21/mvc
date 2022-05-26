@@ -195,7 +195,7 @@ class CardGameController extends AbstractController
     /**
      * @Route("/game/doc", name="game-doc")
      */
-    public function report(SessionInterface $session): Response
+    public function report(): Response
     {
         $parseDown = new ParsedownExtra();
         $file = 'content/gamedoc.md';
