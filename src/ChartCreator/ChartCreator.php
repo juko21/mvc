@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ChartSettings;
+namespace App\ChartCreator;
 
 use App\Repository\ArticleRepository;
 use App\Repository\DemographicsRepository;

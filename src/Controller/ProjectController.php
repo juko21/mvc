@@ -16,7 +16,7 @@ use App\Entity\Recycling;
 use App\Entity\Material;
 use App\Entity\Indicator;
 use App\Entity\Chartdata;
-use App\ChartSettings\ChartCreator;
+use App\ChartCreator\ChartCreator;
 use Doctrine\DBAL\Connection;
 
 class ProjectController extends AbstractController
@@ -44,6 +44,11 @@ class ProjectController extends AbstractController
         $indicatorRoutes = array_map(function ($item) {
             return $item->getRoute();
         }, $indicatorData);
+        $datax = [1992, 1993, 1993, 1994, 1995, 1996, 1997];
+        $datay = [1, 2, 3, 4, 5, 6, 7];
+        $chartCreator = new ChartCreator($datax, [$datay], ["Hamburgers per day"], true, true, "line");
+        $chart = $chartCreator->createChart();
+        
         $data = [
             "title" => "HÅLLBAR KONSUMTIONOCH PRODUKTION",
             "header" => "HÅLLBAR KONSUMTION<br>OCH PRODUKTION",
@@ -53,7 +58,8 @@ class ProjectController extends AbstractController
             "indicatorsTitle" => "Indikatorer",
             "indicators" => $indicators,
             "indicatorRoutes" => $indicatorRoutes,
-            'loggedIn' => $loggedIn
+            'loggedIn' => $loggedIn,
+            'chart' => $chart
         ];
         return $this->render('proj/index.html.twig', $data);
     }
@@ -135,7 +141,6 @@ class ProjectController extends AbstractController
     public function indicatorSelect(
         ManagerRegistry $doctrine,
         string $indicator,
-        ChartBuilderInterface $chartBuilder,
         SessionInterface $session
     ): Response {
         $loggedIn = $session->get("loggedIn");
@@ -205,12 +210,12 @@ class ProjectController extends AbstractController
         }
         for ($i = 0; $i < $count; $i++) {
             $chartCreator = new ChartCreator(
-            $statistics[0],
-            $multiple ? array_slice($statistics, 1) : [$statistics[$i + 1]],
-            $multiple ? $chartHeaders : [$chartHeaders[$i]],
-            true,
-            true,
-            $chartData[0]->getType()
+                $statistics[0],
+                $multiple ? array_slice($statistics, 1) : [$statistics[$i + 1]],
+                $multiple ? $chartHeaders : [$chartHeaders[$i]],
+                true,
+                true,
+                $chartData[0]->getType()
             );
             $charts[] = $chartCreator->createChart();
         }
