@@ -10,6 +10,10 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Repository\UserRepository;
 use App\Entity\User;
 
+/**
+ * UserController class, inherits from AbstractController.
+ * Gathers routes related to user login and profile handling, including admin
+ */
 class UserController extends AbstractController
 {
     #[Route('/proj/user', name: 'app_user')]
