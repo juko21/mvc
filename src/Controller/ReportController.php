@@ -7,9 +7,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use ParsedownExtra;
 
+/**
+ * Controller class for main report page for course
+ */
 class ReportController extends AbstractController
 {
     /**
+     * Main landing page for report page
+     *
+     * @return response
      * @Route("/", name="home")
      */
     public function index(): Response
@@ -18,6 +24,9 @@ class ReportController extends AbstractController
     }
 
     /**
+     * Route for about page
+     *
+     * @return response
      * @Route("/about", name="about")
      */
     public function about(): Response
@@ -26,6 +35,9 @@ class ReportController extends AbstractController
     }
 
     /**
+     * Route for reports
+     *
+     * @return response
      * @Route("/report", name="report")
      */
     public function report(): Response
@@ -45,6 +57,9 @@ class ReportController extends AbstractController
     }
 
     /**
+     * Route for report on metrics
+     *
+     * @return response
      * @Route("/metrics", name="metrics")
      */
     public function metrics(): Response

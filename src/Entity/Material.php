@@ -64,6 +64,11 @@ class Material
         return $this;
     }
 
+    /**
+     * Returns footprint / pop or null if gdp is null
+     *
+     * @return null|float Returns footprint per pop or null
+     */
     public function getFootprintPerPop(): ?float
     {
         $pop = $this->getDemographics()->getPopulation();
@@ -73,6 +78,11 @@ class Material
         return 0;
     }
 
+    /**
+     * Returns footprint / gdp or null if gdp is null
+     *
+     * @return null|float Returns footprint per gdp or null
+     */
     public function getFootprintPerGdp(): ?float
     {
         $gdp = $this->getDemographics()->getGdp();
@@ -82,6 +92,11 @@ class Material
         return 0;
     }
 
+    /**
+     * Returns array footprint as well as footprint/pop and footprint/gdp
+     *
+     * @return null|array Returns footprint, footprint/pop and footprint/gdp
+     */
     public function getAll(): ?array
     {
         return [$this->year, $this->footprint, $this->getFootprintPerPop(), $this->getFootprintPerGdp()];

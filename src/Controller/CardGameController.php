@@ -10,9 +10,16 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use ParsedownExtra;
 use App\Card\Game;
 
+/**
+ * Controller class for card game 21
+**/
 class CardGameController extends AbstractController
 {
     /**
+     * Landing/start page for game
+     *
+     * @param SessionInterface $session
+     * @return Response
      * @Route("/game", name="game-home"
      * )
      */
@@ -29,6 +36,11 @@ class CardGameController extends AbstractController
     }
 
     /**
+     * POST route for starting game
+     *
+     * @param Request $request
+     * @param SessionInterface $session
+     * @return Response
      * @Route(
      *      "/game/start-process",
      *      name="game-start-post-process",
@@ -50,6 +62,11 @@ class CardGameController extends AbstractController
     }
 
     /**
+     * POST route for betting
+     *
+     * @param Request $request
+     * @param SessionInterface $session
+     * @return Response
      * @Route(
      *      "/game/bet-process",
      *      name="game-bet-post-process",
@@ -72,6 +89,11 @@ class CardGameController extends AbstractController
     }
 
     /**
+     * POST route for dealing card
+     *
+     * @param Request $request
+     * @param SessionInterface $session
+     * @return Response
      * @Route(
      *      "/game/deal-process",
      *      name="game-deal-post-process",
@@ -103,6 +125,11 @@ class CardGameController extends AbstractController
     }
 
     /**
+     * POST route for passing turn
+     *
+     * @param Request $request
+     * @param SessionInterface $session
+     * @return Response
      * @Route(
      *      "/game/pass-process",
      *      name="game-pass-post-process",
@@ -128,6 +155,11 @@ class CardGameController extends AbstractController
     }
 
     /**
+     * POST route for changing ace value
+     *
+     * @param Request $request
+     * @param SessionInterface $session
+     * @return Response
      * @Route(
      *      "/game/setace-process",
      *      name="game-setace-post-process",
@@ -149,6 +181,11 @@ class CardGameController extends AbstractController
     }
 
     /**
+     * POST route for starting new round
+     *
+     * @param Request $request
+     * @param SessionInterface $session
+     * @return Response
      * @Route(
      *      "/game/newround-process",
      *      name="game-newround-post-process",
@@ -173,6 +210,11 @@ class CardGameController extends AbstractController
     }
 
     /**
+     * POST route for resetting game
+     *
+     * @param Request $request
+     * @param SessionInterface $session
+     * @return Response
      * @Route(
      *      "/game/reset-process",
      *      name="game-reset-post-process",
@@ -193,6 +235,9 @@ class CardGameController extends AbstractController
     }
 
     /**
+     * Route for report on game
+     *
+     * @return Response
      * @Route("/game/doc", name="game-doc")
      */
     public function report(): Response

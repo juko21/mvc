@@ -78,6 +78,11 @@ class Foodwaste
         return $this;
     }
 
+    /**
+     * Returns array of all column values for entity
+     *
+     * @return null|array Returns array of all values from entity
+     */
     public function getAll(): ?array
     {
         return [$this->sector, $this->y2012, $this->y2014, $this->y2016];

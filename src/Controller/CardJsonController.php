@@ -9,9 +9,16 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Card\Deck;
 
+/**
+ * Controller class for requesting json data for deck
+ */
 class CardJsonController extends AbstractController
 {
     /**
+     * Route for fetching JSON-data on deck
+     *
+     * @param SessionInterface $session
+     * @return Response
      * @Route("/card/api/deck", name="json-api",
      * methods={"GET","HEAD"})
      */

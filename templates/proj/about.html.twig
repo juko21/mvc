@@ -9,11 +9,19 @@
         <div class="full-width">
         <h2>{{ contentTitle}}</h2>
         </div>
-        <div class="full-width">
-        <p>
+        <div class="full-width about-content">
             {{content | raw}}
-        </p>
         </div>
+    </div>
+    <div class="row">   
+        <img class="dia-img" src="{{ asset("img/diagram.png") }}">
+    </div>
+    <div class="row">   
+        <p>
+            <a href="{{ path('proj-cleancode') }}">Länk till artikel om bra kod</a><a href="{{ path('proj-reset') }}" style="margin-left: 2rem;" >Återställ databas</a>
+        </p>
+        <p>
+        </p>    
     </div>
     <div class="row color-block-container">
         <a class="color-block" style="flex: 10%; min-height: 82px" href="https://github.com/juko21/mvc">

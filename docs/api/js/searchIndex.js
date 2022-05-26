@@ -3,12 +3,12 @@ Search.appendIndex(
                 {
             "fqsen": "\\App\\Card\\Card",
             "name": "Card",
-            "summary": "Class\u0020for\u0020playing\u0020car",
+            "summary": "Class\u0020for\u0020playing\u0020card",
             "url": "classes/App-Card-Card.html"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor\u0020for\u0020class\u0020Card",
             "url": "classes/App-Card-Card.html#method___construct"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AsetAceValue\u0028\u0029",
@@ -68,37 +68,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Deck",
             "name": "Deck",
-            "summary": "",
+            "summary": "Class\u0020for\u0020card\u0020deck\u0020with\u002052\u0020cards",
             "url": "classes/App-Card-Deck.html"
         },                {
             "fqsen": "\\App\\Card\\Deck\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor\u0020for\u0020class\u0020Deck",
             "url": "classes/App-Card-Deck.html#method___construct"
         },                {
             "fqsen": "\\App\\Card\\Deck\u003A\u003AgetAllCardSrc\u0028\u0029",
             "name": "getAllCardSrc",
-            "summary": "",
+            "summary": "Return\u0020all\u0020img\u0020srcs\u0020for\u0020cards",
             "url": "classes/App-Card-Deck.html#method_getAllCardSrc"
         },                {
             "fqsen": "\\App\\Card\\Deck\u003A\u003Asorted\u0028\u0029",
             "name": "sorted",
-            "summary": "",
+            "summary": "Sort\u0020deck",
             "url": "classes/App-Card-Deck.html#method_sorted"
         },                {
             "fqsen": "\\App\\Card\\Deck\u003A\u003AshuffleDeck\u0028\u0029",
             "name": "shuffleDeck",
-            "summary": "",
+            "summary": "Shuffles\u0020deck",
             "url": "classes/App-Card-Deck.html#method_shuffleDeck"
         },                {
             "fqsen": "\\App\\Card\\Deck\u003A\u003ApopCard\u0028\u0029",
             "name": "popCard",
-            "summary": "",
+            "summary": "Pop\u0020card\u0020from\u0020top\u0020of\u0020deck",
             "url": "classes/App-Card-Deck.html#method_popCard"
         },                {
             "fqsen": "\\App\\Card\\Deck\u003A\u003AgetNumber\u0028\u0029",
             "name": "getNumber",
-            "summary": "",
+            "summary": "Get\u0020number\u0020of\u0020cards\u0020in\u0020deck",
             "url": "classes/App-Card-Deck.html#method_getNumber"
         },                {
             "fqsen": "\\App\\Card\\Deck\u003A\u003A\u0024deck",
@@ -108,12 +108,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\DeckWithJokers",
             "name": "DeckWithJokers",
-            "summary": "Class\u0020for\u0020deck\u0020with\u0020jokers\u0020\u002854\u0020cards\u0029",
+            "summary": "Class\u0020for\u0020deck\u0020with\u0020jokers\u0020\u002854\u0020cards\u0029.",
             "url": "classes/App-Card-DeckWithJokers.html"
         },                {
             "fqsen": "\\App\\Card\\DeckWithJokers\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor\u0020for\u0020class\u0020Deck\u0020with\u0020jokers",
             "url": "classes/App-Card-DeckWithJokers.html#method___construct"
         },                {
             "fqsen": "\\App\\Card\\Game",
@@ -123,12 +123,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Game\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor\u0020for\u0020class\u0020Card",
             "url": "classes/App-Card-Game.html#method___construct"
         },                {
             "fqsen": "\\App\\Card\\Game\u003A\u003AdealToPlayer\u0028\u0029",
             "name": "dealToPlayer",
-            "summary": "Deal\u0020card\u0020to\u0020player",
+            "summary": "Deals\u0020card\u0020to\u0020player",
             "url": "classes/App-Card-Game.html#method_dealToPlayer"
         },                {
             "fqsen": "\\App\\Card\\Game\u003A\u003AdealToDealer\u0028\u0029",
@@ -203,7 +203,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Game\u003A\u003AsetAceValue\u0028\u0029",
             "name": "setAceValue",
-            "summary": "Set\u0020ace\u0020value\u0020for\u0020player\u0020and\u0020card",
+            "summary": "Sets\u0020value\u0020of\u0020ace\u0020to\u00201\u0020or\u002014",
             "url": "classes/App-Card-Game.html#method_setAceValue"
         },                {
             "fqsen": "\\App\\Card\\Game\u003A\u003AcheckWinner\u0028\u0029",
@@ -213,7 +213,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Game\u003A\u003AdealPoints\u0028\u0029",
             "name": "dealPoints",
-            "summary": "Deal\u0020points\u0020to\u0020player",
+            "summary": "Deal\u0020points\u0020and\u0020add\u0020or\u0020remove\u0020money\u0020from\u0020player",
             "url": "classes/App-Card-Game.html#method_dealPoints"
         },                {
             "fqsen": "\\App\\Card\\Game\u003A\u003AresetHands\u0028\u0029",
@@ -231,10 +231,10 @@ Search.appendIndex(
             "summary": "Sort\u0020deck\u0020\u0028for\u0020testing\u0029",
             "url": "classes/App-Card-Game.html#method_sortDeck"
         },                {
-            "fqsen": "\\App\\Card\\Game\u003A\u003A\u0024players",
-            "name": "players",
+            "fqsen": "\\App\\Card\\Game\u003A\u003A\u0024player",
+            "name": "player",
             "summary": "",
-            "url": "classes/App-Card-Game.html#property_players"
+            "url": "classes/App-Card-Game.html#property_player"
         },                {
             "fqsen": "\\App\\Card\\Game\u003A\u003A\u0024dealer",
             "name": "dealer",
@@ -256,9 +256,14 @@ Search.appendIndex(
             "summary": "Class\u0020for\u0020hand\u0020of\u0020cards",
             "url": "classes/App-Card-Hand.html"
         },                {
+            "fqsen": "\\App\\Card\\Hand\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Constructor\u0020for\u0020class\u0020hand",
+            "url": "classes/App-Card-Hand.html#method___construct"
+        },                {
             "fqsen": "\\App\\Card\\Hand\u003A\u003AaddCard\u0028\u0029",
             "name": "addCard",
-            "summary": "",
+            "summary": "Add\u0020card\u0020to\u0020hand",
             "url": "classes/App-Card-Hand.html#method_addCard"
         },                {
             "fqsen": "\\App\\Card\\Hand\u003A\u003AcalculateValue\u0028\u0029",
@@ -273,7 +278,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Hand\u003A\u003AsetAceValue\u0028\u0029",
             "name": "setAceValue",
-            "summary": "Set\u0020value\u0020of\u0020ace\u0020for\u0020card",
+            "summary": "Sets\u0020value\u0020of\u0020ace\u0020to\u00201\u0020or\u002014",
             "url": "classes/App-Card-Hand.html#method_setAceValue"
         },                {
             "fqsen": "\\App\\Card\\Hand\u003A\u003AgetHand\u0028\u0029",
@@ -318,12 +323,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Player\u003A\u003AaddCards\u0028\u0029",
             "name": "addCards",
-            "summary": "Add\u0020card\u0020to\u0020hand",
+            "summary": "Add\u0020an\u0020array\u0020of\u0020cards\u0020to\u0020hand",
             "url": "classes/App-Card-Player.html#method_addCards"
         },                {
             "fqsen": "\\App\\Card\\Player\u003A\u003AsetAceValue\u0028\u0029",
             "name": "setAceValue",
-            "summary": "Set\u0020ace\u0020value\u0020for\u0020card",
+            "summary": "Sets\u0020value\u0020of\u0020ace\u0020to\u00201\u0020or\u002014",
             "url": "classes/App-Card-Player.html#method_setAceValue"
         },                {
             "fqsen": "\\App\\Card\\Player\u003A\u003AgetHandCount\u0028\u0029",
@@ -368,98 +373,1333 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\CardController",
             "name": "CardController",
-            "summary": "",
+            "summary": "Controller\u0020class\u0020for\u0020showing\u0020deck\u0020of\u0020cards",
             "url": "classes/App-Controller-CardController.html"
         },                {
             "fqsen": "\\App\\Controller\\CardController\u003A\u003Ahome\u0028\u0029",
             "name": "home",
-            "summary": "",
+            "summary": "Card\u0020landing\u0020page",
             "url": "classes/App-Controller-CardController.html#method_home"
         },                {
             "fqsen": "\\App\\Controller\\CardController\u003A\u003Adeck\u0028\u0029",
             "name": "deck",
-            "summary": "",
+            "summary": "Route\u0020for\u0020showing\u0020deck\u0020of\u0020cards",
             "url": "classes/App-Controller-CardController.html#method_deck"
         },                {
             "fqsen": "\\App\\Controller\\CardController\u003A\u003Adeck2\u0028\u0029",
             "name": "deck2",
-            "summary": "",
+            "summary": "Route\u0020for\u0020showing\u0020deck\u0020of\u0020cards\u0020with\u0020jokers",
             "url": "classes/App-Controller-CardController.html#method_deck2"
         },                {
             "fqsen": "\\App\\Controller\\CardController\u003A\u003AshuffleDeck\u0028\u0029",
             "name": "shuffleDeck",
-            "summary": "",
+            "summary": "Route\u0020for\u0020resetting\u0020and\u0020shuffling\u0020deck",
             "url": "classes/App-Controller-CardController.html#method_shuffleDeck"
         },                {
             "fqsen": "\\App\\Controller\\CardController\u003A\u003AdrawCard\u0028\u0029",
             "name": "drawCard",
-            "summary": "",
+            "summary": "Route\u0020for\u0020drawing\u0020and\u0020showing\u0020card",
             "url": "classes/App-Controller-CardController.html#method_drawCard"
         },                {
             "fqsen": "\\App\\Controller\\CardController\u003A\u003AdrawCards\u0028\u0029",
             "name": "drawCards",
-            "summary": "",
+            "summary": "Route\u0020for\u0020drawing\u0020and\u0020showing\u0020cards,\u0020the\u0020number\u0020decided\u0020by\u0020route\u0020param",
             "url": "classes/App-Controller-CardController.html#method_drawCards"
         },                {
             "fqsen": "\\App\\Controller\\CardController\u003A\u003AdrawPlayerCards\u0028\u0029",
             "name": "drawPlayerCards",
-            "summary": "",
+            "summary": "Route\u0020for\u0020drawing\u0020and\u0020showing\u0020x\u0020cards\u0020for\u0020x\u0020players,\u0020the\u0020number\u0020decided\u0020by\u0020route\u0020params",
             "url": "classes/App-Controller-CardController.html#method_drawPlayerCards"
         },                {
             "fqsen": "\\App\\Controller\\CardGameController",
             "name": "CardGameController",
-            "summary": "",
+            "summary": "Controller\u0020class\u0020for\u0020card\u0020game\u002021",
             "url": "classes/App-Controller-CardGameController.html"
         },                {
             "fqsen": "\\App\\Controller\\CardGameController\u003A\u003Ahome\u0028\u0029",
             "name": "home",
-            "summary": "",
+            "summary": "Landing\/start\u0020page\u0020for\u0020game",
             "url": "classes/App-Controller-CardGameController.html#method_home"
         },                {
-            "fqsen": "\\App\\Controller\\CardGameController\u003A\u003AgamePost\u0028\u0029",
-            "name": "gamePost",
-            "summary": "",
-            "url": "classes/App-Controller-CardGameController.html#method_gamePost"
+            "fqsen": "\\App\\Controller\\CardGameController\u003A\u003AgameStartPost\u0028\u0029",
+            "name": "gameStartPost",
+            "summary": "POST\u0020route\u0020for\u0020starting\u0020game",
+            "url": "classes/App-Controller-CardGameController.html#method_gameStartPost"
+        },                {
+            "fqsen": "\\App\\Controller\\CardGameController\u003A\u003AgameBetPost\u0028\u0029",
+            "name": "gameBetPost",
+            "summary": "POST\u0020route\u0020for\u0020betting",
+            "url": "classes/App-Controller-CardGameController.html#method_gameBetPost"
+        },                {
+            "fqsen": "\\App\\Controller\\CardGameController\u003A\u003AgameDealPost\u0028\u0029",
+            "name": "gameDealPost",
+            "summary": "POST\u0020route\u0020for\u0020dealing\u0020card",
+            "url": "classes/App-Controller-CardGameController.html#method_gameDealPost"
+        },                {
+            "fqsen": "\\App\\Controller\\CardGameController\u003A\u003AgamePassPost\u0028\u0029",
+            "name": "gamePassPost",
+            "summary": "POST\u0020route\u0020for\u0020passing\u0020turn",
+            "url": "classes/App-Controller-CardGameController.html#method_gamePassPost"
+        },                {
+            "fqsen": "\\App\\Controller\\CardGameController\u003A\u003AgameSetAcePost\u0028\u0029",
+            "name": "gameSetAcePost",
+            "summary": "POST\u0020route\u0020for\u0020changing\u0020ace\u0020value",
+            "url": "classes/App-Controller-CardGameController.html#method_gameSetAcePost"
+        },                {
+            "fqsen": "\\App\\Controller\\CardGameController\u003A\u003AgameNewRoundPost\u0028\u0029",
+            "name": "gameNewRoundPost",
+            "summary": "POST\u0020route\u0020for\u0020starting\u0020new\u0020round",
+            "url": "classes/App-Controller-CardGameController.html#method_gameNewRoundPost"
+        },                {
+            "fqsen": "\\App\\Controller\\CardGameController\u003A\u003AgameResetPost\u0028\u0029",
+            "name": "gameResetPost",
+            "summary": "POST\u0020route\u0020for\u0020resetting\u0020game",
+            "url": "classes/App-Controller-CardGameController.html#method_gameResetPost"
         },                {
             "fqsen": "\\App\\Controller\\CardGameController\u003A\u003Areport\u0028\u0029",
             "name": "report",
-            "summary": "",
+            "summary": "Route\u0020for\u0020report\u0020on\u0020game",
             "url": "classes/App-Controller-CardGameController.html#method_report"
         },                {
             "fqsen": "\\App\\Controller\\CardJsonController",
             "name": "CardJsonController",
-            "summary": "",
+            "summary": "Controller\u0020class\u0020for\u0020requesting\u0020json\u0020data\u0020for\u0020deck",
             "url": "classes/App-Controller-CardJsonController.html"
         },                {
             "fqsen": "\\App\\Controller\\CardJsonController\u003A\u003AjsonApiGet\u0028\u0029",
             "name": "jsonApiGet",
-            "summary": "",
+            "summary": "Route\u0020for\u0020fetching\u0020JSON\u002Ddata\u0020on\u0020deck",
             "url": "classes/App-Controller-CardJsonController.html#method_jsonApiGet"
         },                {
             "fqsen": "\\App\\Controller\\ReportController",
             "name": "ReportController",
-            "summary": "",
+            "summary": "Controller\u0020class\u0020for\u0020main\u0020report\u0020page\u0020for\u0020course",
             "url": "classes/App-Controller-ReportController.html"
         },                {
             "fqsen": "\\App\\Controller\\ReportController\u003A\u003Aindex\u0028\u0029",
             "name": "index",
-            "summary": "",
+            "summary": "Main\u0020landing\u0020page\u0020for\u0020report\u0020page",
             "url": "classes/App-Controller-ReportController.html#method_index"
         },                {
             "fqsen": "\\App\\Controller\\ReportController\u003A\u003Aabout\u0028\u0029",
             "name": "about",
-            "summary": "",
+            "summary": "Route\u0020for\u0020about\u0020page",
             "url": "classes/App-Controller-ReportController.html#method_about"
         },                {
             "fqsen": "\\App\\Controller\\ReportController\u003A\u003Areport\u0028\u0029",
             "name": "report",
-            "summary": "",
+            "summary": "Route\u0020for\u0020reports",
             "url": "classes/App-Controller-ReportController.html#method_report"
+        },                {
+            "fqsen": "\\App\\Controller\\ReportController\u003A\u003Ametrics\u0028\u0029",
+            "name": "metrics",
+            "summary": "Route\u0020for\u0020report\u0020on\u0020metrics",
+            "url": "classes/App-Controller-ReportController.html#method_metrics"
         },                {
             "fqsen": "\\App\\Kernel",
             "name": "Kernel",
             "summary": "",
             "url": "classes/App-Kernel.html"
+        },                {
+            "fqsen": "\\App\\ChartCreator\\ChartCreator",
+            "name": "ChartCreator",
+            "summary": "Class\u0020ChartCreator\u003A\nInitiates\u0020with\u0020datasets\u0020and\u0020options\u0020used\u0020for\u0020generating\u0020datasets\u0020and\u0020chart\u0020options\nin\u0020the\u0020correct\u0020format\u0020to\u0020be\u0020used\u0020by\u0020chartjs.\u0020Datasets\u0020and\u0020charts\nfetched\u0020with\u0020getDataset\u0020and\u0020getOptions",
+            "url": "classes/App-ChartCreator-ChartCreator.html"
+        },                {
+            "fqsen": "\\App\\ChartCreator\\ChartCreator\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Creates\u0020new\u0020ChartCreator\u0020object\nInitiates\u0020with\u0020datasets\u0020and\u0020options\u0020used\u0020for\u0020generating\u0020datasets\u0020and\u0020chart\u0020options\nin\u0020the\u0020correct\u0020format\u0020to\u0020be\u0020used\u0020by\u0020chartjs.\u0020Datasets\u0020and\u0020charts\nfetched\u0020with\u0020getDataset\u0020and\u0020getOptions",
+            "url": "classes/App-ChartCreator-ChartCreator.html#method___construct"
+        },                {
+            "fqsen": "\\App\\ChartCreator\\ChartCreator\u003A\u003AcreateChart\u0028\u0029",
+            "name": "createChart",
+            "summary": "createChartset\u0028\u0029\nBuilds\u0020the\u0020charts\u0020from\u0020given\u0020data",
+            "url": "classes/App-ChartCreator-ChartCreator.html#method_createChart"
+        },                {
+            "fqsen": "\\App\\ChartCreator\\ChartCreator\u003A\u003AgetChart\u0028\u0029",
+            "name": "getChart",
+            "summary": "getCharts\u0028\u0029\nReturns\u0020chart",
+            "url": "classes/App-ChartCreator-ChartCreator.html#method_getChart"
+        },                {
+            "fqsen": "\\App\\ChartCreator\\ChartCreator\u003A\u003AgetDataset\u0028\u0029",
+            "name": "getDataset",
+            "summary": "getDataset\nFormats\u0020and\u0020returns\u0020dataset\u0020with\u0020options\u0020and\u0020label\u0020as\u0020an\u0020array\u0020suitable\u0020for\u0020chartjs",
+            "url": "classes/App-ChartCreator-ChartCreator.html#method_getDataset"
+        },                {
+            "fqsen": "\\App\\ChartCreator\\ChartCreator\u003A\u003AgetOptions\u0028\u0029",
+            "name": "getOptions",
+            "summary": "getOptions\nFormats\u0020and\u0020returns\u0020options\u0020as\u0020an\u0020array\u0020suitable\u0020for\u0020chartjs",
+            "url": "classes/App-ChartCreator-ChartCreator.html#method_getOptions"
+        },                {
+            "fqsen": "\\App\\ChartCreator\\ChartCreator\u003A\u003A\u0024colors",
+            "name": "colors",
+            "summary": "",
+            "url": "classes/App-ChartCreator-ChartCreator.html#property_colors"
+        },                {
+            "fqsen": "\\App\\ChartCreator\\ChartCreator\u003A\u003A\u0024datax",
+            "name": "datax",
+            "summary": "",
+            "url": "classes/App-ChartCreator-ChartCreator.html#property_datax"
+        },                {
+            "fqsen": "\\App\\ChartCreator\\ChartCreator\u003A\u003A\u0024datay",
+            "name": "datay",
+            "summary": "",
+            "url": "classes/App-ChartCreator-ChartCreator.html#property_datay"
+        },                {
+            "fqsen": "\\App\\ChartCreator\\ChartCreator\u003A\u003A\u0024inverted",
+            "name": "inverted",
+            "summary": "",
+            "url": "classes/App-ChartCreator-ChartCreator.html#property_inverted"
+        },                {
+            "fqsen": "\\App\\ChartCreator\\ChartCreator\u003A\u003A\u0024chart",
+            "name": "chart",
+            "summary": "",
+            "url": "classes/App-ChartCreator-ChartCreator.html#property_chart"
+        },                {
+            "fqsen": "\\App\\ChartCreator\\ChartCreator\u003A\u003A\u0024type",
+            "name": "type",
+            "summary": "",
+            "url": "classes/App-ChartCreator-ChartCreator.html#property_type"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController",
+            "name": "LibraryController",
+            "summary": "Controller\u0020class\u0020for\u0020library,\u0020handling\u0020book\u0020table\u0020in\u0020db",
+            "url": "classes/App-Controller-LibraryController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003Aindex\u0028\u0029",
+            "name": "index",
+            "summary": "Landing\u0020page\u0020for\u0020library\u002Droute",
+            "url": "classes/App-Controller-LibraryController.html#method_index"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AcreateBook\u0028\u0029",
+            "name": "createBook",
+            "summary": "Route\u0020for\u0020registering\u0020new\u0020books",
+            "url": "classes/App-Controller-LibraryController.html#method_createBook"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AcreateBookPostProcess\u0028\u0029",
+            "name": "createBookPostProcess",
+            "summary": "Post\u0020route\u0020for\u0020processing\u0020book\u0020registration\u0020requests",
+            "url": "classes/App-Controller-LibraryController.html#method_createBookPostProcess"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowAllProduct\u0028\u0029",
+            "name": "showAllProduct",
+            "summary": "Route\u0020for\u0020showing\u0020all\u0020books",
+            "url": "classes/App-Controller-LibraryController.html#method_showAllProduct"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowBookById\u0028\u0029",
+            "name": "showBookById",
+            "summary": "Route\u0020for\u0020fetchin\u0020books\u0020by\u0020id",
+            "url": "classes/App-Controller-LibraryController.html#method_showBookById"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AshowBookByIsbn\u0028\u0029",
+            "name": "showBookByIsbn",
+            "summary": "Route\u0020for\u0020fetching\u0020book\u0020by\u0020ISBN",
+            "url": "classes/App-Controller-LibraryController.html#method_showBookByIsbn"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AupdateBook\u0028\u0029",
+            "name": "updateBook",
+            "summary": "Route\u0020for\u0020updating\u0020books",
+            "url": "classes/App-Controller-LibraryController.html#method_updateBook"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AupdateBookPostProcess\u0028\u0029",
+            "name": "updateBookPostProcess",
+            "summary": "Post\u0020route\u0020for\u0020processing\u0020update\u0020book\u002Drequests",
+            "url": "classes/App-Controller-LibraryController.html#method_updateBookPostProcess"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AdeleteBook\u0028\u0029",
+            "name": "deleteBook",
+            "summary": "Route\u0020for\u0020deleting\u0020book",
+            "url": "classes/App-Controller-LibraryController.html#method_deleteBook"
+        },                {
+            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AdeleteBookPostProcess\u0028\u0029",
+            "name": "deleteBookPostProcess",
+            "summary": "Post\u0020route\u0020for\u0020handling\u0020delete\u002Dbook\u0020requests",
+            "url": "classes/App-Controller-LibraryController.html#method_deleteBookPostProcess"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjectController",
+            "name": "ProjectController",
+            "summary": "",
+            "url": "classes/App-Controller-ProjectController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjectController\u003A\u003Aindex\u0028\u0029",
+            "name": "index",
+            "summary": "Route\u0020method\u0020for\u0020main\u0020landing\u0020page\u0020for\u0020project",
+            "url": "classes/App-Controller-ProjectController.html#method_index"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjectController\u003A\u003Aabout\u0028\u0029",
+            "name": "about",
+            "summary": "Route\u0020method\u0020for\u0020about\u0020page\u0020for\u0020project",
+            "url": "classes/App-Controller-ProjectController.html#method_about"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjectController\u003A\u003AcleanCode\u0028\u0029",
+            "name": "cleanCode",
+            "summary": "Route\u0020method\u0020for\u0020clean\u002Dcode\u0020article",
+            "url": "classes/App-Controller-ProjectController.html#method_cleanCode"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjectController\u003A\u003AindicatorSelect\u0028\u0029",
+            "name": "indicatorSelect",
+            "summary": "Route\u0020method\u0020for\u0020indicatorSelect.\u0020Used\u0020with\u0020route\u0020parameter\nto\u0020send\u0020user\u0020to\u0020correct\u0020indicator\u0020page",
+            "url": "classes/App-Controller-ProjectController.html#method_indicatorSelect"
+        },                {
+            "fqsen": "\\App\\Controller\\ResetController",
+            "name": "ResetController",
+            "summary": "Controller\u0020class\u0020for\u0020resetting\u0020database\n\u002D\u0020split\u0020from\u0020Project\u0020controller",
+            "url": "classes/App-Controller-ResetController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ResetController\u003A\u003Areset\u0028\u0029",
+            "name": "reset",
+            "summary": "Route\u0020method\u0020for\u0020database\u0020reset\u0020page",
+            "url": "classes/App-Controller-ResetController.html#method_reset"
+        },                {
+            "fqsen": "\\App\\Controller\\ResetController\u003A\u003AresetProcess\u0028\u0029",
+            "name": "resetProcess",
+            "summary": "POST\u0020Route\u0020method\u0020for\u0020database\u0020reset\u0020page",
+            "url": "classes/App-Controller-ResetController.html#method_resetProcess"
+        },                {
+            "fqsen": "\\App\\Controller\\UserController",
+            "name": "UserController",
+            "summary": "UserController\u0020class,\u0020inherits\u0020from\u0020AbstractController.",
+            "url": "classes/App-Controller-UserController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\UserController\u003A\u003AuserHome\u0028\u0029",
+            "name": "userHome",
+            "summary": "Route\u0020method\u0020profile\u0020page,\u0020redirects\u0020to\u0020login\nif\u0020not\u0020logged\u0020in",
+            "url": "classes/App-Controller-UserController.html#method_userHome"
+        },                {
+            "fqsen": "\\App\\Controller\\UserController\u003A\u003Alogin\u0028\u0029",
+            "name": "login",
+            "summary": "Route\u0020method\u0020login\u0020page,\u0020redirects\u0020to\u0020profile\u0020page\nif\u0020logged\u0020in",
+            "url": "classes/App-Controller-UserController.html#method_login"
+        },                {
+            "fqsen": "\\App\\Controller\\UserController\u003A\u003AregisterUser\u0028\u0029",
+            "name": "registerUser",
+            "summary": "Route\u0020method\u0020registering\u0020new\u0020user",
+            "url": "classes/App-Controller-UserController.html#method_registerUser"
+        },                {
+            "fqsen": "\\App\\Controller\\UserPostController",
+            "name": "UserPostController",
+            "summary": "UserPostController\u0020class,\u0020inherits\u0020from\u0020AbstractController.",
+            "url": "classes/App-Controller-UserPostController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\UserPostController\u003A\u003AloginProcess\u0028\u0029",
+            "name": "loginProcess",
+            "summary": "Post\u0020route\u0020method\u0020login\u0020processing",
+            "url": "classes/App-Controller-UserPostController.html#method_loginProcess"
+        },                {
+            "fqsen": "\\App\\Controller\\UserPostController\u003A\u003AlogoutProcess\u0028\u0029",
+            "name": "logoutProcess",
+            "summary": "Post\u0020route\u0020method\u0020logout\u0020processing",
+            "url": "classes/App-Controller-UserPostController.html#method_logoutProcess"
+        },                {
+            "fqsen": "\\App\\Controller\\UserPostController\u003A\u003AupdateUser\u0028\u0029",
+            "name": "updateUser",
+            "summary": "Post\u0020route\u0020method\u0020for\u0020updating\u0020user",
+            "url": "classes/App-Controller-UserPostController.html#method_updateUser"
+        },                {
+            "fqsen": "\\App\\Controller\\UserPostController\u003A\u003AupdateProcess\u0028\u0029",
+            "name": "updateProcess",
+            "summary": "Post\u0020route\u0020method\u0020for\u0020processing\u0020user\u0020update",
+            "url": "classes/App-Controller-UserPostController.html#method_updateProcess"
+        },                {
+            "fqsen": "\\App\\Controller\\UserPostController\u003A\u003AdeleteUser\u0028\u0029",
+            "name": "deleteUser",
+            "summary": "Post\u0020route\u0020method\u0020for\u0020user\u0020delete",
+            "url": "classes/App-Controller-UserPostController.html#method_deleteUser"
+        },                {
+            "fqsen": "\\App\\Controller\\UserPostController\u003A\u003AdeletePostProcess\u0028\u0029",
+            "name": "deletePostProcess",
+            "summary": "Post\u0020route\u0020method\u0020for\u0020processing\u0020user\u0020delete\u0020request",
+            "url": "classes/App-Controller-UserPostController.html#method_deletePostProcess"
+        },                {
+            "fqsen": "\\App\\Controller\\UserPostController\u003A\u003AregisterUserProcess\u0028\u0029",
+            "name": "registerUserProcess",
+            "summary": "Post\u0020route\u0020method\u0020for\u0020processing\u0020new\u0020user\u0020request",
+            "url": "classes/App-Controller-UserPostController.html#method_registerUserProcess"
+        },                {
+            "fqsen": "\\App\\Entity\\Article",
+            "name": "Article",
+            "summary": "",
+            "url": "classes/App-Entity-Article.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Article\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Article.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Article\u003A\u003AgetTitle\u0028\u0029",
+            "name": "getTitle",
+            "summary": "",
+            "url": "classes/App-Entity-Article.html#method_getTitle"
+        },                {
+            "fqsen": "\\App\\Entity\\Article\u003A\u003AsetTitle\u0028\u0029",
+            "name": "setTitle",
+            "summary": "",
+            "url": "classes/App-Entity-Article.html#method_setTitle"
+        },                {
+            "fqsen": "\\App\\Entity\\Article\u003A\u003AgetContent\u0028\u0029",
+            "name": "getContent",
+            "summary": "",
+            "url": "classes/App-Entity-Article.html#method_getContent"
+        },                {
+            "fqsen": "\\App\\Entity\\Article\u003A\u003AsetContent\u0028\u0029",
+            "name": "setContent",
+            "summary": "",
+            "url": "classes/App-Entity-Article.html#method_setContent"
+        },                {
+            "fqsen": "\\App\\Entity\\Article\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Article.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Article\u003A\u003A\u0024title",
+            "name": "title",
+            "summary": "",
+            "url": "classes/App-Entity-Article.html#property_title"
+        },                {
+            "fqsen": "\\App\\Entity\\Article\u003A\u003A\u0024content",
+            "name": "content",
+            "summary": "",
+            "url": "classes/App-Entity-Article.html#property_content"
+        },                {
+            "fqsen": "\\App\\Entity\\Book",
+            "name": "Book",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AgetTitle\u0028\u0029",
+            "name": "getTitle",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_getTitle"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AsetTitle\u0028\u0029",
+            "name": "setTitle",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_setTitle"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AgetIsbn\u0028\u0029",
+            "name": "getIsbn",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_getIsbn"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AsetIsbn\u0028\u0029",
+            "name": "setIsbn",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_setIsbn"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AgetAuthor\u0028\u0029",
+            "name": "getAuthor",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_getAuthor"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AsetAuthor\u0028\u0029",
+            "name": "setAuthor",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_setAuthor"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AgetImg\u0028\u0029",
+            "name": "getImg",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_getImg"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003AsetImg\u0028\u0029",
+            "name": "setImg",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#method_setImg"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003A\u0024title",
+            "name": "title",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#property_title"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003A\u0024isbn",
+            "name": "isbn",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#property_isbn"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003A\u0024author",
+            "name": "author",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#property_author"
+        },                {
+            "fqsen": "\\App\\Entity\\Book\u003A\u003A\u0024img",
+            "name": "img",
+            "summary": "",
+            "url": "classes/App-Entity-Book.html#property_img"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata",
+            "name": "Chartdata",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003AgetArticleId\u0028\u0029",
+            "name": "getArticleId",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#method_getArticleId"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003AsetArticleId\u0028\u0029",
+            "name": "setArticleId",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#method_setArticleId"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003AgetIndicatorId\u0028\u0029",
+            "name": "getIndicatorId",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#method_getIndicatorId"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003AsetIndicatorId\u0028\u0029",
+            "name": "setIndicatorId",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#method_setIndicatorId"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003AgetType\u0028\u0029",
+            "name": "getType",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#method_getType"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003AsetType\u0028\u0029",
+            "name": "setType",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#method_setType"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003AgetIndicator\u0028\u0029",
+            "name": "getIndicator",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#method_getIndicator"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003AsetIndicator\u0028\u0029",
+            "name": "setIndicator",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#method_setIndicator"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003AgetArticle\u0028\u0029",
+            "name": "getArticle",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#method_getArticle"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003AsetArticle\u0028\u0029",
+            "name": "setArticle",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#method_setArticle"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003A\u0024article_id",
+            "name": "article_id",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#property_article_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003A\u0024indicator_id",
+            "name": "indicator_id",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#property_indicator_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003A\u0024type",
+            "name": "type",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#property_type"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003A\u0024indicator",
+            "name": "indicator",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#property_indicator"
+        },                {
+            "fqsen": "\\App\\Entity\\Chartdata\u003A\u003A\u0024article",
+            "name": "article",
+            "summary": "",
+            "url": "classes/App-Entity-Chartdata.html#property_article"
+        },                {
+            "fqsen": "\\App\\Entity\\Demographics",
+            "name": "Demographics",
+            "summary": "",
+            "url": "classes/App-Entity-Demographics.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Demographics\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Demographics.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Demographics\u003A\u003AgetYear\u0028\u0029",
+            "name": "getYear",
+            "summary": "",
+            "url": "classes/App-Entity-Demographics.html#method_getYear"
+        },                {
+            "fqsen": "\\App\\Entity\\Demographics\u003A\u003AsetYear\u0028\u0029",
+            "name": "setYear",
+            "summary": "",
+            "url": "classes/App-Entity-Demographics.html#method_setYear"
+        },                {
+            "fqsen": "\\App\\Entity\\Demographics\u003A\u003AgetPopulation\u0028\u0029",
+            "name": "getPopulation",
+            "summary": "",
+            "url": "classes/App-Entity-Demographics.html#method_getPopulation"
+        },                {
+            "fqsen": "\\App\\Entity\\Demographics\u003A\u003AsetPopulation\u0028\u0029",
+            "name": "setPopulation",
+            "summary": "",
+            "url": "classes/App-Entity-Demographics.html#method_setPopulation"
+        },                {
+            "fqsen": "\\App\\Entity\\Demographics\u003A\u003AgetGdp\u0028\u0029",
+            "name": "getGdp",
+            "summary": "",
+            "url": "classes/App-Entity-Demographics.html#method_getGdp"
+        },                {
+            "fqsen": "\\App\\Entity\\Demographics\u003A\u003AsetGdp\u0028\u0029",
+            "name": "setGdp",
+            "summary": "",
+            "url": "classes/App-Entity-Demographics.html#method_setGdp"
+        },                {
+            "fqsen": "\\App\\Entity\\Demographics\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Demographics.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Demographics\u003A\u003A\u0024year",
+            "name": "year",
+            "summary": "",
+            "url": "classes/App-Entity-Demographics.html#property_year"
+        },                {
+            "fqsen": "\\App\\Entity\\Demographics\u003A\u003A\u0024population",
+            "name": "population",
+            "summary": "",
+            "url": "classes/App-Entity-Demographics.html#property_population"
+        },                {
+            "fqsen": "\\App\\Entity\\Demographics\u003A\u003A\u0024gdp",
+            "name": "gdp",
+            "summary": "",
+            "url": "classes/App-Entity-Demographics.html#property_gdp"
+        },                {
+            "fqsen": "\\App\\Entity\\Foodwaste",
+            "name": "Foodwaste",
+            "summary": "",
+            "url": "classes/App-Entity-Foodwaste.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Foodwaste\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Foodwaste.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Foodwaste\u003A\u003AgetSector\u0028\u0029",
+            "name": "getSector",
+            "summary": "",
+            "url": "classes/App-Entity-Foodwaste.html#method_getSector"
+        },                {
+            "fqsen": "\\App\\Entity\\Foodwaste\u003A\u003AsetSector\u0028\u0029",
+            "name": "setSector",
+            "summary": "",
+            "url": "classes/App-Entity-Foodwaste.html#method_setSector"
+        },                {
+            "fqsen": "\\App\\Entity\\Foodwaste\u003A\u003AgetY2012\u0028\u0029",
+            "name": "getY2012",
+            "summary": "",
+            "url": "classes/App-Entity-Foodwaste.html#method_getY2012"
+        },                {
+            "fqsen": "\\App\\Entity\\Foodwaste\u003A\u003AsetY2012\u0028\u0029",
+            "name": "setY2012",
+            "summary": "",
+            "url": "classes/App-Entity-Foodwaste.html#method_setY2012"
+        },                {
+            "fqsen": "\\App\\Entity\\Foodwaste\u003A\u003AgetY2014\u0028\u0029",
+            "name": "getY2014",
+            "summary": "",
+            "url": "classes/App-Entity-Foodwaste.html#method_getY2014"
+        },                {
+            "fqsen": "\\App\\Entity\\Foodwaste\u003A\u003AsetY2014\u0028\u0029",
+            "name": "setY2014",
+            "summary": "",
+            "url": "classes/App-Entity-Foodwaste.html#method_setY2014"
+        },                {
+            "fqsen": "\\App\\Entity\\Foodwaste\u003A\u003AgetY2016\u0028\u0029",
+            "name": "getY2016",
+            "summary": "",
+            "url": "classes/App-Entity-Foodwaste.html#method_getY2016"
+        },                {
+            "fqsen": "\\App\\Entity\\Foodwaste\u003A\u003AsetY2016\u0028\u0029",
+            "name": "setY2016",
+            "summary": "",
+            "url": "classes/App-Entity-Foodwaste.html#method_setY2016"
+        },                {
+            "fqsen": "\\App\\Entity\\Foodwaste\u003A\u003AgetAll\u0028\u0029",
+            "name": "getAll",
+            "summary": "Returns\u0020array\u0020of\u0020all\u0020column\u0020values\u0020for\u0020entity",
+            "url": "classes/App-Entity-Foodwaste.html#method_getAll"
+        },                {
+            "fqsen": "\\App\\Entity\\Foodwaste\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Foodwaste.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Foodwaste\u003A\u003A\u0024sector",
+            "name": "sector",
+            "summary": "",
+            "url": "classes/App-Entity-Foodwaste.html#property_sector"
+        },                {
+            "fqsen": "\\App\\Entity\\Foodwaste\u003A\u003A\u0024y2012",
+            "name": "y2012",
+            "summary": "",
+            "url": "classes/App-Entity-Foodwaste.html#property_y2012"
+        },                {
+            "fqsen": "\\App\\Entity\\Foodwaste\u003A\u003A\u0024y2014",
+            "name": "y2014",
+            "summary": "",
+            "url": "classes/App-Entity-Foodwaste.html#property_y2014"
+        },                {
+            "fqsen": "\\App\\Entity\\Foodwaste\u003A\u003A\u0024y2016",
+            "name": "y2016",
+            "summary": "",
+            "url": "classes/App-Entity-Foodwaste.html#property_y2016"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator",
+            "name": "Indicator",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003AgetRoute\u0028\u0029",
+            "name": "getRoute",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#method_getRoute"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003AsetRoute\u0028\u0029",
+            "name": "setRoute",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#method_setRoute"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003AgetArticleId\u0028\u0029",
+            "name": "getArticleId",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#method_getArticleId"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003AsetArticleId\u0028\u0029",
+            "name": "setArticleId",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#method_setArticleId"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003AgetHeader\u0028\u0029",
+            "name": "getHeader",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#method_getHeader"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003AsetHeader\u0028\u0029",
+            "name": "setHeader",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#method_setHeader"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003AisMultiple\u0028\u0029",
+            "name": "isMultiple",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#method_isMultiple"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003AsetMultiple\u0028\u0029",
+            "name": "setMultiple",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#method_setMultiple"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003AgetChartdatas\u0028\u0029",
+            "name": "getChartdatas",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#method_getChartdatas"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003AaddChartdata\u0028\u0029",
+            "name": "addChartdata",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#method_addChartdata"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003AremoveChartdata\u0028\u0029",
+            "name": "removeChartdata",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#method_removeChartdata"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003AgetArticle\u0028\u0029",
+            "name": "getArticle",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#method_getArticle"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003AsetArticle\u0028\u0029",
+            "name": "setArticle",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#method_setArticle"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003A\u0024route",
+            "name": "route",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#property_route"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003A\u0024article_id",
+            "name": "article_id",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#property_article_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003A\u0024header",
+            "name": "header",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#property_header"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003A\u0024multiple",
+            "name": "multiple",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#property_multiple"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003A\u0024chartdatas",
+            "name": "chartdatas",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#property_chartdatas"
+        },                {
+            "fqsen": "\\App\\Entity\\Indicator\u003A\u003A\u0024article",
+            "name": "article",
+            "summary": "",
+            "url": "classes/App-Entity-Indicator.html#property_article"
+        },                {
+            "fqsen": "\\App\\Entity\\Material",
+            "name": "Material",
+            "summary": "",
+            "url": "classes/App-Entity-Material.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Material\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Material.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Material\u003A\u003AgetFootprint\u0028\u0029",
+            "name": "getFootprint",
+            "summary": "",
+            "url": "classes/App-Entity-Material.html#method_getFootprint"
+        },                {
+            "fqsen": "\\App\\Entity\\Material\u003A\u003AsetFootprint\u0028\u0029",
+            "name": "setFootprint",
+            "summary": "",
+            "url": "classes/App-Entity-Material.html#method_setFootprint"
+        },                {
+            "fqsen": "\\App\\Entity\\Material\u003A\u003AgetDemographics\u0028\u0029",
+            "name": "getDemographics",
+            "summary": "",
+            "url": "classes/App-Entity-Material.html#method_getDemographics"
+        },                {
+            "fqsen": "\\App\\Entity\\Material\u003A\u003AsetDemographics\u0028\u0029",
+            "name": "setDemographics",
+            "summary": "",
+            "url": "classes/App-Entity-Material.html#method_setDemographics"
+        },                {
+            "fqsen": "\\App\\Entity\\Material\u003A\u003AgetYear\u0028\u0029",
+            "name": "getYear",
+            "summary": "",
+            "url": "classes/App-Entity-Material.html#method_getYear"
+        },                {
+            "fqsen": "\\App\\Entity\\Material\u003A\u003AsetYear\u0028\u0029",
+            "name": "setYear",
+            "summary": "",
+            "url": "classes/App-Entity-Material.html#method_setYear"
+        },                {
+            "fqsen": "\\App\\Entity\\Material\u003A\u003AgetFootprintPerPop\u0028\u0029",
+            "name": "getFootprintPerPop",
+            "summary": "Returns\u0020footprint\u0020\/\u0020pop\u0020or\u0020null\u0020if\u0020gdp\u0020is\u0020null",
+            "url": "classes/App-Entity-Material.html#method_getFootprintPerPop"
+        },                {
+            "fqsen": "\\App\\Entity\\Material\u003A\u003AgetFootprintPerGdp\u0028\u0029",
+            "name": "getFootprintPerGdp",
+            "summary": "Returns\u0020footprint\u0020\/\u0020gdp\u0020or\u0020null\u0020if\u0020gdp\u0020is\u0020null",
+            "url": "classes/App-Entity-Material.html#method_getFootprintPerGdp"
+        },                {
+            "fqsen": "\\App\\Entity\\Material\u003A\u003AgetAll\u0028\u0029",
+            "name": "getAll",
+            "summary": "Returns\u0020array\u0020footprint\u0020as\u0020well\u0020as\u0020footprint\/pop\u0020and\u0020footprint\/gdp",
+            "url": "classes/App-Entity-Material.html#method_getAll"
+        },                {
+            "fqsen": "\\App\\Entity\\Material\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Material.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Material\u003A\u003A\u0024footprint",
+            "name": "footprint",
+            "summary": "",
+            "url": "classes/App-Entity-Material.html#property_footprint"
+        },                {
+            "fqsen": "\\App\\Entity\\Material\u003A\u003A\u0024demographics",
+            "name": "demographics",
+            "summary": "",
+            "url": "classes/App-Entity-Material.html#property_demographics"
+        },                {
+            "fqsen": "\\App\\Entity\\Material\u003A\u003A\u0024year",
+            "name": "year",
+            "summary": "",
+            "url": "classes/App-Entity-Material.html#property_year"
+        },                {
+            "fqsen": "\\App\\Entity\\Pollution",
+            "name": "Pollution",
+            "summary": "",
+            "url": "classes/App-Entity-Pollution.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Pollution\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Pollution.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Pollution\u003A\u003AgetYear\u0028\u0029",
+            "name": "getYear",
+            "summary": "",
+            "url": "classes/App-Entity-Pollution.html#method_getYear"
+        },                {
+            "fqsen": "\\App\\Entity\\Pollution\u003A\u003AsetYear\u0028\u0029",
+            "name": "setYear",
+            "summary": "",
+            "url": "classes/App-Entity-Pollution.html#method_setYear"
+        },                {
+            "fqsen": "\\App\\Entity\\Pollution\u003A\u003AgetSweden\u0028\u0029",
+            "name": "getSweden",
+            "summary": "",
+            "url": "classes/App-Entity-Pollution.html#method_getSweden"
+        },                {
+            "fqsen": "\\App\\Entity\\Pollution\u003A\u003AsetSweden\u0028\u0029",
+            "name": "setSweden",
+            "summary": "",
+            "url": "classes/App-Entity-Pollution.html#method_setSweden"
+        },                {
+            "fqsen": "\\App\\Entity\\Pollution\u003A\u003AgetGlobal\u0028\u0029",
+            "name": "getGlobal",
+            "summary": "",
+            "url": "classes/App-Entity-Pollution.html#method_getGlobal"
+        },                {
+            "fqsen": "\\App\\Entity\\Pollution\u003A\u003AsetGlobal\u0028\u0029",
+            "name": "setGlobal",
+            "summary": "",
+            "url": "classes/App-Entity-Pollution.html#method_setGlobal"
+        },                {
+            "fqsen": "\\App\\Entity\\Pollution\u003A\u003AgetAll\u0028\u0029",
+            "name": "getAll",
+            "summary": "Returns\u0020array\u0020of\u0020all\u0020column\u0020values\u0020for\u0020entity",
+            "url": "classes/App-Entity-Pollution.html#method_getAll"
+        },                {
+            "fqsen": "\\App\\Entity\\Pollution\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Pollution.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Pollution\u003A\u003A\u0024year",
+            "name": "year",
+            "summary": "",
+            "url": "classes/App-Entity-Pollution.html#property_year"
+        },                {
+            "fqsen": "\\App\\Entity\\Pollution\u003A\u003A\u0024sweden",
+            "name": "sweden",
+            "summary": "",
+            "url": "classes/App-Entity-Pollution.html#property_sweden"
+        },                {
+            "fqsen": "\\App\\Entity\\Pollution\u003A\u003A\u0024global",
+            "name": "global",
+            "summary": "",
+            "url": "classes/App-Entity-Pollution.html#property_global"
+        },                {
+            "fqsen": "\\App\\Entity\\Recycling",
+            "name": "Recycling",
+            "summary": "",
+            "url": "classes/App-Entity-Recycling.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Recycling\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Recycling.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Recycling\u003A\u003AgetYear\u0028\u0029",
+            "name": "getYear",
+            "summary": "",
+            "url": "classes/App-Entity-Recycling.html#method_getYear"
+        },                {
+            "fqsen": "\\App\\Entity\\Recycling\u003A\u003AsetYear\u0028\u0029",
+            "name": "setYear",
+            "summary": "",
+            "url": "classes/App-Entity-Recycling.html#method_setYear"
+        },                {
+            "fqsen": "\\App\\Entity\\Recycling\u003A\u003AgetRecycling\u0028\u0029",
+            "name": "getRecycling",
+            "summary": "",
+            "url": "classes/App-Entity-Recycling.html#method_getRecycling"
+        },                {
+            "fqsen": "\\App\\Entity\\Recycling\u003A\u003AsetRecycling\u0028\u0029",
+            "name": "setRecycling",
+            "summary": "",
+            "url": "classes/App-Entity-Recycling.html#method_setRecycling"
+        },                {
+            "fqsen": "\\App\\Entity\\Recycling\u003A\u003AgetOther\u0028\u0029",
+            "name": "getOther",
+            "summary": "",
+            "url": "classes/App-Entity-Recycling.html#method_getOther"
+        },                {
+            "fqsen": "\\App\\Entity\\Recycling\u003A\u003AsetOther\u0028\u0029",
+            "name": "setOther",
+            "summary": "",
+            "url": "classes/App-Entity-Recycling.html#method_setOther"
+        },                {
+            "fqsen": "\\App\\Entity\\Recycling\u003A\u003AgetDumping\u0028\u0029",
+            "name": "getDumping",
+            "summary": "",
+            "url": "classes/App-Entity-Recycling.html#method_getDumping"
+        },                {
+            "fqsen": "\\App\\Entity\\Recycling\u003A\u003AsetDumping\u0028\u0029",
+            "name": "setDumping",
+            "summary": "",
+            "url": "classes/App-Entity-Recycling.html#method_setDumping"
+        },                {
+            "fqsen": "\\App\\Entity\\Recycling\u003A\u003AgetAll\u0028\u0029",
+            "name": "getAll",
+            "summary": "Returns\u0020array\u0020of\u0020all\u0020column\u0020values\u0020for\u0020entity",
+            "url": "classes/App-Entity-Recycling.html#method_getAll"
+        },                {
+            "fqsen": "\\App\\Entity\\Recycling\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Recycling.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Recycling\u003A\u003A\u0024year",
+            "name": "year",
+            "summary": "",
+            "url": "classes/App-Entity-Recycling.html#property_year"
+        },                {
+            "fqsen": "\\App\\Entity\\Recycling\u003A\u003A\u0024recycling",
+            "name": "recycling",
+            "summary": "",
+            "url": "classes/App-Entity-Recycling.html#property_recycling"
+        },                {
+            "fqsen": "\\App\\Entity\\Recycling\u003A\u003A\u0024other",
+            "name": "other",
+            "summary": "",
+            "url": "classes/App-Entity-Recycling.html#property_other"
+        },                {
+            "fqsen": "\\App\\Entity\\Recycling\u003A\u003A\u0024dumping",
+            "name": "dumping",
+            "summary": "",
+            "url": "classes/App-Entity-Recycling.html#property_dumping"
+        },                {
+            "fqsen": "\\App\\Entity\\User",
+            "name": "User",
+            "summary": "",
+            "url": "classes/App-Entity-User.html"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003AgetPassword\u0028\u0029",
+            "name": "getPassword",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#method_getPassword"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003AsetPassword\u0028\u0029",
+            "name": "setPassword",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#method_setPassword"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003AgetEmail\u0028\u0029",
+            "name": "getEmail",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#method_getEmail"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003AsetEmail\u0028\u0029",
+            "name": "setEmail",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#method_setEmail"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003AgetType\u0028\u0029",
+            "name": "getType",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#method_getType"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003AsetType\u0028\u0029",
+            "name": "setType",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#method_setType"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003AgetAcronym\u0028\u0029",
+            "name": "getAcronym",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#method_getAcronym"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003AsetAcronym\u0028\u0029",
+            "name": "setAcronym",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#method_setAcronym"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003AgetImg\u0028\u0029",
+            "name": "getImg",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#method_getImg"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003AsetImg\u0028\u0029",
+            "name": "setImg",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#method_setImg"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003A\u0024password",
+            "name": "password",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#property_password"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003A\u0024email",
+            "name": "email",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#property_email"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003A\u0024type",
+            "name": "type",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#property_type"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003A\u0024acronym",
+            "name": "acronym",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#property_acronym"
+        },                {
+            "fqsen": "\\App\\Entity\\User\u003A\u003A\u0024img",
+            "name": "img",
+            "summary": "",
+            "url": "classes/App-Entity-User.html#property_img"
+        },                {
+            "fqsen": "\\App\\Repository\\ArticleRepository",
+            "name": "ArticleRepository",
+            "summary": "",
+            "url": "classes/App-Repository-ArticleRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\ArticleRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-ArticleRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\ArticleRepository\u003A\u003Aadd\u0028\u0029",
+            "name": "add",
+            "summary": "",
+            "url": "classes/App-Repository-ArticleRepository.html#method_add"
+        },                {
+            "fqsen": "\\App\\Repository\\ArticleRepository\u003A\u003Aremove\u0028\u0029",
+            "name": "remove",
+            "summary": "",
+            "url": "classes/App-Repository-ArticleRepository.html#method_remove"
+        },                {
+            "fqsen": "\\App\\Repository\\BookRepository",
+            "name": "BookRepository",
+            "summary": "",
+            "url": "classes/App-Repository-BookRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\BookRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-BookRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\BookRepository\u003A\u003Aadd\u0028\u0029",
+            "name": "add",
+            "summary": "",
+            "url": "classes/App-Repository-BookRepository.html#method_add"
+        },                {
+            "fqsen": "\\App\\Repository\\BookRepository\u003A\u003Aremove\u0028\u0029",
+            "name": "remove",
+            "summary": "",
+            "url": "classes/App-Repository-BookRepository.html#method_remove"
+        },                {
+            "fqsen": "\\App\\Repository\\ChartdataRepository",
+            "name": "ChartdataRepository",
+            "summary": "",
+            "url": "classes/App-Repository-ChartdataRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\ChartdataRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-ChartdataRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\ChartdataRepository\u003A\u003Aadd\u0028\u0029",
+            "name": "add",
+            "summary": "",
+            "url": "classes/App-Repository-ChartdataRepository.html#method_add"
+        },                {
+            "fqsen": "\\App\\Repository\\ChartdataRepository\u003A\u003Aremove\u0028\u0029",
+            "name": "remove",
+            "summary": "",
+            "url": "classes/App-Repository-ChartdataRepository.html#method_remove"
+        },                {
+            "fqsen": "\\App\\Repository\\DemographicsRepository",
+            "name": "DemographicsRepository",
+            "summary": "",
+            "url": "classes/App-Repository-DemographicsRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\DemographicsRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-DemographicsRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\DemographicsRepository\u003A\u003Aadd\u0028\u0029",
+            "name": "add",
+            "summary": "",
+            "url": "classes/App-Repository-DemographicsRepository.html#method_add"
+        },                {
+            "fqsen": "\\App\\Repository\\DemographicsRepository\u003A\u003Aremove\u0028\u0029",
+            "name": "remove",
+            "summary": "",
+            "url": "classes/App-Repository-DemographicsRepository.html#method_remove"
+        },                {
+            "fqsen": "\\App\\Repository\\FoodwasteRepository",
+            "name": "FoodwasteRepository",
+            "summary": "",
+            "url": "classes/App-Repository-FoodwasteRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\FoodwasteRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-FoodwasteRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\FoodwasteRepository\u003A\u003Aadd\u0028\u0029",
+            "name": "add",
+            "summary": "",
+            "url": "classes/App-Repository-FoodwasteRepository.html#method_add"
+        },                {
+            "fqsen": "\\App\\Repository\\FoodwasteRepository\u003A\u003Aremove\u0028\u0029",
+            "name": "remove",
+            "summary": "",
+            "url": "classes/App-Repository-FoodwasteRepository.html#method_remove"
+        },                {
+            "fqsen": "\\App\\Repository\\IndicatorRepository",
+            "name": "IndicatorRepository",
+            "summary": "",
+            "url": "classes/App-Repository-IndicatorRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\IndicatorRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-IndicatorRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\IndicatorRepository\u003A\u003Aadd\u0028\u0029",
+            "name": "add",
+            "summary": "",
+            "url": "classes/App-Repository-IndicatorRepository.html#method_add"
+        },                {
+            "fqsen": "\\App\\Repository\\IndicatorRepository\u003A\u003Aremove\u0028\u0029",
+            "name": "remove",
+            "summary": "",
+            "url": "classes/App-Repository-IndicatorRepository.html#method_remove"
+        },                {
+            "fqsen": "\\App\\Repository\\MaterialRepository",
+            "name": "MaterialRepository",
+            "summary": "",
+            "url": "classes/App-Repository-MaterialRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\MaterialRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-MaterialRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\MaterialRepository\u003A\u003Aadd\u0028\u0029",
+            "name": "add",
+            "summary": "",
+            "url": "classes/App-Repository-MaterialRepository.html#method_add"
+        },                {
+            "fqsen": "\\App\\Repository\\MaterialRepository\u003A\u003Aremove\u0028\u0029",
+            "name": "remove",
+            "summary": "",
+            "url": "classes/App-Repository-MaterialRepository.html#method_remove"
+        },                {
+            "fqsen": "\\App\\Repository\\PollutionRepository",
+            "name": "PollutionRepository",
+            "summary": "",
+            "url": "classes/App-Repository-PollutionRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\PollutionRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-PollutionRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\PollutionRepository\u003A\u003Aadd\u0028\u0029",
+            "name": "add",
+            "summary": "",
+            "url": "classes/App-Repository-PollutionRepository.html#method_add"
+        },                {
+            "fqsen": "\\App\\Repository\\PollutionRepository\u003A\u003Aremove\u0028\u0029",
+            "name": "remove",
+            "summary": "",
+            "url": "classes/App-Repository-PollutionRepository.html#method_remove"
+        },                {
+            "fqsen": "\\App\\Repository\\RecyclingRepository",
+            "name": "RecyclingRepository",
+            "summary": "",
+            "url": "classes/App-Repository-RecyclingRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\RecyclingRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-RecyclingRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\RecyclingRepository\u003A\u003Aadd\u0028\u0029",
+            "name": "add",
+            "summary": "",
+            "url": "classes/App-Repository-RecyclingRepository.html#method_add"
+        },                {
+            "fqsen": "\\App\\Repository\\RecyclingRepository\u003A\u003Aremove\u0028\u0029",
+            "name": "remove",
+            "summary": "",
+            "url": "classes/App-Repository-RecyclingRepository.html#method_remove"
+        },                {
+            "fqsen": "\\App\\Repository\\UserRepository",
+            "name": "UserRepository",
+            "summary": "",
+            "url": "classes/App-Repository-UserRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\UserRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-UserRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\UserRepository\u003A\u003Aadd\u0028\u0029",
+            "name": "add",
+            "summary": "",
+            "url": "classes/App-Repository-UserRepository.html#method_add"
+        },                {
+            "fqsen": "\\App\\Repository\\UserRepository\u003A\u003Aremove\u0028\u0029",
+            "name": "remove",
+            "summary": "",
+            "url": "classes/App-Repository-UserRepository.html#method_remove"
+        },                {
+            "fqsen": "\\App\\Utils\\ArrayUtils",
+            "name": "ArrayUtils",
+            "summary": "Class\u0020ArrayUtils\u003A\nIUtility\u0020class\u0020for\u0020arrays,\u0020so\u0020far\u0020only\u0020one\u0020method",
+            "url": "classes/App-Utils-ArrayUtils.html"
+        },                {
+            "fqsen": "\\App\\Utils\\ArrayUtils\u003A\u003AarrayFlip\u0028\u0029",
+            "name": "arrayFlip",
+            "summary": "Flips\u0020a\u00202d\u0020array\u0020on\u0020its\u0020side.\u0020Returns\u0020null\u0020if\u0020nested\u0020arrays\u0020not\u0020even\u0020in\u0020length",
+            "url": "classes/App-Utils-ArrayUtils.html#method_arrayFlip"
         },                {
             "fqsen": "\\",
             "name": "\\",
@@ -471,14 +1711,34 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/app-card.html"
         },                {
+            "fqsen": "\\App\\ChartCreator",
+            "name": "ChartCreator",
+            "summary": "",
+            "url": "namespaces/app-chartcreator.html"
+        },                {
             "fqsen": "\\App\\Controller",
             "name": "Controller",
             "summary": "",
             "url": "namespaces/app-controller.html"
         },                {
+            "fqsen": "\\App\\Entity",
+            "name": "Entity",
+            "summary": "",
+            "url": "namespaces/app-entity.html"
+        },                {
             "fqsen": "\\App",
             "name": "App",
             "summary": "",
             "url": "namespaces/app.html"
+        },                {
+            "fqsen": "\\App\\Repository",
+            "name": "Repository",
+            "summary": "",
+            "url": "namespaces/app-repository.html"
+        },                {
+            "fqsen": "\\App\\Utils",
+            "name": "Utils",
+            "summary": "",
+            "url": "namespaces/app-utils.html"
         }            ]
 );

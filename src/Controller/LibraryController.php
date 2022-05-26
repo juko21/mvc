@@ -10,8 +10,15 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Entity\Book;
 use App\Repository\BookRepository;
 
+/**
+ * Controller class for library, handling book table in db
+ */
 class LibraryController extends AbstractController
 {
+    /**
+     * Landing page for library-route
+     * @return response
+     */
     #[Route('/library', name: 'app_library')]
     public function index(): Response
     {
@@ -22,6 +29,9 @@ class LibraryController extends AbstractController
     }
 
     /**
+     * Route for registering new books
+     *
+     * @return response
      * @Route(
      *      "/library/new",
      *      name="library_create"
@@ -36,6 +46,11 @@ class LibraryController extends AbstractController
     }
 
     /**
+     * Post route for processing book registration requests
+     *
+     * @param BookRepository $bookRepository
+     * @param Request $request
+     * @return response
      * @Route(
      *      "/library/new_process",
      *      name="library_create_process",
@@ -63,6 +78,10 @@ class LibraryController extends AbstractController
     }
 
     /**
+     * Route for showing all books
+     *
+     * @param BookRepository $bookRepository
+     * @return response
     * @Route("/library/show", name="library_show_all")
     */
     public function showAllProduct(
@@ -77,6 +96,11 @@ class LibraryController extends AbstractController
     }
 
     /**
+     * Route for fetchin books by id
+     *
+     * @param int $bookId Route paramer
+     * @param BookRepository $bookRepository
+     * @return response
      * @Route("/library/show/{bookId}", name="library_show_by_id")
      */
     public function showBookById(
@@ -92,6 +116,11 @@ class LibraryController extends AbstractController
     }
 
     /**
+     * Route for fetching book by ISBN
+     *
+     * @param BookRepository $bookRepository
+     * @param string $isbn Route parameter
+     * @return response
      * @Route("/library/show/isbn/{isbn}", name="library_show_by_isbn")
      */
     public function showBookByIsbn(
@@ -107,6 +136,10 @@ class LibraryController extends AbstractController
     }
 
     /**
+     * Route for updating books
+     *
+     * @param BookRepository $bookRepository
+     * @param request $request
      * @Route(
      *      "/library/update",
      *      name="library_update",
@@ -127,6 +160,11 @@ class LibraryController extends AbstractController
     }
 
     /**
+     * Post route for processing update book-requests
+     *
+     * @param BookRepository $bookRepository
+     * @param Request $request
+     * @return response
      * @Route(
      *      "/library/update_process",
      *      name="library_update_process",
@@ -156,6 +194,11 @@ class LibraryController extends AbstractController
     }
 
     /**
+     * Route for deleting book
+     *
+     * @param BookRepository $bookRepository
+     * @param Request $request
+     * @return response
      * @Route(
      *      "/library/delete",
      *      name="library_delete",
@@ -176,6 +219,11 @@ class LibraryController extends AbstractController
     }
 
     /**
+     * Post route for handling delete-book requests
+     *
+     * @param BookRepository $bookRepository
+     * @param Request $request
+     * @return response
      * @Route(
      *      "/library/delete_process",
      *      name="library_delete_process",

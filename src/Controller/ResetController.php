@@ -9,11 +9,17 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Doctrine\DBAL\Connection;
 
+/**
+ * Controller class for resetting database
+ * - split from Project controller
+ */
 class ResetController extends AbstractController
 {
     /**
      * Route method for database reset page
      *
+     * @param SessionInterface $session
+     * @return response
      * @Route("/proj/reset", name="proj-reset")
      */
     public function reset(SessionInterface $session): Response
@@ -29,10 +35,16 @@ class ResetController extends AbstractController
     }
 
     /**
-     * Route method for database reset page
+     * POST Route method for database reset page
      *
-     * @Route("/proj/reset-processing",
-     * name="proj-reset-processing")
+     * @param Request $request
+     * @param Connection $connection
+     * @return response
+     * @Route(
+     *      "/proj/reset-processing",
+     *      name="proj-reset-processing",
+     *      methods={"POST"}
+     * )
      */
     public function resetProcess(
         Request $request,

@@ -63,6 +63,11 @@ class Pollution
         return $this;
     }
 
+    /**
+     * Returns array of all column values for entity
+     *
+     * @return null|array Returns array of all values from entity or null
+     */
     public function getAll(): ?array
     {
         return [$this->year, $this->sweden, $this->global, $this->sweden + $this->global];

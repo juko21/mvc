@@ -17,6 +17,12 @@ use App\Entity\User;
 class UserPostController extends AbstractController
 {
     /**
+     * Post route method login processing
+     *
+     * @param Request $request
+     * @param SessionInterface $session
+     * @param UserRepository $userRepository
+     * @return response
      * @Route("/proj/user/login_process",
      * name="login_process",
      * methods={"POST"}
@@ -42,7 +48,11 @@ class UserPostController extends AbstractController
     }
 
     /**
-     * @Route("/logout_process",
+     * Post route method logout processing
+     *
+     * @param SessionInterface $session
+     * @return response
+     * @Route("/proj/user/logout_process",
      * name="logout_process",
      * methods={"POST"}
      * )
@@ -56,6 +66,12 @@ class UserPostController extends AbstractController
     }
 
     /**
+     * Post route method for updating user
+     *
+     * @param Request $request
+     * @param SessionInterface $session
+     * @param UserRepository $userRepository
+     * @return response
      * @Route("/proj/user/update",
      * name="user_update",
      * methods={"POST"}
@@ -90,7 +106,13 @@ class UserPostController extends AbstractController
     }
 
     /**
-     * @Route("/user/update_process",
+     * Post route method for processing user update
+     *
+     * @param Request $request
+     * @param SessionInterface $session
+     * @param UserRepository $userRepository
+     * @return response
+     * @Route("/proj/user/update_process",
      * name="user_update_process",
      * methods={"POST"}
      * )
@@ -139,8 +161,14 @@ class UserPostController extends AbstractController
     }
 
     /**
+     * Post route method for user delete
+     *
+     * @param Request $request
+     * @param SessionInterface $session
+     * @param UserRepository $userRepository
+     * @return response
      * @Route(
-     *      "/user/delete",
+     *      "/proj/user/delete",
      *      name="user_delete",
      *      methods={"POST"}
      * )
@@ -169,8 +197,14 @@ class UserPostController extends AbstractController
     }
 
     /**
+     * Post route method for processing user delete request
+     *
+     * @param Request $request
+     * @param SessionInterface $session
+     * @param UserRepository $userRepository
+     * @return response
      * @Route(
-     *      "/user/delete_process",
+     *      "/proj/user/delete_process",
      *      name="user_delete_process",
      *      methods={"POST"}
      * )
@@ -201,8 +235,13 @@ class UserPostController extends AbstractController
     }
 
     /**
+     * Post route method for processing new user request
+     *
+     * @param Request $request
+     * @param UserRepository $userRepository
+     * @return response
      * @Route(
-     *      "/user/register_process",
+     *      "/proj/user/register_process",
      *      name="user_register_process",
      *      methods={"POST"}
      * )

@@ -32,5 +32,4 @@ class ArrayUtilsTest extends TestCase
         $datay = [1, 2, 3, 4];
         $this->assertEquals($testArray, $exp);
     }
-
 }

@@ -22,7 +22,11 @@ a,
 td {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    color: var(--main-font-color)
+    color: var(--main-font-color);
+}
+
+p {
+    line-height: var(--def-margin);
 }
 
 a {
@@ -42,4 +46,9 @@ h2:last-child,
 h3:last-child,
 h4:last-child { 
     margin-bottom: 0;
+}
+
+.about-content ul {
+    padding-left: 1rem;
+    padding-right: 20rem;
 }

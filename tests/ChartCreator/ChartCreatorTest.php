@@ -6,7 +6,7 @@ use Symfony\UX\Chartjs\Model\Chart;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Test cases for class Guess.
+ * Test cases for class ChartCreator.
  */
 class ChartCreatorTest extends TestCase
 {

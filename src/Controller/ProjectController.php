@@ -24,6 +24,9 @@ class ProjectController extends AbstractController
     /**
      * Route method for main landing page for project
      *
+     * @param ManagerRegistry $doctrine
+     * @param SessionInterface $session
+     * @return response
      * @Route("/proj", name="proj-home")
      */
     public function index(
@@ -62,6 +65,9 @@ class ProjectController extends AbstractController
     /**
      * Route method for about page for project
      *
+     * @param ManagerRegistry $doctrine
+     * @param SessionInterface $session
+     * @return response
      * @Route("/proj/about", name="proj-about")
      */
     public function about(
@@ -88,9 +94,44 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * Route method for indicatorSelect. Used with parameter
+     * Route method for clean-code article
+     *
+     * @param ManagerRegistry $doctrine
+     * @param SessionInterface $session
+     * @return response
+     * @Route("/proj/cleancode", name="proj-cleancode")
+     */
+    public function cleanCode(
+        ManagerRegistry $doctrine,
+        SessionInterface $session
+    ): Response {
+        $loggedIn = $session->get("loggedIn");
+        $parseDown = new ParsedownExtra();
+        $entityManager = $doctrine->getManager();
+
+        $content = $entityManager->getRepository(Article::class)->find(19);
+        $contentTitle = $content->getTitle();
+        $content = $parseDown->text($content->getContent());
+
+        $data = [
+            "title" => "KMOM10: Om slutprojektet",
+            "header" => "KMOM10",
+            "subHeader" => "Om ren kod",
+            "contentTitle" => $contentTitle,
+            "content" => $content,
+            'loggedIn' => $loggedIn
+        ];
+        return $this->render('proj/cleancode.html.twig', $data);
+    }
+
+    /**
+     * Route method for indicatorSelect. Used with route parameter
      * to send user to correct indicator page
      *
+     * @param ManagerRegistry $doctrine
+     * @param string $indicator Route parameter
+     * @param SessionInterface $session
+     * @return response
      * @Route("/proj/indikatorer/{indicator}", name="proj-indicator-select")
      */
     public function indicatorSelect(
@@ -135,7 +176,8 @@ class ProjectController extends AbstractController
         }, $dataEntities);
 
         // Flip the arrays so that values from each db table column are put in its own array
-        $statistics = ArrayUtils::arrayFlip($rawStatistics);
+        $arrayUtils = new ArrayUtils();
+        $statistics = $arrayUtils->arrayFlip($rawStatistics);
 
         // Create new arrays for $dataX and $dataY
         $dataX = $statistics[0];

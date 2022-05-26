@@ -5,7 +5,7 @@ namespace  App\Card;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Test cases for class Guess.
+ * Test cases for class Hand.
  */
 class HandTest extends TestCase
 {
@@ -78,7 +78,7 @@ class HandTest extends TestCase
         $this->assertEquals($exp, $hand->calculateValue());
     }
     /**
-     * Construct object, ad cards and verify image sources.
+     * Construct object, add cards and verify image sources.
      */
     public function testGetAllCardImgSrc()
     {

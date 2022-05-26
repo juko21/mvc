@@ -56,6 +56,10 @@
 .chart {
     max-height: 400px;
 }
+
+.dia-img {
+    width: 100%;
+}
 @media (max-width: 900px) {
 
     .color-block:any-link {

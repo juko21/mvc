@@ -15,8 +15,6 @@ use Symfony\UX\Chartjs\Builder\ChartBuilder;
  * in the correct format to be used by chartjs. Datasets and charts
  * fetched with getDataset and getOptions
  *
- * @method array getDataset() Returns dataset formatted in array for chartjs
- * @method array getOptions() Returns options formatted in array for chartjs
  */
 class ChartCreator
 {

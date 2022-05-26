@@ -5,7 +5,7 @@ namespace  App\Card;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Test cases for class Guess.
+ * Test cases for class DeckWithJokers.
  */
 class DeckWithJokersTest extends TestCase
 {
@@ -30,6 +30,9 @@ class DeckWithJokersTest extends TestCase
         $this->assertEquals($exp, $deck->getAllCardSrc());
     }
 
+    /**
+     * Tests shuffle sort method aginst supplied deck
+     */
     public function testShuffleSort()
     {
         $deck = new DeckWithJokers();
@@ -43,6 +46,9 @@ class DeckWithJokersTest extends TestCase
         $this->assertEquals($exp, $deck->deck[53]->getId());
     }
 
+    /**
+     * Tests pop method and count method for deck
+     */
     public function testPopAndCount()
     {
         $deck = new DeckWithJokers();

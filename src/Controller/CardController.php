@@ -10,9 +10,15 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use App\Card\Deck;
 use App\Card\DeckWithJokers;
 
+/**
+ * Controller class for showing deck of cards
+**/
 class CardController extends AbstractController
 {
     /**
+     * Card landing page
+     *
+     * @return Response
      * @Route("/card", name="card-home")
      */
     public function home(): Response
@@ -27,6 +33,10 @@ class CardController extends AbstractController
     }
 
     /**
+     * Route for showing deck of cards
+     *
+     * @param SessionInterface $session
+     * @return Response
      * @Route("/card/deck", name="card-deck")
      */
     public function deck(SessionInterface $session): Response
@@ -48,6 +58,10 @@ class CardController extends AbstractController
     }
 
     /**
+     * Route for showing deck of cards with jokers
+     *
+     * @param SessionInterface $session
+     * @return Response
      * @Route("/card/deck2", name="card-deck2")
      */
     public function deck2(SessionInterface $session): Response
@@ -69,6 +83,10 @@ class CardController extends AbstractController
     }
 
     /**
+     * Route for resetting and shuffling deck
+     *
+     * @param SessionInterface $session
+     * @return Response
      * @Route("/card/deck/shuffle", name="deck-shuffle")
      */
     public function shuffleDeck(SessionInterface $session): Response
@@ -87,6 +105,10 @@ class CardController extends AbstractController
     }
 
     /**
+     * Route for drawing and showing card
+     *
+     * @param SessionInterface $session
+     * @return Response
      * @Route("/card/draw", name="draw-card")
      */
     public function drawCard(SessionInterface $session): Response
@@ -114,7 +136,13 @@ class CardController extends AbstractController
 
         return $this->render('card/deck.html.twig', $data);
     }
+
     /**
+     * Route for drawing and showing cards, the number decided by route param
+     *
+     * @param SessionInterface $session
+     * @param int $number Number of cards to be drawn
+     * @return Response
      * @Route("/card/draw/{number}", name="draw-cards")
      */
     public function drawCards(SessionInterface $session, int $number): Response
@@ -147,6 +175,12 @@ class CardController extends AbstractController
     }
 
     /**
+     * Route for drawing and showing x cards for x players, the number decided by route params
+     *
+     * @param SessionInterface $session
+     * @param int $number Number of cards to be drawn
+     * @param int $player Number of players
+     * @return Response
      * @Route("/card/deck/deal/{player}/{number}", name="draw-player-cards")
      */
     public function drawPlayerCards(SessionInterface $session, int $player, int $number): Response

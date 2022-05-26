@@ -15,6 +15,14 @@ use App\Entity\User;
  */
 class UserController extends AbstractController
 {
+    /**
+     * Route method profile page, redirects to login
+     * if not logged in
+     *
+     * @param SessionInterface $session
+     * @param UserRepository $userRepository
+     * @return response
+     */
     #[Route('/proj/user', name: 'app_user')]
     public function userHome(SessionInterface $session, UserRepository $userRepository): Response
     {
@@ -53,6 +61,11 @@ class UserController extends AbstractController
     }
 
     /**
+     * Route method login page, redirects to profile page
+     * if logged in
+     *
+     * @param SessionInterface $session
+     * @return response
      * @Route("/proj/user/login", name="login")
      */
     public function login(SessionInterface $session): Response
@@ -65,6 +78,11 @@ class UserController extends AbstractController
     }
 
     /**
+     * Route method registering new user
+     *
+     * @param SessionInterface $session
+     * @param UserRepository $userRepository
+     * @return response
      * @Route(
      *      "/proj/user/register",
      *      name="user_register"

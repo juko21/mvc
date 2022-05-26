@@ -5,7 +5,7 @@ namespace  App\Card;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Test cases for class Guess.
+ * Test cases for class Player.
  */
 class PlayerTest extends TestCase
 {
@@ -35,6 +35,9 @@ class PlayerTest extends TestCase
         $this->assertEquals($player->getHandCount(), 2);
     }
 
+    /**
+     * Test that correct number of points are returned for hand
+     */
     public function testGetPoints()
     {
         $player = new Player(100);
@@ -47,10 +50,8 @@ class PlayerTest extends TestCase
     }
 
     /**
-     * Construct object, add ace card and set ace card value to both high and low.
-     * Verify value/rank of ace card
+     * Test setting ace value
      */
-
     public function testSetAceValue()
     {
         $player = new Player(100);
@@ -64,8 +65,7 @@ class PlayerTest extends TestCase
     }
 
     /**
-     * Construct object, test bet value set to default, set bet value and
-     * check correct value
+     * Test setting and getting bet for player
      */
     public function testSetGetBet()
     {
