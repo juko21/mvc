@@ -27,7 +27,7 @@ class LibraryController extends AbstractController
      *      name="library_create"
      * )
      */
-    public function createBook(SessionInterface $session): Response
+    public function createBook(): Response
     {
         return $this->render(
             'library/createbook.html.twig',
@@ -66,8 +66,7 @@ class LibraryController extends AbstractController
     * @Route("/library/show", name="library_show_all")
     */
     public function showAllProduct(
-        BookRepository $bookRepository,
-        SessionInterface $session
+        BookRepository $bookRepository
     ): Response {
         $books = $bookRepository->findAll();
 
@@ -81,7 +80,6 @@ class LibraryController extends AbstractController
      * @Route("/library/show/{bookId}", name="library_show_by_id")
      */
     public function showBookById(
-        SessionInterface $session,
         BookRepository $bookRepository,
         int $bookId
     ): Response {
@@ -97,7 +95,6 @@ class LibraryController extends AbstractController
      * @Route("/library/show/isbn/{isbn}", name="library_show_by_isbn")
      */
     public function showBookByIsbn(
-        SessionInterface $session,
         BookRepository $bookRepository,
         string $isbn
     ): Response {
@@ -117,7 +114,6 @@ class LibraryController extends AbstractController
      * )
      */
     public function updateBook(
-        SessionInterface $session,
         BookRepository $bookRepository,
         Request $request
     ): Response {
@@ -144,18 +140,19 @@ class LibraryController extends AbstractController
         $author = $request->request->get('author');
         $img = $request->request->get('img');
         $bookId = $request->request->get('submit');
+        
+        if($bookId) {
+            $book = $bookRepository->find($bookId);
 
-        $book = $bookRepository->find($bookId);
+            $book->setTitle($title);
+            $book->setIsbn($isbn);
+            $book->setAuthor($author);
+            $book->setImg($img);
 
-        $book->setTitle($title);
-        $book->setIsbn($isbn);
-        $book->setAuthor($author);
-        $book->setImg($img);
-
-        // actually executes the queries (i.e. the INSERT query)
-        $bookRepository->add($book, true);
-
-        return $this->redirectToRoute('library_show_by_isbn', ["isbn" => $isbn]);
+            $bookRepository->add($book, true);
+            return $this->redirectToRoute('library_show_by_isbn', ["isbn" => $isbn]);
+        }
+        return $this->redirectToRoute('library_show_all');
     }
 
     /**
@@ -166,7 +163,6 @@ class LibraryController extends AbstractController
      * )
      */
     public function deleteBook(
-        SessionInterface $session,
         BookRepository $bookRepository,
         Request $request
     ): Response {
@@ -191,9 +187,9 @@ class LibraryController extends AbstractController
         $bookId = $request->request->get('submit');
 
         $book = $bookRepository->find($bookId);
-
-        $bookRepository->remove($book, true);
-
-        return $this->redirectToRoute('library_show_all');
+        if(isset($book)) {
+            $bookRepository->remove($book, true);
+        }
+            return $this->redirectToRoute('library_show_all');
     }
 }

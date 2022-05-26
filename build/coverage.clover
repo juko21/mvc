@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1653560098">
-  <project timestamp="1653560098">
+<coverage generated="1653564793">
+  <project timestamp="1653564793">
     <file name="C:\Users\jkota\dbwebb-kurser\mvc\me\report\src\Card\Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="8" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="17" coveredelements="17"/>

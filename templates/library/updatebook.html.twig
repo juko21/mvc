@@ -5,6 +5,11 @@
 {% block body %}
     <h2>{{ title }}</h2>
     <form method="POST" action="{{ path('library_update_process') }}">
+    {% for message in app.flashes('notice') %}
+        <p>
+            {{ message }}
+        </p>
+    {% endfor %}
             <p><input type="text" name="title" required placeholder="Titel" value="{{ book.title }}"></p>
             <p><input type="text" name="isbn" required placeholder="ISBN" value="{{ book.isbn }}"></p>
             <p><input type="text" name="author" required placeholder="Författare" value="{{ book.author }}"></p>

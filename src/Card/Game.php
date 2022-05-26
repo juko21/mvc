@@ -77,7 +77,7 @@ class Game
     /**
      * Return dealer hand
      * 
-     * @return int Dealer hand
+     * @return Hand Dealer hand
      */
     public function getDealerHand(): Hand
     {
@@ -87,7 +87,7 @@ class Game
     /**
      * Return player hand
      * 
-     * @return int Player hand
+     * @return Hand Player hand
      */
     public function getPlayerHand(): Hand
     {
@@ -191,7 +191,7 @@ class Game
     /**
      * Sets value of ace to 1 or 14
      * 
-     * @param int Index of card to be changed
+     * @param int $cardIndex of card to be changed
      * @param bool $highAce True for (14) high ace value, false for low (1)
      * @return void
      */

@@ -158,23 +158,28 @@ class UserController extends AbstractController
         $img = $request->request->get('img');
         $type = $request->request->get('type');
 
-        if (!$img) {
-            $img = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($email)))
-            . "?d=" . urlencode("mp") . "&s=" . "80";
-        }
-        $user = $userRepository->find($updateUserId);
         $currentUser = $userRepository->find($currentUserId);
 
         if (password_verify($oldpassword, $currentUser->getPassword())) {
-            $user->setAcronym($acronym);
-            $user->setEmail($email);
-            $user->setImg($img);
+            $user = $userRepository->find($updateUserId);
+
+            if (!$img) {
+                $img = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($email)))
+                . "?d=" . urlencode("mp") . "&s=" . "80";
+            }
+
             if ($newpassword) {
                 $user->setPassword(password_hash($newpassword, PASSWORD_BCRYPT));
             }
+
             if ($type) {
                 $user->setType($type);
             }
+
+            $user->setAcronym($acronym);
+            $user->setEmail($email);
+            $user->setImg($img);
+
             $userRepository->add($user, true);
             return $this->redirectToRoute('app_user');
         }

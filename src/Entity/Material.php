@@ -67,7 +67,7 @@ class Material
     public function getFootprintPerPop(): ?float
     {
         $pop = $this->getDemographics()->getPopulation();
-        if ($pop) {
+        if ($pop !== null) {
             return round($this->footprint / $pop, 2);
         }
         return 0;
@@ -76,7 +76,7 @@ class Material
     public function getFootprintPerGdp(): ?float
     {
         $gdp = $this->getDemographics()->getGdp();
-        if ($gdp) {
+        if ($gdp !== null) {
             return round($this->footprint / $gdp, 2);
         }
         return 0;

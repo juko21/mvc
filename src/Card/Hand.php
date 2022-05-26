@@ -57,7 +57,7 @@ class Hand
     /**
      * Sets value of ace to 1 or 14
      * 
-     * @param int Index of card to be changed
+     * @param int $cardIndexIndex of card to be changed
      * @param bool $highAce True for (14) high ace value, false for low (1)
      * @return void
      */

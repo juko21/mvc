@@ -1,12 +1,12 @@
 {# templates/proj/index.html.twig #}
 {% extends "proj/base.html.twig" %}
-{% block title %}{{ title }}{% endblock %}
-{% block header %}{{ header | raw }}{% endblock %}
-{% block subHeader %}{{ subHeader }}{% endblock %}
+{% block title %}Indikatorer: {{ header }}{% endblock %}
+{% block header %}INDIKATORER{% endblock %}
+{% block subHeader %}{{ header }}{% endblock %}
 
 {% block body %}
 <div class="row">
-    <h2 class="full-width">{{ contentTitle}}</h2>
+    <h2 class="full-width">{{ contentTitle }}</h2>
 </div>
 <div class="row">
     <div class="full-width">
@@ -33,7 +33,7 @@
 </div>
 {% endfor %}
 <div class="row">
-    <h3 class="full-width">{{ indicatorsTitle }}</h3>
+    <h3 class="full-width">Övriga indikatorer</h3>
 </div>
 <div class="row color-block-container">
 {% for key, indicator in indicators %}

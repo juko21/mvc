@@ -23,7 +23,7 @@ class Player
     /**
      * Add/deduct bet from player cash dep. on win/loss
      * 
-     * @param bool @win Win or loss
+     * @param bool $win Win or loss
      * @return void
      */
     public function addMoney(bool $win): void
@@ -66,7 +66,7 @@ class Player
     /**
      * Sets value of ace to 1 or 14
      * 
-     * @param int Index of card to be changed
+     * @param int $cardIndex Index of card to be changed
      * @param bool $highAce True for (14) high ace value, false for low (1)
      * @return void
     */
@@ -109,7 +109,7 @@ class Player
     /**
      * Set player bet
      * 
-     * @param int @bet betvalue
+     * @param int $bet betvalue
      * @return void
      */
     public function setBet(int $bet): void
