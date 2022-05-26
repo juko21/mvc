@@ -120,8 +120,7 @@ class ProjectController extends AbstractController
         }, $indicatorAll);
 
         // Get articleRepository an main article
-        $articleRep = $entityManager->getRepository(Article::class);
-        $article = $articleRep->find($indicatorData->getArticleId());
+        $article = $indicatorData->getArticle();
 
         // Get chart data settings from db and whether charts are multi or single line
         $chartData = $indicatorData->getChartdatas();
@@ -146,15 +145,14 @@ class ProjectController extends AbstractController
         $chartHeaders = [];
         $chartTexts = [];
         foreach ($chartData as $key => $chart) {
-            $chartHeaders[] = $articleRep->find($chart->getArticleId())->getTitle();
+            $chartHeaders[] = $chart->getArticle()->getTitle();
             $chartTexts[$key] = '<h3>' . $chartHeaders[$key] . '</h3>';
-            $chartTexts[$key] .= '<p>' . $articleRep->find($chart->getArticleId())->getContent()  . '</p>';
+            $chartTexts[$key] .= '<p>' . $chart->getArticle()->getContent()  . '</p>';
             $dataY[$chartHeaders[$key]] = $statistics[$key + 1];
         }
 
         // Construct charts
         $charts = [];
-
         if ($multiple) {
             $chartTexts = [implode('', $chartTexts)]; // Implode all chart texts to 1-element array neater display
             $dataY = [$dataY];
@@ -176,7 +174,7 @@ class ProjectController extends AbstractController
         $data = [
             "header" => $indicatorData->getHeader(),
             "contentTitle" => $article->getTitle(),
-            "content" => $parseDown->text($articleRep->find($indicatorData->getArticleId())->getContent()),
+            "content" => $parseDown->text($article->getContent()),
             "charts" => $charts,
             "chartTexts" => $chartTexts,
             "indicators" => $indicatorHeaders,

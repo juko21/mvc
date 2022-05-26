@@ -26,6 +26,10 @@ class Chartdata
     #[ORM\JoinColumn(nullable: false)]
     private $indicator;
 
+    #[ORM\OneToOne(targetEntity: Article::class, cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private $article;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +79,18 @@ class Chartdata
     public function setIndicator(?Indicator $indicator): self
     {
         $this->indicator = $indicator;
+
+        return $this;
+    }
+
+    public function getArticle(): ?Article
+    {
+        return $this->article;
+    }
+
+    public function setArticle(?Article $article): self
+    {
+        $this->article = $article;
 
         return $this;
     }

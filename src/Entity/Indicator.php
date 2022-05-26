@@ -30,6 +30,10 @@ class Indicator
     #[ORM\OneToMany(mappedBy: 'indicator', targetEntity: Chartdata::class)]
     private $chartdatas;
 
+    #[ORM\OneToOne(targetEntity: Article::class, cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private $article;
+
     public function __construct()
     {
         $this->chartdatas = new ArrayCollection();
@@ -114,6 +118,18 @@ class Indicator
                 $chartdata->setIndicator(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getArticle(): ?Article
+    {
+        return $this->article;
+    }
+
+    public function setArticle(Article $article): self
+    {
+        $this->article = $article;
 
         return $this;
     }
