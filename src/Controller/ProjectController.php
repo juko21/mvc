@@ -19,6 +19,10 @@ use App\Entity\Chartdata;
 use App\ChartCreator\ChartCreator;
 use App\Utils\ArrayUtils;
 
+/**
+ * Controller for project, gathers routes for sustainable 
+ * consumtion and other related pages.
+ */
 class ProjectController extends AbstractController
 {
     /**
@@ -201,10 +205,10 @@ class ProjectController extends AbstractController
         }
 
         $count = 0;
-        foreach ($dataY as $value) {
+        foreach ($dataY as $key => $value) {
             $chartCreator = new ChartCreator(
                 $dataX,
-                $multiple ? $value : [$value],
+                $multiple ? $value : [$key => $value],
                 true,
                 $chartData[$count]->getType()
             );
